@@ -1,16 +1,16 @@
 body {
-    background-color: #333;
-    color: white;
     font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1a1a;
+    color: #ffffff;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    padding: 1rem;
 }
 
 .logo {
@@ -53,17 +53,28 @@ nav {
     letter-spacing: 0.1em;
 }
 
-.gallery-container {
-    display: flex;
-    justify-content: center;
-}
-
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px; /* Adjust this value as needed */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery img {
     width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* This ensures all images are square */
+    border-radius: 15px; /* This adds rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Optional: Add a hover effect */
+.gallery img:hover {
+    transform: scale(1.05); /* Slightly enlarge the image on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Add a shadow on hover */
 }
 
 .project {
