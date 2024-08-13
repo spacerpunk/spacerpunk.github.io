@@ -11,5 +11,3 @@
 //     oscillator.start();
 //     oscillator.stop(audioContext.currentTime + 0.1);
 // }
-
-console.log('Music Gen')

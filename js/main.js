@@ -7,64 +7,78 @@ function goToRandomLab() {
     window.location.href = randomLab;
 }
 
-//// Function to show project overlay
-//function showProjectOverlay(projectName) {
-//    let overlay = document.getElementById('project-overlay');
-//    if (!overlay) {
-//        createOverlay();
-//        overlay = document.getElementById('project-overlay');
-//    }
-//    overlay.textContent = projectName;
-//    overlay.style.display = 'flex';
-//    setTimeout(() => {
-//        overlay.style.opacity = '1';
-//    }, 10);
-//}
-//
-//// Function to hide project overlay
-//function hideProjectOverlay() {
-//    const overlay = document.getElementById('project-overlay');
-//    if (overlay) {
-//        overlay.style.opacity = '0';
-//        setTimeout(() => {
-//            overlay.style.display = 'none';
-//        }, 300);
-//    }
-//}
-//
-//// Function to create overlay if it doesn't exist
-//function createOverlay() {
-//    const overlay = document.createElement('div');
-//    overlay.id = 'project-overlay';
-//    overlay.style.position = 'fixed';
-//    overlay.style.top = '0';
-//    overlay.style.left = '0';
-//    overlay.style.width = '100%';
-//    overlay.style.height = '100%';
-//    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-//    overlay.style.display = 'none';
-//    overlay.style.justifyContent = 'center';
-//    overlay.style.alignItems = 'center';
-//    overlay.style.zIndex = '1000';
-//    overlay.style.color = 'white';
-//    overlay.style.fontSize = '10vw';
-//    overlay.style.fontFamily = 'Arial, sans-serif';
-//    overlay.style.textAlign = 'center';
-//    overlay.style.opacity = '0';
-//    overlay.style.transition = 'opacity 0.3s ease';
-//    document.body.appendChild(overlay);
-//}
-//
-//// Function to initialize the gallery
-//function initGallery() {
-//    const galleryImages = document.querySelectorAll('.gallery img');
-//    galleryImages.forEach((img, index) => {
-//        img.addEventListener('mouseenter', () => {
-//            showProjectOverlay(`Project ${index + 1}`);
-//        });
-//        img.addEventListener('mouseleave', hideProjectOverlay);
-//    });
-//}
-//
-//// Call initGallery when the DOM is fully loaded
-//document.addEventListener('DOMContentLoaded', initGallery);
+function initGallery() {
+    const gallery = document.querySelector('.gallery');
+    const galleryImages = document.querySelectorAll('.gallery img');
+    
+    // Create vertical title element
+    const verticalTitle = document.createElement('div');
+    verticalTitle.classList.add('vertical-title');
+    document.body.appendChild(verticalTitle);
+
+    galleryImages.forEach((img) => {
+        img.addEventListener('mouseenter', () => {
+            const title = img.getAttribute('data-title');
+            animateVerticalTitle(title, verticalTitle);
+        });
+    });
+
+    gallery.addEventListener('mouseleave', () => {
+        verticalTitle.style.opacity = '0';
+        verticalTitle.innerHTML = '';
+    });
+}
+
+function animateVerticalTitle(title, element) {
+    element.innerHTML = '';
+    element.style.opacity = '1';
+    
+    title.split('').forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        element.appendChild(span);
+
+        setTimeout(() => {
+            span.style.transform = 'translateY(0)';
+            span.style.opacity = '1';
+        }, 50 * index);
+    });
+}
+
+// Call initGallery when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', initGallery);
+
+function animateTitle(loop = false) {
+    const titleElement = document.getElementById('animated-title');
+    const title = titleElement.textContent;
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
+    let interval = 100; // milliseconds between each character update
+    let iterations = 5; // number of random characters before settling on the correct one
+
+    titleElement.textContent = ''; // Clear the title at the start of animation
+
+    title.split('').forEach((char, index) => {
+        for (let i = 0; i < iterations; i++) {
+            setTimeout(() => {
+                let randomChar = chars[Math.floor(Math.random() * chars.length)];
+                titleElement.textContent = titleElement.textContent.slice(0, index) + randomChar + ' '.repeat(title.length - index - 1);
+            }, index * interval * iterations + i * interval);
+        }
+
+        setTimeout(() => {
+            titleElement.textContent = titleElement.textContent.slice(0, index) + char + ' '.repeat(title.length - index - 1);
+        }, index * interval * iterations + iterations * interval);
+    });
+
+    if (loop) {
+        setTimeout(() => {
+            animateTitle(true);
+        }, 10000); // 10 seconds
+    }
+}
+
+// Call the animation function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    animateTitle(true);
+    initGallery();
+});

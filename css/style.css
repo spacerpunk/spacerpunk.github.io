@@ -39,7 +39,7 @@ nav {
     font-size: 24px;
     text-decoration: none;
     color: white;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
 }
 
 .icon:hover {
@@ -48,8 +48,9 @@ nav {
 
 .site-title {
     text-align: center;
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    position: relative;
+    font-size: 2rem;
+    margin: 0 0 15px 0;
     letter-spacing: 0.1em;
 }
 
@@ -103,6 +104,29 @@ nav {
     transform: scale(1.05);
 }
 
+.vertical-title {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.vertical-title span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 1200px) {
     .gallery {
@@ -116,9 +140,12 @@ nav {
     }
     
     .site-title {
-        font-size: 2rem;
-        position: center;
-        z-index: 1;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 3rem;
+        text-align: right;
+        min-height: 3rem; /* Adjust based on your font size */
+        letter-spacing: 0.1em;
+        white-space: pre; /* This ensures spaces are preserved */
     }
 
     .site-subtitle {
@@ -126,4 +153,10 @@ nav {
         position: relative;
         z-index: 1
     }
+}
+
+/* Adjust main content to account for fixed header */
+main {
+    margin-top: 20px; /* Adjust this value based on your header's height */
+    padding: 20px;
 }
