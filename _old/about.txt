@@ -1,0 +1,15 @@
+ABOUT
+Hello there! My name is Nicolás Requena AKA *Spacerpunk*
+            
+Learning the ins and outs of each software allowed me to understand different pipelines and device my own when a project needs a specific one! Every software can interact with one another and I enjoy finding ways for them to "speak" to each other.
+    
+I'm a Music Producer and Audio Engineer who learned to code and loves VFX. The means of entertainment are changing every day and I love to find new ways to work with that tech, VFX, 3D, AI, Music, sound and more.
+
+
+Audio Tools: Pro Tools, Cubase, Reaper, Wwise, Pure Data.
+VFX: After Effects, Premiere, Blender, C4D, Unreal Engine, Unity.
+Java Script, Python, C++, Tidal Cylces, SuperCollider
+    
+Thank you!
+
+https://linktr.ee/spacerpunk

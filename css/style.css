@@ -1,5 +1,10 @@
+@font-face {
+    font-family: "Geist Mono";
+    src: url(https://assets.codepen.io/605876/GeistMonoVariableVF.ttf);
+  }
+
 body {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Geist Mono', monospace;
     background-color: #141414;
     color: #EFF1F3 ;
     margin: 0;
@@ -194,7 +199,7 @@ body, html {
     }
     
     .site-title {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'Geist Mono', monospace;
         font-size: 3rem;
         text-align: right;
         min-height: 3rem; /* Adjust based on your font size */
