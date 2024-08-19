@@ -52,7 +52,7 @@ function animateTitle(loop = false) {
     const titleElement = document.getElementById('animated-title');
     const title = titleElement.textContent;
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
-    let interval = 100; // milliseconds between each character update
+    let interval = 50; // milliseconds between each character update
     let iterations = 5; // number of random characters before settling on the correct one
 
     titleElement.textContent = ''; // Clear the title at the start of animation
