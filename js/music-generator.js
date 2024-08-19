@@ -27,7 +27,7 @@ console.log('trackerplatz');
   - Add Swing, Humanity.
 --------------------------------------- */
 
-const audioPlayer = document.getElementById('audio-player');
+//const audioPlayer = document.getElementById('audio-player');
 const bpm = 104;
 const timeSignature = [9, 8];
 //const now = Tone.now();
@@ -158,3 +158,19 @@ metronomeLoop.start(0);
 /* TRANSPORT */
 Tone.Transport.bpm.value = bpm;
 Tone.Transport.timeSignature = timeSignature;
+
+const playButton = document.getElementById('play-button');
+const pauseButton = document.getElementById('pause-button');
+
+playButton.addEventListener('click', () => {
+  //   //audioPlayer.currentTime = 0; // set the current time to the beginning
+  //   //audioPlayer.play();
+   console.log('Tone started');
+   Tone.start();
+   Tone.Transport.start();
+  });
+
+  pauseButton.addEventListener('click', () => {
+    console.log('Tone Stopped');
+    Tone.Transport.stop();  
+  });
