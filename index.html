@@ -8,15 +8,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="terminal">
-        <!--<p><span class="yellow">string</span>  spacerpunk = <span class="yellow">vibrations and technology to escape the matrix();</span> </p>-->
-        <p>string spacerpunk = vibrations and technology to escape the matrix();</p>
-        <div id="output"></div>
-        <div id="input-line">
-            <p> <span>C:\> </span> <span class="cursor">█</span></p>
-             <input type="text" id="user-input" autofocus>
-         </div>
+    <div class="banner">
+        <div class="logo">
+            <img src="images/spacerpunk-logo.png" alt="spcrpk logo">
+        </div>
+        <h1 class="title">spcrpnk</h1>
+        <button id="themeToggle">Toggle Theme</button>
     </div>
-    <script src="script.js"></script>
+    <div class="terminal">
+        <div id="terminal-content"></div>
+    </div>
+    <script src="commands.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

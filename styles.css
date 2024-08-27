@@ -1,50 +1,144 @@
 body {
-    background-color: #000;
+    margin: 0;
+    padding: 0;
+    display: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #010101;
     color: #fff;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 16px;
+    font-weight: lighter;
+    font-size: 14px;
     line-height: 1.4;
     padding: 20px;
 }
 
+
 .terminal {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 200px; /* Adjust as needed */
     border: 1px solid #fff;
     padding: 20px;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    font-weight: lighter;
+}
+
+.output-line, .input-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* New styles for customizing output */
+.output-line {
+    color: #fff; /* Default color, can be overridden */
+}
+
+.output-line.error {
+    color: #ff0000;
+}
+
+.output-line.success {
+    color: #00ff00;
+}
+
+.output-line.warning {
+    color: #ffff00;
+}
+
+.output-line.info {
+    color: #00ffff;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 10px 20px;
+    border-bottom: 1px solid #fff;
+    transition: background-color 0.1s, border-color 0.1s;
+}
+
+
+.logo img {
+    height: 80px;
+    width: auto;
+    transition: filter 0.1s;
+}
+
+.ascii-art {
+    font-family: 'Courier New', monospace;
+    white-space: pre;
+    line-height: 1.2;
+    font-size: 12px;
+    color: inherit;
+}
+
+.title {
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.4;
+    padding: 20px;
+    font-weight: lighter;
+}
+
+#themeToggle {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+#terminal-content {
+    display: flex;
+    flex-direction: column;
+    font-weight: lighter;
+}
+
+
+.input-line input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #1FC742;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    outline: none;
 }
 
 .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: #0f0;
     animation: blink 1s step-end infinite;
 }
 
 #output {
-    min-height: 200px;
+    flex-grow: 1;
     overflow-y: auto;
+    margin-bottom: 10px;
+    font-weight: lighter;
 }
 
 #input-line {
     display: flex;
+    align-items: center;
 }
-
-#user-input {
-    flex-grow: 1;
-    background: transparent;
-    border: none;
-    color: #ffff00;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 16px;
-    outline: none;
-}
-
-/* Add these color classes */
-.red { color: #ff0000; }
-.blue { color: #0000ff; }
-.yellow { color: #ffff00; }
-.cyan { color: #00ffff; }
-.magenta { color: #ff00ff; }
-.white { color: #fff;}
 
 @keyframes blink {
+    0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
