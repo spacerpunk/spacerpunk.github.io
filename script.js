@@ -2,30 +2,38 @@ const terminalContent = document.getElementById('terminal-content');
 
 // Also call it when the page loads
 window.addEventListener('load', adjustTerminalHeight);
+window.addEventListener('load', welcomeMessage);
 
-function createInputLine() {
+function welcomeMessage() {
+    Tone.start();
+}
+
+function createInputLine(previousCommand = '') {
     const inputLine = document.createElement('div');
     inputLine.className = 'input-line';
     inputLine.innerHTML = `
-        <span class="prompt">()>&nbsp;</span>
+        <span class="prompt">()&gt;&nbsp;</span>
         <span class="input-wrapper">
-            <span class="input-text"></span>
+            <span class="input-text">${previousCommand}</span>
             <span class="cursor">&nbsp;</span>
         </span>
     `;
     terminalContent.appendChild(inputLine);
     
+    const inputWrapper = inputLine.querySelector('.input-wrapper');
     const inputText = inputLine.querySelector('.input-text');
+    const cursor = inputLine.querySelector('.cursor');
     
-    let currentInput = '';
+    let currentInput = previousCommand;
     
     function handleKeyDown(e) {
-        e.preventDefault();
         if (e.key === 'Enter') {
+            e.preventDefault();
             document.removeEventListener('keydown', handleKeyDown);
+            finalizeInput();
             processCommand(currentInput);
-            inputLine.querySelector('.input-wrapper').remove();
         } else if (e.key === 'Backspace') {
+            e.preventDefault();
             currentInput = currentInput.slice(0, -1);
         } else if (e.key.length === 1) {
             currentInput += e.key;
@@ -34,31 +42,60 @@ function createInputLine() {
         scrollToBottom();
     }
 
+    function finalizeInput() {
+        inputWrapper.removeChild(cursor);
+        inputLine.removeChild(inputWrapper);
+        inputLine.appendChild(document.createTextNode(currentInput));
+    }
+
     document.addEventListener('keydown', handleKeyDown);
+    inputWrapper.focus();
     scrollToBottom();
 }
 
-function processCommand(cmd) {
-    addToOutput(`()> ${cmd}`);
+async function processCommand(cmd) {
+    //addOutput(`<span class="prompt">C:\\&gt;</span> ${cmd}`);
     
     const lowerCmd = cmd.toLowerCase();
     
     if (terminalCommands.hasOwnProperty(lowerCmd)) {
-        if (lowerCmd === 'help') {
-            typeTextSequence(terminalCommands[lowerCmd]);
-        } else if (lowerCmd === 'banner') {
-            addToOutput(terminalCommands[lowerCmd]);
+        if (lowerCmd === 'startmusic') {
+            console.log('Attempting to start music');
+            if (window.MusicGenerator && typeof window.MusicGenerator.start === 'function') {
+                try {
+                    await window.MusicGenerator.start();
+                    addOutput('Music started');
+                } catch (error) {
+                    console.error('Error starting music:', error);
+                    addOutput('Error: Could not start music. Please try again or initialize audio first.');
+                }
+            } else {
+                console.error('MusicGenerator.start is not a function');
+                addOutput('Error: Music system not initialized properly');
+            }
+        } else if (lowerCmd === 'stopmusic') {
+            console.log('Attempting to stop music');
+            if (window.MusicGenerator && typeof window.MusicGenerator.stop === 'function') {
+                window.MusicGenerator.stop();
+                addOutput('Music stopped');
+            } else {
+                console.error('MusicGenerator.stop is not a function');
+                addOutput('Error: Music system not initialized properly');
+            }
+        } else if (Array.isArray(terminalCommands[lowerCmd])) {
+            terminalCommands[lowerCmd].forEach(line => addOutput(line));
         } else {
-            typeText(terminalCommands[lowerCmd]);
+            addOutput(terminalCommands[lowerCmd]);
         }
     } else if (lowerCmd === 'clear') {
         terminalContent.innerHTML = '';
     } else {
-        addToOutput(`Command not recognized: ${cmd}`);
+        addOutput(`<span class="error">Command not recognized: ${cmd}</span>`);
     }
     
     createInputLine();
 }
+
 
 function adjustTerminalHeight() {
     const terminal = document.querySelector('.terminal');
@@ -78,17 +115,12 @@ function adjustTerminalHeight() {
 // Call this function when the window resizes
 window.addEventListener('resize', adjustTerminalHeight);
 
-function addToOutput(text) {
+
+function addOutput(html, className = '') {
     const div = document.createElement('div');
-    if (text === terminalCommands.banner) {
-        div.className = 'output-line ascii-art';
-        div.innerHTML = text.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
-    } else {
-        div.className = 'output-line';
-        div.textContent = text;
-    }
+    div.className = `output-line ${className}`;
+    div.innerHTML = html;
     terminalContent.appendChild(div);
-    adjustTerminalHeight();
     scrollToBottom();
 }
 
@@ -100,27 +132,40 @@ function typeTextSequence(textArray, index = 0) {
     }
 }
 
-function typeText(text, speed = 8, callback = null) {
+function typeText(html, speed = 15, callback = null, className = '') {
     const div = document.createElement('div');
-    div.className = 'output-line';
+    div.className = `output-line ${className}`;
     terminalContent.appendChild(div);
-    let i = 0;
+
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = html;
+
+    let textContent = tempElement.textContent;
+    let currentIndex = 0;
+
     function type() {
-        if (i < text.length) {
-            div.textContent += text.charAt(i);
-            i++;
+        if (currentIndex < textContent.length) {
+            let currentChar = textContent[currentIndex];
+            let currentHTML = html.substring(0, html.indexOf(currentChar) + currentIndex + 1);
+            div.innerHTML = currentHTML;
+            currentIndex++;
             setTimeout(type, speed);
             scrollToBottom();
-        } else if (callback) {
-            callback();
+        } else {
+            div.innerHTML = html; // Set full HTML at the end
+            if (callback) {
+                callback();
+            }
         }
     }
+
     type();
 }
 
+
+
 function scrollToBottom() {
-    const terminal = document.querySelector('.terminal');
-    terminal.scrollTop = terminal.scrollHeight;
+    terminalContent.scrollTop = terminalContent.scrollHeight;
 }
 
 // Initial input line
@@ -168,3 +213,4 @@ themeToggle.addEventListener('click', () => {
         el.style.color = isDarkTheme ? '#0f0' : '#000';
     });
 });
+
