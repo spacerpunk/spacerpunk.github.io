@@ -1,27 +1,45 @@
 const terminalContent = document.getElementById('terminal-content');
 
-// Update createInputLine function
+// Also call it when the page loads
+window.addEventListener('load', adjustTerminalHeight);
+
 function createInputLine() {
     const inputLine = document.createElement('div');
     inputLine.className = 'input-line';
-    inputLine.innerHTML = `<span>(spcrpnk)>&gt;&nbsp;</span><input type="text" class="user-input"><span class="cursor"></span>`;
+    inputLine.innerHTML = `
+        <span class="prompt">()>&nbsp;</span>
+        <span class="input-wrapper">
+            <span class="input-text"></span>
+            <span class="cursor">&nbsp;</span>
+        </span>
+    `;
     terminalContent.appendChild(inputLine);
     
-    const input = inputLine.querySelector('input');
-    input.focus();
+    const inputText = inputLine.querySelector('.input-text');
     
-    input.addEventListener('keypress', function(e) {
+    let currentInput = '';
+    
+    function handleKeyDown(e) {
+        e.preventDefault();
         if (e.key === 'Enter') {
-            const cmd = this.value;
-            this.disabled = true;
-            inputLine.querySelector('.cursor').remove(); // Remove cursor from current line
-            processCommand(cmd);
+            document.removeEventListener('keydown', handleKeyDown);
+            processCommand(currentInput);
+            inputLine.querySelector('.input-wrapper').remove();
+        } else if (e.key === 'Backspace') {
+            currentInput = currentInput.slice(0, -1);
+        } else if (e.key.length === 1) {
+            currentInput += e.key;
         }
-    });
+        inputText.textContent = currentInput;
+        scrollToBottom();
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    scrollToBottom();
 }
 
 function processCommand(cmd) {
-    //addToOutput(`C:\\> ${cmd}`);
+    addToOutput(`()> ${cmd}`);
     
     const lowerCmd = cmd.toLowerCase();
     
@@ -42,6 +60,24 @@ function processCommand(cmd) {
     createInputLine();
 }
 
+function adjustTerminalHeight() {
+    const terminal = document.querySelector('.terminal');
+    const terminalContent = document.getElementById('terminal-content');
+    const banner = document.querySelector('.banner');
+    
+    const availableHeight = window.innerHeight - banner.offsetHeight - 40; // 40px for padding
+    terminal.style.height = `${availableHeight}px`;
+    
+    if (terminalContent.offsetHeight > availableHeight) {
+        terminal.style.overflowY = 'scroll';
+    } else {
+        terminal.style.overflowY = 'hidden';
+    }
+}
+
+// Call this function when the window resizes
+window.addEventListener('resize', adjustTerminalHeight);
+
 function addToOutput(text) {
     const div = document.createElement('div');
     if (text === terminalCommands.banner) {
@@ -52,6 +88,7 @@ function addToOutput(text) {
         div.textContent = text;
     }
     terminalContent.appendChild(div);
+    adjustTerminalHeight();
     scrollToBottom();
 }
 
@@ -63,9 +100,9 @@ function typeTextSequence(textArray, index = 0) {
     }
 }
 
-function typeText(text, speed = 50, callback = null, className = '') {
+function typeText(text, speed = 8, callback = null) {
     const div = document.createElement('div');
-    div.className = `output-line ${className}`;
+    div.className = 'output-line';
     terminalContent.appendChild(div);
     let i = 0;
     function type() {
@@ -82,7 +119,8 @@ function typeText(text, speed = 50, callback = null, className = '') {
 }
 
 function scrollToBottom() {
-    terminalContent.scrollTop = terminalContent.scrollHeight;
+    const terminal = document.querySelector('.terminal');
+    terminal.scrollTop = terminal.scrollHeight;
 }
 
 // Initial input line
@@ -91,7 +129,7 @@ createInputLine();
 // Focus input when clicking anywhere in the terminal
 document.querySelector('.terminal').addEventListener('click', () => {
     const inputs = document.querySelectorAll('.user-input');
-    inputs[inputs.length - 1].focus();
+    //inputs[inputs.length - 1].focus();
 });
 
 // Theme toggle functionality

@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro ASCII Terminal</title>
+    <title>spcrpnk</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="banner">
-        <div class="logo">
-            <img src="images/spacerpunk-logo.png" alt="spcrpk logo">
+    <div class="terminal-container">
+        <div class="banner">
+            <div class="logo">
+                <a href="https://linktr.ee/spacerpunk" target="_blank"><img src="images/spacerpunk-logo.png" alt="spcrpk logo"></a>
+            </div>
+            <h1 class="title">spcrpnk</h1>
+            <button id="themeToggle">Toggle Theme</button>
         </div>
-        <h1 class="title">spcrpnk</h1>
-        <button id="themeToggle">Toggle Theme</button>
+        <div class="terminal">
+            <div id="terminal-content"></div>
+        </div>
+        <script src="commands.js"></script>
+        <script type="module" src="script.js"></script>
     </div>
-    <div class="terminal">
-        <div id="terminal-content"></div>
-    </div>
-    <script src="commands.js"></script>
-    <script type="module" src="script.js"></script>
 </body>
 </html>
