@@ -5,7 +5,7 @@ window.addEventListener('load', adjustTerminalHeight);
 window.addEventListener('load', welcomeMessage);
 
 function welcomeMessage() {
-    Tone.start();
+
 }
 
 function createInputLine(previousCommand = '') {
