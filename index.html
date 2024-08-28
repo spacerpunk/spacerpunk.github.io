@@ -13,8 +13,11 @@
             <div class="logo">
                 <a href="https://linktr.ee/spacerpunk" target="_blank"><img src="images/spacerpunk-logo.png" alt="spcrpk logo"></a>
             </div>
-            <h1 class="title">spcrpnk</h1>
-            <button id="themeToggle">Toggle Theme</button>
+            <h1 class="title" data-text="spcrpnk">spacerpunk</h1>
+            <div class="buttons">
+                <button id="themeToggle">Toggle Theme</button>
+                <button id="initAudio">|></button>
+            </div>
         </div>
         <div class="terminal">
             <div id="terminal-content"></div>
@@ -26,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <script type="module" src="welcomeMessage.js"></script>
     <script src="js/musicGenerator.js"></script>
     <script src="js/commands.js"></script>
     <script type="module" src="script.js"></script>

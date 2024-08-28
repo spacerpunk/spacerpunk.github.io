@@ -6,6 +6,7 @@ const MusicGenerator = (function() {
     const timeSignature = [9, 8];
     let isPlaying = false;
     const mainWave = new Tone.Waveform();
+    const now = Tone.now();
 
     // SYNTH DEFINITIONS
     const synth = new Tone.Synth({
@@ -37,6 +38,9 @@ const MusicGenerator = (function() {
     synth.volume.value = -6;
     synth.connect(mainWave);
     synth.toDestination();
+    /* TRANSPORT */
+    Tone.Transport.bpm.value = bpm;
+    Tone.Transport.timeSignature = timeSignature;
 
     let isInitialized = false;
 
@@ -55,6 +59,7 @@ const MusicGenerator = (function() {
                 console.log('Tone started');
                 Tone.Transport.start();
                 isPlaying = true;
+                eLoop.start(now);
             }
         } catch (error) {
             console.error('Error starting music:', error);
@@ -66,14 +71,17 @@ const MusicGenerator = (function() {
             console.log('Stop Transport');
             Tone.Transport.stop();
             isPlaying = false;
+            //eLoop.stop();
         }
     }
 
     return {
         start: startMusic,
-        stop: stopMusic
+        stop: stopMusic,
+        init: initializeAudio
     };
 })();
+
 
 window.MusicGenerator = MusicGenerator;
 console.log('MusicGenerator object:', MusicGenerator);

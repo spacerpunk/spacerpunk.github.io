@@ -1,18 +1,61 @@
+import { welcomeMessage } from './welcomeMessage.js';
 const terminalContent = document.getElementById('terminal-content');
+const title = document.querySelector('.title');
+const asciiChars = '!@#$%^&*()_+-={}[]|;:,.<>?';
+let originalText;
+let intervalId;
+title.addEventListener('mouseenter', startGlitchEffect);
+title.addEventListener('mouseleave', stopGlitchEffect);
+
+
+function startGlitchEffect() {
+    originalText = title.textContent;
+    intervalId = setInterval(glitchText, 75);
+}
+
+function stopGlitchEffect() {
+    clearInterval(intervalId);
+    title.textContent = originalText;
+}
+
+function glitchText() {
+    let glitchedText = '';
+    for (let i = 0; i < originalText.length; i++) {
+        if (Math.random() < 0.3) {
+            glitchedText += asciiChars[Math.floor(Math.random() * asciiChars.length)];
+        } else {
+            glitchedText += originalText[i];
+        }
+    }
+    title.textContent = glitchedText;
+}
 
 // Also call it when the page loads
 window.addEventListener('load', adjustTerminalHeight);
-window.addEventListener('load', welcomeMessage);
+window.addEventListener('load', displayWelcomeMessage);
 
-function welcomeMessage() {
-
+function displayWelcomeMessage() {
+    addOutput(welcomeMessage);
+    createInputLine();
 }
+
+document.getElementById('initAudio').addEventListener('click', async () => {
+    try {
+        MusicGenerator.init();
+        //await Tone.start();
+        console.log('Audio context started');
+        addOutput('Audio system initialized. You can now use music commands.');
+    } catch (error) {
+        console.error('Error initializing audio:', error);
+        addOutput('Error: Could not initialize audio. Please try again.');
+    }
+});
 
 function createInputLine(previousCommand = '') {
     const inputLine = document.createElement('div');
     inputLine.className = 'input-line';
     inputLine.innerHTML = `
-        <span class="prompt">()&gt;&nbsp;</span>
+        <span class="prompt">$(spcrpnk)&gt;&nbsp;</span>
         <span class="input-wrapper">
             <span class="input-text">${previousCommand}</span>
             <span class="cursor">&nbsp;</span>
@@ -124,13 +167,13 @@ function addOutput(html, className = '') {
     scrollToBottom();
 }
 
-function typeTextSequence(textArray, index = 0) {
-    if (index < textArray.length) {
-        typeText(textArray[index], 30, () => {
-            typeTextSequence(textArray, index + 1);
-        });
-    }
-}
+// function typeTextSequence(textArray, index = 0) {
+//     if (index < textArray.length) {
+//         typeText(textArray[index], 30, () => {
+//             typeTextSequence(textArray, index + 1);
+//         });
+//     }
+// }
 
 function typeText(html, speed = 15, callback = null, className = '') {
     const div = document.createElement('div');
@@ -169,7 +212,7 @@ function scrollToBottom() {
 }
 
 // Initial input line
-createInputLine();
+//createInputLine();
 
 // Focus input when clicking anywhere in the terminal
 document.querySelector('.terminal').addEventListener('click', () => {
@@ -182,38 +225,45 @@ const themeToggle = document.getElementById('themeToggle');
 const banner = document.querySelector('.banner');
 const terminal = document.querySelector('.terminal');
 const logoImg = document.querySelector('.logo img');
-const inputLineColor = document.querySelector('.input-line');
-
+const initAudio = document.getElementById('initAudio');
 let isDarkTheme = true;
 
 themeToggle.addEventListener('click', () => {
     isDarkTheme = !isDarkTheme;
-    if (isDarkTheme) {
-        document.body.style.backgroundColor = '#000';
-        document.body.style.color = '#fff';
-        inputLineColor.style.color = '#fff';
-        terminal.style.borderColor = '#fff';
-        themeToggle.style.backgroundColor = '#fff';
-        themeToggle.style.color = '#000';
-        logoImg.style.filter = 'invert(0)';
-        // Change prompt color for dark theme
-        document.querySelectorAll('.prompt').forEach(el => el.style.color = '#fff');
-    } else {
-        document.body.style.backgroundColor = '#fff';
-        document.body.style.color = '#000';
-        terminal.style.borderColor = '#000';
-        inputLineColor.style.color = '#000';
-        themeToggle.style.backgroundColor = '#000';
-        themeToggle.style.color = '#fff';
-        logoImg.style.filter = 'invert(1)';
-        // Change prompt color for light theme
-        document.querySelectorAll('.prompt').forEach(el => el.style.color = '#000');
-    }
-    
-    // Update all input and output text colors
-    const elements = document.querySelectorAll('.output-line, .input-line input');
-    elements.forEach(el => {
-        el.style.color = isDarkTheme ? '#0f0' : '#000';
-    });
+    updateTheme();
 });
+
+function updateTheme() {
+    const rootStyle = document.documentElement.style;
+    
+    if (isDarkTheme) {
+        rootStyle.setProperty('--main-bg-color', '#000');
+        rootStyle.setProperty('--main-text-color', '#fff');
+        rootStyle.setProperty('--prompt-color', '#fff');
+    } else {
+        rootStyle.setProperty('--main-bg-color', '#fff');
+        rootStyle.setProperty('--main-text-color', '#000');
+        rootStyle.setProperty('--prompt-color', '#000');
+    }
+
+    // Update specific elements
+    if (terminal) terminal.style.borderColor = isDarkTheme ? '#fff' : '#000';
+    if (themeToggle) {
+        themeToggle.style.backgroundColor = isDarkTheme ? '#fff' : '#000';
+        themeToggle.style.color = isDarkTheme ? '#000' : '#fff';
+    }
+    if (initAudio) {
+        initAudio.style.backgroundColor = isDarkTheme ? '#fff' : '#000';
+        initAudio.style.color = isDarkTheme ? '#000' : '#fff';
+    }
+    if (logoImg) logoImg.style.filter = isDarkTheme ? 'invert(0)' : 'invert(1)';
+
+    // Update all input and output text colors
+    document.querySelectorAll('.output-line, .input-line, .prompt').forEach(el => {
+        el.style.color = isDarkTheme ? '#fff' : '#000';
+    });
+}
+
+// Call updateTheme initially to set the correct theme
+updateTheme();
 
