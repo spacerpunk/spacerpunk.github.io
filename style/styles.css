@@ -17,6 +17,8 @@ body,html {
 }
 
 .terminal-container {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -28,6 +30,77 @@ body,html {
     background-color: #00000000;
     padding: 10px 0px;
     transition: background-color 0.3s, border-color 0.3s;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Two equal columns */
+    gap: 20px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.terminal-column,
+.visualization-column {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.terminal,
+.waveform-container,
+.log-container {
+    border: 1px solid var(--main-text-color);
+    background-color: 1px solid var(--main-bg-color);
+}
+
+.terminal {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.visualization-column {
+    grid-column: 2 / 4; /* Spans the second and third columns */
+    display: grid;
+    grid-template-rows: 2.5fr 1fr; /* Two equal columns within */
+    gap: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#waveform {
+    width: 100%;
+    height: 100%; /* Adjust as needed */
+    background-color: #00000000;
+}
+
+.waveform-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.log-container {
+    
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#log-content {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    border: 1px solid var(--main-text-color);
+    background-color: 1px solid var(--main-bg-color);
+    width: 100%;
+    height: 100%; /* Adjust as needed */
 }
 
 .logo img {
@@ -85,7 +158,7 @@ body,html {
 .terminal {
     padding: 10px;
     margin-top: 20px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.4;
     min-height: 100px;
     max-height: 80vh;
@@ -193,6 +266,10 @@ body,html {
 
     .title {
         margin: 10px 0;
+    }
+
+    .main-content {
+        grid-template-columns: 1fr; /* Stack columns on small screens */
     }
 }
 

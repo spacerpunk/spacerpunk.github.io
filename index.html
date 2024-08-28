@@ -19,10 +19,21 @@
                 <button id="initAudio">|></button>
             </div>
         </div>
-        <div class="terminal">
-            <div id="terminal-content"></div>
+        <div class="main-content">
+            <div class="terminal-column">
+                <div class="terminal">
+                    <div id="terminal-content"></div>
+                </div>
+            </div>
+            <div class="visualization-column">
+                <div class="waveform-container">
+                    <canvas id="waveform"></canvas>
+                </div>
+                <div cass="log-container">
+                    <div id="log-content">HOLA!</div>
+                </div>
+            </div>
         </div>
-        
     </div>
     <div id="audio-visualizer"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
@@ -30,6 +41,7 @@
     <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
     <script type="module" src="welcomeMessage.js"></script>
+    <script type="module" src="waveformVisualizer.js"></script>
     <script src="js/musicGenerator.js"></script>
     <script src="js/commands.js"></script>
     <script type="module" src="script.js"></script>

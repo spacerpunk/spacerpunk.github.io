@@ -1,4 +1,5 @@
 import { welcomeMessage } from './welcomeMessage.js';
+import WaveformVisualizer from './waveformVisualizer.js';
 const terminalContent = document.getElementById('terminal-content');
 const title = document.querySelector('.title');
 const asciiChars = '!@#$%^&*()_+-={}[]|;:,.<>?';
@@ -7,6 +8,7 @@ let intervalId;
 title.addEventListener('mouseenter', startGlitchEffect);
 title.addEventListener('mouseleave', stopGlitchEffect);
 
+let visualizer;
 
 function startGlitchEffect() {
     originalText = title.textContent;
@@ -39,17 +41,52 @@ function displayWelcomeMessage() {
     createInputLine();
 }
 
+// let audioIsInit = false;
+
+// document.getElementById('initAudio').addEventListener('click', async () => {
+//     try {
+//         MusicGenerator.init();
+//         //await Tone.start();
+//         console.log('Audio context started');
+//         addOutput('Audio system initialized. You can now use music commands.');
+//     } catch (error) {
+//         console.error('Error initializing audio:', error);
+//         addOutput('Error: Could not initialize audio. Please try again.');
+//     }
+// });
+
+let audioIsInit = false;
+
+function updateInitAudioButton() {
+    const initAudioButton = document.getElementById('initAudio');
+    initAudioButton.textContent = audioIsInit ? '■' : '▶';
+    initAudioButton.title = audioIsInit ? 'Audio Initialized' : 'Initialize Audio';
+}
+
 document.getElementById('initAudio').addEventListener('click', async () => {
-    try {
-        MusicGenerator.init();
-        //await Tone.start();
-        console.log('Audio context started');
-        addOutput('Audio system initialized. You can now use music commands.');
-    } catch (error) {
-        console.error('Error initializing audio:', error);
-        addOutput('Error: Could not initialize audio. Please try again.');
+    if (!audioIsInit) {
+        try {
+            await MusicGenerator.init();
+            console.log('Audio context started');
+            addOutput('Audio system initialized. You can now use music commands.');
+            audioIsInit = true;
+            
+            // Initialize and start the visualizer
+            visualizer = new WaveformVisualizer('waveform');
+            visualizer.setup();
+            visualizer.start();
+        } catch (error) {
+            console.error('Error initializing audio:', error);
+            addOutput('Error: Could not initialize audio. Please try again.');
+        }
+    } else {
+        addOutput('Audio system is already initialized.');
     }
+    updateInitAudioButton();
 });
+
+// Call this initially to set the correct initial state
+updateInitAudioButton();
 
 function createInputLine(previousCommand = '') {
     const inputLine = document.createElement('div');
