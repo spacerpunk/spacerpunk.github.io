@@ -182,6 +182,7 @@ const themeToggle = document.getElementById('themeToggle');
 const banner = document.querySelector('.banner');
 const terminal = document.querySelector('.terminal');
 const logoImg = document.querySelector('.logo img');
+const inputLineColor = document.querySelector('.input-line');
 
 let isDarkTheme = true;
 
@@ -190,21 +191,23 @@ themeToggle.addEventListener('click', () => {
     if (isDarkTheme) {
         document.body.style.backgroundColor = '#000';
         document.body.style.color = '#fff';
-        banner.style.backgroundColor = '#000';
-        banner.style.borderColor = '#fff';
+        inputLineColor.style.color = '#fff';
         terminal.style.borderColor = '#fff';
         themeToggle.style.backgroundColor = '#fff';
         themeToggle.style.color = '#000';
         logoImg.style.filter = 'invert(0)';
+        // Change prompt color for dark theme
+        document.querySelectorAll('.prompt').forEach(el => el.style.color = '#fff');
     } else {
         document.body.style.backgroundColor = '#fff';
         document.body.style.color = '#000';
-        banner.style.backgroundColor = '#fff';
-        banner.style.borderColor = '#000';
         terminal.style.borderColor = '#000';
+        inputLineColor.style.color = '#000';
         themeToggle.style.backgroundColor = '#000';
         themeToggle.style.color = '#fff';
         logoImg.style.filter = 'invert(1)';
+        // Change prompt color for light theme
+        document.querySelectorAll('.prompt').forEach(el => el.style.color = '#000');
     }
     
     // Update all input and output text colors

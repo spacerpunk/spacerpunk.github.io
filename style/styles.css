@@ -1,13 +1,22 @@
+:root {
+    --main-bg-color: #000;
+    --main-text-color: #fff;
+    --prompt-color: #fff; /* Default prompt color */
+}
+
 body,html {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #010101;
-    color: #fff;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
     font-family: 'JetBrains Mono', monospace;
     overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s;
 }
+
+
 
 .terminal-container {
     padding: 20px;
@@ -18,15 +27,15 @@ body,html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000;
+    background-color: #00000000;
     padding: 10px 0px;
-    transition: background-color 0.1s, border-color 0.1s;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .logo img {
     height: 75px;
     width: auto;
-    transition: filter 0.1s;
+    transition: filter 0.5s;
 }
 
 .title {
@@ -57,7 +66,7 @@ body,html {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    border: 0.01cm solid #fff;
+    border: 0.01cm solid var(--main-text-color);
     max-width: 100%;
     margin-top: 20px;
     font-size: 14px;
@@ -72,6 +81,7 @@ body,html {
     display: flex;
     align-items: flex-start;
     margin-bottom: 5px;
+
 }
 
 .ascii-art {
@@ -91,6 +101,7 @@ body,html {
     height: 100hv;
     padding: 0px;
     box-sizing: border-box;
+    color: var(--main-text-color);
 }
 
 .prompt {
