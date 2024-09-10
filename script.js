@@ -89,6 +89,7 @@ document.getElementById('initAudio').addEventListener('click', async () => {
 updateInitAudioButton();
 
 function createInputLine(previousCommand = '') {
+    const terminalContent = document.getElementById('terminal-content');
     const inputLine = document.createElement('div');
     inputLine.className = 'input-line';
     inputLine.innerHTML = `
@@ -99,6 +100,7 @@ function createInputLine(previousCommand = '') {
         </span>
     `;
     terminalContent.appendChild(inputLine);
+    scrollToBottom(terminalContent);
     
     const inputWrapper = inputLine.querySelector('.input-wrapper');
     const inputText = inputLine.querySelector('.input-text');
@@ -153,8 +155,8 @@ async function processCommand(cmd) {
             console.log('Attempting to start music');
             if (window.MusicGenerator && typeof window.MusicGenerator.start === 'function') {
                 try {
-                    //await window.MusicGenerator.start();
-                    await window.pythonGeneration.generate();
+                    await window.MusicGenerator.start();
+                    //await window.pythonGeneration.generate();
                     addOutput('Music started');
                 } catch (error) {
                     console.error('Error starting music:', error);
@@ -188,6 +190,7 @@ async function processCommand(cmd) {
 }
 
 
+
 function adjustTerminalHeight() {
     const terminal = document.querySelector('.terminal');
     const terminalContent = document.getElementById('terminal-content');
@@ -206,22 +209,30 @@ function adjustTerminalHeight() {
 // Call this function when the window resizes
 window.addEventListener('resize', adjustTerminalHeight);
 
-
 function addOutput(html, className = '') {
+    const terminalContent = document.getElementById('terminal-content');
     const div = document.createElement('div');
     div.className = `output-line ${className}`;
     div.innerHTML = html;
     terminalContent.appendChild(div);
-    scrollToBottom();
+    scrollToBottom(terminalContent);
 }
 
-// function typeTextSequence(textArray, index = 0) {
-//     if (index < textArray.length) {
-//         typeText(textArray[index], 30, () => {
-//             typeTextSequence(textArray, index + 1);
-//         });
-//     }
-// }
+//LOG MESSAGES TO SMALL CONSOLE
+function logMessage(message, className = '') {
+    const logContent = document.getElementById('log-content');
+    const logEntry = document.createElement('div');
+    logEntry.className = `log-entry ${className}`;
+    
+    // Add timestamp
+    const timestamp = new Date().toLocaleTimeString();
+    logEntry.innerHTML = `<span class="log-timestamp">[${timestamp}]</span> ${message}`;
+    
+    logContent.appendChild(logEntry);
+    
+    // Auto-scroll to the bottom
+    logContent.scrollTop = logContent.scrollHeight;
+}
 
 function typeText(html, speed = 15, callback = null, className = '') {
     const div = document.createElement('div');
