@@ -66,7 +66,7 @@ function updateInitAudioButton() {
 document.getElementById('initAudio').addEventListener('click', async () => {
     if (!audioIsInit) {
         try {
-            await MusicGenerator.init();
+            await MusicPieceOne.init();
             console.log('Audio context started');
             addOutput('Audio system initialized. You can now use music commands.');
             audioIsInit = true;
@@ -153,9 +153,9 @@ async function processCommand(cmd) {
             }, 600); // Delay for 1.5 seconds to show the message
         }  else if (lowerCmd === 'startmusic') {
             console.log('Attempting to start music');
-            if (window.MusicGenerator && typeof window.MusicGenerator.start === 'function') {
+            if (window.MusicPieceOne && typeof window.MusicPieceOne.start === 'function') {
                 try {
-                    await window.MusicGenerator.start();
+                    await window.MusicPieceOne.start();
                     //await window.pythonGeneration.generate();
                     addOutput('Music started');
                 } catch (error) {
