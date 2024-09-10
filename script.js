@@ -139,11 +139,22 @@ async function processCommand(cmd) {
     const lowerCmd = cmd.toLowerCase();
     
     if (terminalCommands.hasOwnProperty(lowerCmd)) {
-        if (lowerCmd === 'startmusic') {
+        if (lowerCmd === 'images') {
+            addOutput(terminalCommands[lowerCmd]);
+            setTimeout(() => {
+                window.location.href = 'images.html'; // Replace with your desired HTML file
+            }, 600); // Delay for 1.5 seconds to show the message
+        } else if (lowerCmd === 'soundscape') {
+            addOutput(terminalCommands[lowerCmd]);
+            setTimeout(() => {
+                window.location.href = 'soundscape.html'; // Replace with your desired HTML file
+            }, 600); // Delay for 1.5 seconds to show the message
+        }  else if (lowerCmd === 'startmusic') {
             console.log('Attempting to start music');
             if (window.MusicGenerator && typeof window.MusicGenerator.start === 'function') {
                 try {
-                    await window.MusicGenerator.start();
+                    //await window.MusicGenerator.start();
+                    await window.pythonGeneration.generate();
                     addOutput('Music started');
                 } catch (error) {
                     console.error('Error starting music:', error);

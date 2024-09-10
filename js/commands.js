@@ -30,6 +30,8 @@ const commands = {
 </pre>`,
     startmusic: 'Starts the music generation',
     stopmusic: 'Stops the music generation',
+    images: 'Redirects to the images page',
+    soundscape: 'Redirects to the soundscape page',
 };
 
 // Make commands globally accessible

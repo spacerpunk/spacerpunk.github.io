@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grid</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/style/styles.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="banner">
+            <div class="logo">
+                <a href="index.html"><img src="images/spacerpunk-logo.png" alt="spcrpk logo"></a>
+            </div>
+            <h1 class="title" data-text="spcrpnk">spacerpunk</h1>
+            <div class="buttons">
+                <button id="themeToggle">Toggle Theme</button>
+                <button id="initAudio">|></button>
+            </div>
+        </div>
+    </div>
+    <div class="grid">
+        <!-- Images will be loaded here by JavaScript -->
+    </div>
+    <script>
+        const asciiChars = '!@#$%^&*()_+-={}[]|;:,.<>?';
+        const title = document.querySelector('.title');
+        let originalText;
+        let intervalId;
+        title.addEventListener('mouseenter', startGlitchEffect);
+        title.addEventListener('mouseleave', stopGlitchEffect);
+
+        function startGlitchEffect() {
+            originalText = title.textContent;
+            intervalId = setInterval(glitchText, 75);
+        }
+
+        function stopGlitchEffect() {
+            clearInterval(intervalId);
+            title.textContent = originalText;
+        }
+
+        function glitchText() {
+            let glitchedText = '';
+            for (let i = 0; i < originalText.length; i++) {
+                if (Math.random() < 0.3) {
+                    glitchedText += asciiChars[Math.floor(Math.random() * asciiChars.length)];
+                } else {
+                    glitchedText += originalText[i];
+                }
+            }
+            title.textContent = glitchedText;
+        }
+         
+        
+        function loadImagesFromDirectory(directoryPath, fileNames) {
+            const grid = document.querySelector('.grid');
+
+            fileNames.forEach((fileName, index) => {
+                const gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+
+                const img = document.createElement('img');
+                img.src = `${directoryPath}/${fileName}`;
+                img.alt = `Image ${index + 1}`;
+                img.onload = () => {
+                    gridItem.style.gridRowEnd = `span ${Math.ceil(img.height / 10)}`;
+                };
+                img.onerror = () => {
+                    gridItem.remove();
+                };
+
+                gridItem.appendChild(img);
+                grid.appendChild(gridItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Example file names, including both images and GIFs
+            const fileNames = [
+                'image1.png',
+                'animation1.gif',
+                'image2.png',
+                'animation2.gif',
+                // ... add more file names as needed
+            ];
+            loadImagesFromDirectory('./gallery', fileNames);
+        });
+    </script>
+    <script>
+        // Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const banner = document.querySelector('.banner');
+const terminal = document.querySelector('.terminal');
+const logoImg = document.querySelector('.logo img');
+const initAudio = document.getElementById('initAudio');
+let isDarkTheme = true;
+
+themeToggle.addEventListener('click', () => {
+    isDarkTheme = !isDarkTheme;
+    updateTheme();
+});
+
+function updateTheme() {
+    const rootStyle = document.documentElement.style;
+    
+    if (isDarkTheme) {
+        rootStyle.setProperty('--main-bg-color', '#000');
+        rootStyle.setProperty('--main-text-color', '#fff');
+        rootStyle.setProperty('--prompt-color', '#fff');
+    } else {
+        rootStyle.setProperty('--main-bg-color', '#fff');
+        rootStyle.setProperty('--main-text-color', '#000');
+        rootStyle.setProperty('--prompt-color', '#000');
+    }
+
+    // Update specific elements
+    if (terminal) terminal.style.borderColor = isDarkTheme ? '#fff' : '#000';
+    if (themeToggle) {
+        themeToggle.style.backgroundColor = isDarkTheme ? '#fff' : '#000';
+        themeToggle.style.color = isDarkTheme ? '#000' : '#fff';
+    }
+    if (initAudio) {
+        initAudio.style.backgroundColor = isDarkTheme ? '#fff' : '#000';
+        initAudio.style.color = isDarkTheme ? '#000' : '#fff';
+    }
+    if (logoImg) logoImg.style.filter = isDarkTheme ? 'invert(0)' : 'invert(1)';
+
+    // Update all input and output text colors
+    document.querySelectorAll('.output-line, .input-line, .prompt').forEach(el => {
+        el.style.color = isDarkTheme ? '#fff' : '#000';
+    });
+}
+
+// Call updateTheme initially to set the correct theme
+updateTheme();
+    </script>
+</body>
+</html>
