@@ -8,7 +8,7 @@
     font-family: 'JetBrains Mono';
     src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Bold.woff2') format('woff2'),
       url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Bold.woff') format('woff');
-    font-weight: 700;
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
   }
@@ -81,7 +81,7 @@ body::-webkit-scrollbar {
 
 .main-content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* Two equal columns */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 20px;
     flex-grow: 1;
     overflow: hidden;
@@ -120,11 +120,11 @@ body::-webkit-scrollbar {
 .visualization-column {
     grid-column: 2 / 4; /* Spans the second and third columns */
     display: grid;
-    grid-template-rows: 2.5fr 1fr; /* Two equal columns within */
+    grid-template-rows: 4fr 1fr; /* Two equal columns within */
     gap: 20px;
     padding: 10px;
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.4;
 }
 
@@ -139,14 +139,14 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 0px;
 }
 
 .log-container {
     
     flex: 1;
     overflow-y: auto;
-    padding: 10px;
+    padding: 0px;
 }
 
 #log-content {
@@ -215,7 +215,6 @@ body::-webkit-scrollbar {
 .terminal {
     padding: 10px;
     margin-top: 20px;
-    font-size: 14px;
     line-height: 1.4;
     min-height: 100px;
     max-height: 80vh;
@@ -226,7 +225,7 @@ body::-webkit-scrollbar {
     border: 0.01cm solid var(--main-text-color);
     max-width: 100%;
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: lighter;
 }
 

@@ -1,7 +1,7 @@
 import * as Tonal from 'https://cdn.skypack.dev/@tonaljs/tonal';
 
 const MusicPieceOne = (function() {
-    const bpm = 20;
+    const bpm = 60;
 
     const reverb = new Tone.Reverb();
     const lpf = new Tone.Filter(400, 'lowpass');
@@ -9,6 +9,9 @@ const MusicPieceOne = (function() {
     const rightPanner = new Tone.Panner(1);
     const leftPanner = new Tone.Panner(-1);
     const chorus = new Tone.Chorus();
+    const synth = new Tone.PolySynth().toDestination();
+    synth.connect(reverb).connect(chorus).connect(lpf).connect(gainNode);
+    gainNode.toDestination();
 
     Tone.Transport.bpm.value = bpm;const notes = ["C", "D", "E", "F", "G", "A", "B"];
 
@@ -40,7 +43,6 @@ const MusicPieceOne = (function() {
 
     }
 
-    const synth = new Tone.PolySynth().toDestination();
     
     function noteGenerator() {
 
@@ -51,7 +53,7 @@ const MusicPieceOne = (function() {
       const velocity2 = Math.random() * 0.4 + 0.2;
     
       const now = Tone.now();
-      synth.triggerAttackRelease(Tone.Frequency(note1, "midi"), "2n", now, velocity1);
+      synth.triggerAttackRelease(Tone.Frequency(note1, "midi"), "4n", now, velocity1);
       synth.triggerAttackRelease(Tone.Frequency(note2, "midi"), "4n", now, velocity2);
 
     }
@@ -60,7 +62,7 @@ const MusicPieceOne = (function() {
 
       const sequence = new Tone.Sequence((time) => {
         noteGenerator();
-      }, Array(numberOfNotes).fill(0), "4n");
+      }, Array(numberOfNotes).fill(0), "8n");
       sequence.start(0);
 
 

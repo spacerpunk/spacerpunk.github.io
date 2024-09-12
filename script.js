@@ -1,4 +1,5 @@
 import { welcomeMessage } from './welcomeMessage.js';
+import { welcomeLog } from './welcomeMessage.js';
 import WaveformVisualizer from './waveformVisualizer.js';
 const terminalContent = document.getElementById('terminal-content');
 const title = document.querySelector('.title');
@@ -38,6 +39,7 @@ window.addEventListener('load', displayWelcomeMessage);
 
 function displayWelcomeMessage() {
     addOutput(welcomeMessage);
+    logMessage(welcomeLog);
     createInputLine();
 }
 
@@ -72,9 +74,9 @@ document.getElementById('initAudio').addEventListener('click', async () => {
             audioIsInit = true;
             
             // Initialize and start the visualizer
-            visualizer = new WaveformVisualizer('waveform');
-            visualizer.setup();
-            visualizer.start();
+            //visualizer = new WaveformVisualizer('waveform');
+            //visualizer.setup();
+            //visualizer.start();
         } catch (error) {
             console.error('Error initializing audio:', error);
             addOutput('Error: Could not initialize audio. Please try again.');
@@ -226,12 +228,13 @@ function logMessage(message, className = '') {
     
     // Add timestamp
     const timestamp = new Date().toLocaleTimeString();
-    logEntry.innerHTML = `<span class="log-timestamp">[${timestamp}]</span> ${message}`;
+    //logEntry.innerHTML = `<span class="log-timestamp">[${timestamp}]</span> ${message}`;
+    logEntry.innerHTML = `${message}`;
     
     logContent.appendChild(logEntry);
     
     // Auto-scroll to the bottom
-    logContent.scrollTop = logContent.scrollHeight;
+    //logContent.scrollTop = logContent.scrollHeight;
 }
 
 function typeText(html, speed = 15, callback = null, className = '') {
