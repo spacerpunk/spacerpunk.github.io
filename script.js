@@ -1,7 +1,9 @@
 import { welcomeMessage } from './welcomeMessage.js';
 import { welcomeLog } from './welcomeMessage.js';
 import WaveformVisualizer from './waveformVisualizer.js';
+import { weatherData, fetchWeatherData } from './weather/weather.js';
 const terminalContent = document.getElementById('terminal-content');
+const logContent = document.getElementById('log-content');
 const title = document.querySelector('.title');
 const asciiChars = '!@#$%^&*()_+-={}[]|;:,.<>?';
 let originalText;
@@ -10,6 +12,14 @@ title.addEventListener('mouseenter', startGlitchEffect);
 title.addEventListener('mouseleave', stopGlitchEffect);
 
 let visualizer;
+
+fetchWeatherData()
+            .then(data => {
+                console.log(data.location.country)
+            })
+            .catch(error => {
+                document.getElementById('weatherData').textContent = 'Error fetching data';
+            });
 
 function startGlitchEffect() {
     originalText = title.textContent;
@@ -70,7 +80,7 @@ document.getElementById('initAudio').addEventListener('click', async () => {
         try {
             await MusicPieceOne.init();
             console.log('Audio context started');
-            addOutput('Audio system initialized. You can now use music commands.');
+            logMessage('Audio system initialized. You can now use music commands.');
             audioIsInit = true;
             
             // Initialize and start the visualizer
@@ -177,6 +187,12 @@ async function processCommand(cmd) {
                 console.error('MusicGenerator.stop is not a function');
                 addOutput('Error: Music system not initialized properly');
             }
+        } else if (lowerCmd === 'music') {
+            addOutput(terminalCommands[lowerCmd]);   
+            logMessage('<iframe style="border-radius:1px" src="https://open.spotify.com/embed/artist/6pUpuBZFid3AGpgTOnrIYr?utm_source=generator&theme=0" width="700px" height="100px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>')
+        } else if (lowerCmd === 'reel') {
+            addOutput(terminalCommands[lowerCmd]);
+            //logMessage('<iframe width="350" height="100" src="https://www.youtube.com/embed/fbZuxEJJvhA?si=NzCSwmdPEwgUOxKA" title="YouTube video player" allow="accelerometer; autoplay;encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>');   
         } else if (Array.isArray(terminalCommands[lowerCmd])) {
             terminalCommands[lowerCmd].forEach(line => addOutput(line));
         } else {
@@ -184,6 +200,7 @@ async function processCommand(cmd) {
         }
     } else if (lowerCmd === 'clear') {
         terminalContent.innerHTML = '';
+        logContent.innerHTML = '';
     } else {
         addOutput(`<span class="error">Command not recognized: ${cmd}</span>`);
     }
@@ -222,9 +239,10 @@ function addOutput(html, className = '') {
 
 //LOG MESSAGES TO SMALL CONSOLE
 function logMessage(message, className = '') {
-    const logContent = document.getElementById('log-content');
+    
     const logEntry = document.createElement('div');
     logEntry.className = `log-entry ${className}`;
+    logContent.innerHTML = '';
     
     // Add timestamp
     const timestamp = new Date().toLocaleTimeString();

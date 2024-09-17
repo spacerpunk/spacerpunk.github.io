@@ -4,10 +4,10 @@ let fragmentShader;
 let waveform;
 
 // Control variables
-const pointDensity = 600;
-const displacementAmount = 2.0;
+const pointDensity = 300;
+const displacementAmount = 1.0;
 const animationSpeed = 0.01;
-let pointSize = 1.5;
+let pointSize = 2.5;
 const noiseScale = 0.1;
 const octaves = 4;
 const persistence = 0.5;
@@ -61,7 +61,7 @@ function initScene() {
 
   // Controls
   //const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  //controls.enable = false;
+  //controls.enable = true;
 
   // Create geometry
   const geometry = new THREE.BufferGeometry();

@@ -1,25 +1,55 @@
+//<iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/6pUpuBZFid3AGpgTOnrIYr?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+//<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2197087876/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=none/transparent=true/" seamless><a href="https://spacerpunk.bandcamp.com/album/controlled-machines-2">Controlled Machines by Deckard 88</a></iframe>
+//<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=699423388/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=none/transparent=true/" seamless><a href="https://spacerpunk.bandcamp.com/album/terminus">Terminus by Spacerpunk</a></iframe>
+
 var space = '&nbsp;';
+
+//const commands = {
+//    help: [
+//        '<span style="color: #00ff00;">about' + space.repeat(4) + '</span>who is spacerpunk?',
+//        '<span style="color: #00ff00;">music' + space.repeat(4) + '</span>vibrations to escape the matrix',
+//        '<span style="color: #00ff00;">reel' + space.repeat(4) + '</span>latest work - reel 2024',
+//        '<span style="color: #00ff00;">work' + space.repeat(3) + '</span>where ive been',   
+//        '<span style="color: #00ff00;">labs' + space.repeat(3) + '</span>technology to escape the matrix',
+//        '<span style="color: #00ff00;">contact' + space.repeat(3) + '</span>where am i',
+//        '<span style="color: #00ff00;">banner' + space.repeat(3) + '</span>display ascii art banner',
+//        '<span style="color: #00ff00;">clear' + space.repeat(3) + '</span>clear the terminal',
+//        '<span style="color: #00ff00;">startmusic' + space + '</span>starts the music generation',
+//        '<span style="color: #00ff00;">stopmusic' + space.repeat(2) + '</span>stops the music generation',
+//        '<span style="color: #00ff00;">images' + space.repeat(2) + '</span>- visual portfolio -',
+//        '<span style="color: #00ff00;">soundscape' + space.repeat(2) + '</span>- sound portfolio - ',
+//        '<span style="color: #00ff00;">welcome' + space.repeat(2) + '</span>- sound portfolio - '
+//    ],
+
 const commands = {
     help: [
-        '<span style="color: #00ff00;">about' + space.repeat(4) + '</span>who is spacerpunk?',
-        '<span style="color: #00ff00;">music' + space.repeat(4) + '</span>vibrations to escape the matrix',
-        '<span style="color: #00ff00;">reel' + space.repeat(4) + '</span>latest work - reel 2024',
-        '<span style="color: #00ff00;">work' + space.repeat(3) + '</span>where ive been',   
-        '<span style="color: #00ff00;">labs' + space.repeat(3) + '</span>technology to escape the matrix',
-        '<span style="color: #00ff00;">contact' + space.repeat(3) + '</span>where am i',
-        '<span style="color: #00ff00;">banner' + space.repeat(3) + '</span>display ascii art banner',
-        '<span style="color: #00ff00;">clear' + space.repeat(3) + '</span>clear the terminal',
-        '<span style="color: #00ff00;">startmusic' + space + '</span>starts the music generation',
-        '<span style="color: #00ff00;">stopmusic' + space.repeat(2) + '</span>stops the music generation',
-        '<span style="color: #00ff00;">images' + space.repeat(2) + '</span>- visual portfolio -',
-        '<span style="color: #00ff00;">soundscape' + space.repeat(2) + '</span>- sound portfolio - ',
-        '<span style="color: #00ff00;">welcome' + space.repeat(2) + '</span>- sound portfolio - '
+        '<span style="color: #00ff00;">about' + space.repeat(7) + '</span>.who am i',
+        '<span style="color: #00ff00;">reel' + space.repeat(8) + '</span>.latest work - reel 2024',
+        '<span style="color: #00ff00;">work' + space.repeat(8) + '</span>.what ive done',   
+        '<span style="color: #00ff00;">music' + space.repeat(7) + '</span>.vibrations to escape the matrix',
+        '<span style="color: #00ff00;">labs' + space.repeat(8) + '</span>.technology to escape the matrix',
+        '<span style="color: #00ff00;">contact' + space.repeat(5) + '</span>.where am i',
+        '<span style="color: #00ff00;">clear' + space.repeat(7) + '</span>.clear the terminal',
+        '<span style="color: #00ff00;">extras' + space.repeat(7) + '</span>.cool stuff'
+
     ],
-    about: 'Hello there! My name is Nicolás Requena AKA' + space +  '<a href="https://spacerpunk.bandcamp.com/" target="_blank" style="color: #00ff00;">spacerpunk</a>&nbsp;&lt;sound artist and creative technologist&gt;' ,
-    music: 'Composer, audio maker, explorer of soundscapes @ '+ space +'<a href="https://spacerpunk.bandcamp.com/" target="_blank" style="color: #00ff00;">Bandcamp</a>',
+    about: `<pre style="style="font-family:JetBrains Mono;font-size:14px;">
+Hello there!
+My name is Nicolás Requena AKA <a href="https://spacerpunk.bandcamp.com/" target="_blank" style="color: #00ff00;" font-weight=bold;>spacerpunk</a>.
+
+A Sound Artist and Creative Technologist based on BA, Argentina but making stuff for the world
+(and other <a href="https://simulation-argument.com/simulation.pdf" target="_blank" style="color: #00ff00;">simulations</a>)
+I create cool technology both for the soft and hardware worlds, bridging the gap between Art and Technology.
+
+Type <span style="color: #00ff00;">'labs'</span> to chek my latest weird projects. 
+Type <span style="color: #00ff00;">'music'</span> to check my more artistic side.
+Thank you! And let's <a href="https://spacerpunk.bandcamp.com/" target="_blank" style="color: #00ff00;">talk</a> about working on a project together!
+        </pre>`
+        ,
+    music: 'Composer, audio designer and explorer of soundscapes @'+ space +'<a href="https://spacerpunk.bandcamp.com/" target="_blank" style="font-family:JetBrains Mono;font-size:13px;color: #00ff00;">Bandcamp</a>'+ space +'and'+ space +' <a href="https://open.spotify.com/artist/6pUpuBZFid3AGpgTOnrIYr?si=XoUdX1YzRNyJwC3GbaYpKA" target="_blank" style="color: #00ff00;">Spotify.</a>',
     reel: 'Check out my 2024 reel with my latest work:&nbsp;<a href="https://youtu.be/fbZuxEJJvhA?feature=shared" target="_blank" style="color: #00ff00;">Reel</a>',
-    work: 'I\'ve collaborated with various projects. Check out my&nbsp;<a href="https://www.behance.net/nicolasrequena" target="_blank" style="color: #00ff00;">Portfolio</a>',
-    labs: 'Explore my tech experiments on'+space+'<a href="https://github.com/spacerpunk" target="_blank" style="color: #00ff00;">GitHub</a>',
+    work: 'I\'ve collaborated with various clients in various cool projects as a 3D Artist, Programmer, Creative Tech, Sound Designer and Composer. Check out my&nbsp;<a href="https://www.behance.net/nicolasrequena" target="_blank" style="color: #00ff00;">Portfolio</a>',
+    labs: 'Explore my tech experiments on'+space+'<a href="https://github.com/spacerpunk" target="_blank" style="color: #00ff00;">GitHub</a>, weird scripts, apps, and ideas.',
     contact: 'Find me at these selected platforms:<br>' + 
              'Email: <a href="mailto:requena.nicolas@gmail.com" style="color: #00ff00;">requena.nicolas@gmail.com</a><br>' +
              'LinkedIn: <a href="https://www.linkedin.com/in/nicolas-requena-90b16110b/" target="_blank" style="color: #00ff00;">Nicolas Requena</a>',
@@ -31,6 +61,15 @@ const commands = {
 |____/| .__/ \\__,_|\\___\\___|_|  |_|    \\__,_|_| |_|_|\\_\\
       |_|                                               
 </pre>`,
+    extras: [
+        '<span style="color: #00ff00;">start' + space.repeat(7) + '</span>.makes music',
+        '<span style="color: #00ff00;">stop' + space.repeat(8) + '</span>.stops music',
+        '<span style="color: #00ff00;">visual' + space.repeat(6) + '</span> .visual portfolio grid',   
+        '<span style="color: #00ff00;">sound' + space.repeat(7) + '</span>.sound portfolio grid',
+        '<span style="color: #00ff00;">welcome' + space.repeat(5) + '</span>.hello there',
+        '<span style="color: #00ff00;">banner' + space.repeat(6) + '</span>.spcrpnk',
+        '<span style="color: #00ff00;">clear' + space.repeat(7) + '</span>.clear the terminal'
+    ],
     startmusic: 'Starts the music generation',
     stopmusic: 'Stops the music generation',
     images: 'Loading... VISUAL Portfolio',
