@@ -253,7 +253,8 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: flex-start;
     margin-bottom: 5px;
-    font-size: 13px;
+    font-size: 13.5px;
+    font-family: 'JetBrains Mono';
 
 }
 

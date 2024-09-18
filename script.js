@@ -1,7 +1,9 @@
-import { welcomeMessage } from './welcomeMessage.js';
-import { welcomeLog } from './welcomeMessage.js';
+//import { welcomeMessage } from './welcomeMessage.js';
+//import { welcomeLog } from './welcomeMessage.js';
+import { createMessages } from './welcomeMessage.js';
+import { startSoundscape } from './ambiences.js';
 import WaveformVisualizer from './waveformVisualizer.js';
-import { weatherData, fetchWeatherData } from './weather/weather.js';
+//import { weatherData, fetchWeatherData } from './weather/weather.js';
 const terminalContent = document.getElementById('terminal-content');
 const logContent = document.getElementById('log-content');
 const title = document.querySelector('.title');
@@ -12,14 +14,6 @@ title.addEventListener('mouseenter', startGlitchEffect);
 title.addEventListener('mouseleave', stopGlitchEffect);
 
 let visualizer;
-
-fetchWeatherData()
-            .then(data => {
-                console.log(data.location.country)
-            })
-            .catch(error => {
-                document.getElementById('weatherData').textContent = 'Error fetching data';
-            });
 
 function startGlitchEffect() {
     originalText = title.textContent;
@@ -48,9 +42,11 @@ window.addEventListener('load', adjustTerminalHeight);
 window.addEventListener('load', displayWelcomeMessage);
 
 function displayWelcomeMessage() {
-    addOutput(welcomeMessage);
-    logMessage(welcomeLog);
-    createInputLine();
+    createMessages().then(({welcomeMessage, welcomeLog})=>{
+        addOutput(welcomeMessage);
+        logMessage(welcomeLog);
+        createInputLine();
+    })
 }
 
 // let audioIsInit = false;
@@ -105,7 +101,7 @@ function createInputLine(previousCommand = '') {
     const inputLine = document.createElement('div');
     inputLine.className = 'input-line';
     inputLine.innerHTML = `
-        <span class="prompt">$(spcrpnk)&gt;&nbsp;</span>
+        <span class="prompt">&gt;&nbsp;</span>
         <span class="input-wrapper">
             <span class="input-text">${previousCommand}</span>
             <span class="cursor">&nbsp;</span>
@@ -163,22 +159,22 @@ async function processCommand(cmd) {
             setTimeout(() => {
                 window.location.href = 'soundscape.html'; // Replace with your desired HTML file
             }, 600); // Delay for 1.5 seconds to show the message
-        }  else if (lowerCmd === 'startmusic') {
+        }  else if (lowerCmd === 'start') {
             console.log('Attempting to start music');
-            if (window.MusicPieceOne && typeof window.MusicPieceOne.start === 'function') {
+            if (window.MusicPieceOne && audioIsInit && typeof window.MusicPieceOne.start === 'function') {
                 try {
                     await window.MusicPieceOne.start();
                     //await window.pythonGeneration.generate();
                     addOutput('Music started');
                 } catch (error) {
                     console.error('Error starting music:', error);
-                    addOutput('Error: Could not start music. Please try again or initialize audio first.');
+                    addOutput('<span style="color:#ff0000">Error: Could not start music. Please try again or initialize audio first.</span>');
                 }
             } else {
                 console.error('MusicGenerator.start is not a function');
-                addOutput('Error: Music system not initialized properly');
+                addOutput('<span style="color:#ff0000">Error: Music system not initialized properly, press the ▶ on the right :)</span>');
             }
-        } else if (lowerCmd === 'stopmusic') {
+        } else if (lowerCmd === 'stop') {
             console.log('Attempting to stop music');
             if (window.MusicGenerator && typeof window.MusicGenerator.stop === 'function') {
                 window.MusicGenerator.stop();
@@ -190,6 +186,8 @@ async function processCommand(cmd) {
         } else if (lowerCmd === 'music') {
             addOutput(terminalCommands[lowerCmd]);   
             logMessage('<iframe style="border-radius:1px" src="https://open.spotify.com/embed/artist/6pUpuBZFid3AGpgTOnrIYr?utm_source=generator&theme=0" width="700px" height="100px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>')
+        } else if (lowerCmd === 'welcome') {
+            addOutput('press F5')
         } else if (lowerCmd === 'reel') {
             addOutput(terminalCommands[lowerCmd]);
             //logMessage('<iframe width="350" height="100" src="https://www.youtube.com/embed/fbZuxEJJvhA?si=NzCSwmdPEwgUOxKA" title="YouTube video player" allow="accelerometer; autoplay;encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>');   
@@ -202,7 +200,7 @@ async function processCommand(cmd) {
         terminalContent.innerHTML = '';
         logContent.innerHTML = '';
     } else {
-        addOutput(`<span class="error">Command not recognized: ${cmd}</span>`);
+        addOutput(`<span class="error" style="color:#ff0000">Command not recognized:&nbsp; </span>${cmd}`);
     }
     
     createInputLine();

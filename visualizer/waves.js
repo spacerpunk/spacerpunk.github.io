@@ -3,14 +3,21 @@ let vertexShader;
 let fragmentShader;
 let waveform;
 
+const meter = new Tone.Meter();
+const fft = new Tone.FFT(1024);
+Tone.Master.connect(fft);
+Tone.Master.connect(meter);
+
+
+
 // Control variables
-const pointDensity = 300;
-const displacementAmount = 1.0;
+let pointDensity = 500;
+const displacementAmount = 2.0;
 const animationSpeed = 0.01;
-let pointSize = 2.5;
-const noiseScale = 0.1;
+let pointSize = 2.0;
+const noiseScale = 0.05;
 const octaves = 4;
-const persistence = 0.5;
+let persistence = 0.4;
 const glitchDuration = 0.1;
 const glitchIntensity = 0.2 ;
 
@@ -20,6 +27,44 @@ const container = document.getElementsByClassName("waveform-container")[0];
 let width
 let height
 const waveformSize = 512; // Size of the waveform data array
+
+// Function to get normalized amplitude (0 to 1)
+function getNormalizedAmplitude() {
+  const amplitude = meter.getValue();
+  
+  // Convert dB to linear scale
+  const linear = Math.pow(10, amplitude / 10);
+  
+  // Normalize to 0-1 range (assuming max amplitude is 0dB)
+  return Math.min(linear, 1);
+}
+
+// Function to get dominant frequency in Hz
+function getDominantFrequency() {
+  const frequencyData = fft.getValue();
+  const nyquist = Tone.context.sampleRate / 2;
+  const maxIndex = frequencyData.indexOf(Math.max(...frequencyData));
+  const dominantFreq = (maxIndex * nyquist) / frequencyData.length;
+  
+  return dominantFreq;
+}
+
+function updateAmplitude() {
+  const normalizedAmplitude = getNormalizedAmplitude() + 0.5;
+  console.log(`Normalized amplitude: ${normalizedAmplitude.toFixed(2)}`);
+  requestAnimationFrame(updateAmplitude);
+}
+
+// Update function
+function updateFrequency() {
+  const frequency = getDominantFrequency();
+  const pointDensity = getDominantFrequency();
+  console.log(`Dominant frequency: ${frequency.toFixed(2)} Hz`);
+  requestAnimationFrame(updateFrequency);
+}
+
+//updateFrequency();
+//updateAmplitude();
 
 // Load vertex shader
 fetch('./visualizer/waveformShader.glsl')
@@ -184,3 +229,5 @@ document.getElementById('themeToggle').addEventListener('click', async () => {
     isDarkTheme = true;
   }
 });
+
+

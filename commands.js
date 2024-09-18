@@ -29,8 +29,8 @@ const commands = {
         '<span style="color: #00ff00;">music' + space.repeat(7) + '</span>.vibrations to escape the matrix',
         '<span style="color: #00ff00;">labs' + space.repeat(8) + '</span>.technology to escape the matrix',
         '<span style="color: #00ff00;">contact' + space.repeat(5) + '</span>.where am i',
-        '<span style="color: #00ff00;">clear' + space.repeat(7) + '</span>.clear the terminal',
-        '<span style="color: #00ff00;">extras' + space.repeat(7) + '</span>.cool stuff'
+        '<span style="color: #00ff00;">extras' + space.repeat(6) + '</span>.cool stuff',
+        '<span style="color: #00ff00;">clear' + space.repeat(7) + '</span>.clear the terminal'
 
     ],
     about: `<pre style="style="font-family:JetBrains Mono;font-size:14px;">
@@ -41,6 +41,8 @@ A Sound Artist and Creative Technologist based on BA, Argentina but making stuff
 (and other <a href="https://simulation-argument.com/simulation.pdf" target="_blank" style="color: #00ff00;">simulations</a>)
 I create cool technology both for the soft and hardware worlds, bridging the gap between Art and Technology.
 
+Currently I'm a Senior Creative Technologist @ <a href="https://www.monks.com/es" target="_blank" style="color: #00ff00;">Media Monks (.monks)</a>, implementing AI and Scaling solutions for clients around the world.
+
 Type <span style="color: #00ff00;">'labs'</span> to chek my latest weird projects. 
 Type <span style="color: #00ff00;">'music'</span> to check my more artistic side.
 Thank you! And let's <a href="https://spacerpunk.bandcamp.com/" target="_blank" style="color: #00ff00;">talk</a> about working on a project together!
@@ -48,11 +50,18 @@ Thank you! And let's <a href="https://spacerpunk.bandcamp.com/" target="_blank" 
         ,
     music: 'Composer, audio designer and explorer of soundscapes @'+ space +'<a href="https://spacerpunk.bandcamp.com/" target="_blank" style="font-family:JetBrains Mono;font-size:13px;color: #00ff00;">Bandcamp</a>'+ space +'and'+ space +' <a href="https://open.spotify.com/artist/6pUpuBZFid3AGpgTOnrIYr?si=XoUdX1YzRNyJwC3GbaYpKA" target="_blank" style="color: #00ff00;">Spotify.</a>',
     reel: 'Check out my 2024 reel with my latest work:&nbsp;<a href="https://youtu.be/fbZuxEJJvhA?feature=shared" target="_blank" style="color: #00ff00;">Reel</a>',
-    work: 'I\'ve collaborated with various clients in various cool projects as a 3D Artist, Programmer, Creative Tech, Sound Designer and Composer. Check out my&nbsp;<a href="https://www.behance.net/nicolasrequena" target="_blank" style="color: #00ff00;">Portfolio</a>',
-    labs: 'Explore my tech experiments on'+space+'<a href="https://github.com/spacerpunk" target="_blank" style="color: #00ff00;">GitHub</a>, weird scripts, apps, and ideas.',
-    contact: 'Find me at these selected platforms:<br>' + 
-             'Email: <a href="mailto:requena.nicolas@gmail.com" style="color: #00ff00;">requena.nicolas@gmail.com</a><br>' +
-             'LinkedIn: <a href="https://www.linkedin.com/in/nicolas-requena-90b16110b/" target="_blank" style="color: #00ff00;">Nicolas Requena</a>',
+    work: 'I\'ve collaborated with various clients in various cool projects as a 3D Artist, Programmer, Creative Tech, Sound Designer and Composer. Check out my&nbsp;<a href="https://www.behance.net/nicolasrequena" target="_blank" style="color: #00ff00;">Portfolio</a>',  
+    labs: `<pre>
+Explore my tech experiments on <a href="https://github.com/spacerpunk" target="_blank" style="color: #00ff00;">GitHub</a>, weird scripts, apps, and ideas ( most of them are WIP =) )
+<a href="https://github.com/spacerpunk/in-the-nature-of-js" target="_blank" style="color: #00ff00;">In the nature of JS</a>
+<a href="https://nrequena.itch.io/the-glitch" target="_blank" style="color: #00ff00;">The Glitch</a>
+<a href="https://github.com/spacerpunk/trackerplatz-RE" target="_blank" style="color: #00ff00;">trackerplatz-RE</a>
+    </pre>`,
+    contact: `
+<pre>Find me at these selected platforms: 
+<a href="mailto:requena.nicolas@gmail.com" style="color: #00ff00;">requena.nicolas@gmail.com</a>
+<a href="https://www.linkedin.com/in/nicolas-requena-90b16110b/" target="_blank" style="color: #00ff00;">Linkedin</a>
+<a href="https://www.behance.net/nicolasrequena" target="_blank" style="color: #00ff00;">Behance</a></pre>`,
     banner: `<pre style="color: #00ff00; line-height: 1.2;">
  ____                           ____              _    
 / ___| _ __   __ _  ___ ___ _ _|  _ \\ _   _ _ __ | | __
@@ -70,25 +79,11 @@ Thank you! And let's <a href="https://spacerpunk.bandcamp.com/" target="_blank" 
         '<span style="color: #00ff00;">banner' + space.repeat(6) + '</span>.spcrpnk',
         '<span style="color: #00ff00;">clear' + space.repeat(7) + '</span>.clear the terminal'
     ],
-    startmusic: 'Starts the music generation',
-    stopmusic: 'Stops the music generation',
+    start: 'Generating procedural music with MagentaJS, ToneJS and TonalJS.',
+    stop: 'Music Stopped.',
     images: 'Loading... VISUAL Portfolio',
-    soundscape: 'Redirects to the soundscape page',
-    welcome: `<pre style="font-family:JetBrains Mono;font-size:14px;">
-<span style="color:#ffffff">Welcome to the <span style="color:#00ff00">SPCRPNK</span> interface</span>
-
-<span style="color:#ffffff">The weather is:</span>
-<span style="color:#00ff00">30° Celcius, Clear, Night</span>
-<span style="color:#00ff00">20:45, Colegiales, Buenos Aires, Argentina</span>
-
-<span style="color:#ffffff">-----------------------------------</span>
-
-<span style="color:#ffffff">Type</span> <span style="color:#00ff00">'help'</span> and press <span style="color:#00ff00">'ENTER'</span> to see available commands.
-
-<span style="font-family:JetBrains Mono;font-size:11px;style="color:#ffffff">Version S1.00</span>
-<span style="font-family:JetBrains Mono;font-size:11px;style="color:#ffffff">64280 Tera Bytes free</span>
-<span style="font-family:JetBrains Mono;font-size:11px;style="color:#ffffff">Copyright SPCRPNK Copr. 2024,2025,2026</span>
-</pre>`
+    soundscape: 'Loading... SOUND Portfolio',
+    welcome: 'pupi'
 };
 
 // Make commands globally accessible
