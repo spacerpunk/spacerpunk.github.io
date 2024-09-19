@@ -3,9 +3,9 @@ import { getWeatherData } from './weather/weather.js';
 let audioIsInit = false;
 const now = new Date();
 const reverb = new Tone.Reverb();
-reverb.wet.value = 0.8;
-const lpf = new Tone.Filter(400, 'lowpass');
-const gainNode = new Tone.Gain(0.5);
+reverb.wet.value = 0.4;
+const lpf = new Tone.Filter(800, 'lowpass');
+const gainNode = new Tone.Gain(0.7);
 
 const granularSynth = new Tone.GrainPlayer({
     url: './sound/drones/Amin_Drone_01.wav',

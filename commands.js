@@ -50,7 +50,11 @@ Thank you! And let's <a href="https://spacerpunk.bandcamp.com/" target="_blank" 
         ,
     music: 'Composer, audio designer and explorer of soundscapes @'+ space +'<a href="https://spacerpunk.bandcamp.com/" target="_blank" style="font-family:JetBrains Mono;font-size:13px;color: #00ff00;">Bandcamp</a>'+ space +'and'+ space +' <a href="https://open.spotify.com/artist/6pUpuBZFid3AGpgTOnrIYr?si=XoUdX1YzRNyJwC3GbaYpKA" target="_blank" style="color: #00ff00;">Spotify.</a>',
     reel: 'Check out my 2024 reel with my latest work:&nbsp;<a href="https://youtu.be/fbZuxEJJvhA?feature=shared" target="_blank" style="color: #00ff00;">Reel</a>',
-    work: 'I\'ve collaborated with various clients in various cool projects as a 3D Artist, Programmer, Creative Tech, Sound Designer and Composer. Check out my&nbsp;<a href="https://www.behance.net/nicolasrequena" target="_blank" style="color: #00ff00;">Portfolio</a>',  
+    work:`<pre>Freelance Music Composer & Sound Designer | 2013-2017 @ <a href="https://youtu.be/fbZuxEJJvhA?feature=shared" target="_blank" style="color: #00ff00;">bandcamp</a>
+Audio Director | 2017-2020 @ <a href="https://tungstenofilms.com/" target="_blank" style="color: #00ff00;">Tungsteno Films</a>
+VFX & 3D Generalist | 2018-2022 @ <a href="https://tungstenofilms.com/" target="_blank" style="color: #00ff00;">Tungsteno Films</a>  
+Senior Video Editor | 2021-2023 @ <a href="https://www.monks.com/" target="_blank" style="color: #00ff00;">.Monks</a>
+Senior Creative Technologist | 2023-Today @ <a href="https://www.monks.com/" target="_blank" style="color: #00ff00;">.Monks</a></pre>`,  
     labs: `<pre>
 Explore my tech experiments on <a href="https://github.com/spacerpunk" target="_blank" style="color: #00ff00;">GitHub</a>, weird scripts, apps, and ideas ( most of them are WIP =) )
 <a href="https://github.com/spacerpunk/in-the-nature-of-js" target="_blank" style="color: #00ff00;">In the nature of JS</a>
@@ -81,7 +85,7 @@ Explore my tech experiments on <a href="https://github.com/spacerpunk" target="_
     ],
     start: 'Generating procedural music with MagentaJS, ToneJS and TonalJS.',
     stop: 'Music Stopped.',
-    images: 'Loading... VISUAL Portfolio',
+    visual: 'Loading... VISUAL Portfolio',
     soundscape: 'Loading... SOUND Portfolio',
     welcome: 'pupi'
 };

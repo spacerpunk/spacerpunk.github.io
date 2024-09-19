@@ -293,9 +293,10 @@ body::-webkit-scrollbar {
 .output-line, .input-line {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     font-size: 13.5px;
-    font-family: 'JetBrains Mono';
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
 
 }
 
