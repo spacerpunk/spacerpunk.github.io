@@ -13,6 +13,24 @@ let intervalId;
 title.addEventListener('mouseenter', startGlitchEffect);
 title.addEventListener('mouseleave', stopGlitchEffect);
 
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingBar = document.querySelector('.loading-bar');
+    
+    // Start the loading bar animation
+    setTimeout(() => {
+        loadingBar.style.width = '100%';
+    }, 200);
+
+    // Hide the loading screen after 5 seconds
+    setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 1000); // Wait for fade out animation
+    }, 3000);
+});
+
 let visualizer;
 
 function startGlitchEffect() {

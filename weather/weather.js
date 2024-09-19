@@ -1,5 +1,5 @@
 const apiKey = '0938517d1fb64c7895115002241709';
-const url = 'http://api.weatherapi.com/v1/current.json';
+const url = 'https://api.weatherapi.com/v1/current.json';
 
 const now = new Date();
 const hour = now.getHours();
@@ -22,6 +22,7 @@ function getWeatherData(location) {
         windSpeed: data.current.wind_mph,
         windDirection: data.current.wind_dir,
         rain: data.current.precip_mm,
+        humidity: data.current.humidity
       };
     });
 }

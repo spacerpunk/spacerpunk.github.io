@@ -8,11 +8,11 @@ const lpf = new Tone.Filter(400, 'lowpass');
 const gainNode = new Tone.Gain(0.5);
 
 const granularSynth = new Tone.GrainPlayer({
-    url: './sound/samples/untitled.wav',
+    url: './sound/drones/Amin_Drone_01.wav',
     loop: true,
-    grainSize: 0.1,
-    overlap: 0.2,
-    playbackRate: 0.5
+    grainSize: 0.2,
+    overlap: 0.1,
+    playbackRate: 1
 }).connect(reverb);
 
 const samples = {

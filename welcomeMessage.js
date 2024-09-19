@@ -4,6 +4,7 @@ let weatherString = '';
 let locationString = '';
 let windString = '';
 let rainString = '';
+let humidityString = '';
 
 // Fetch weather data and create the messages
 function createMessages() {
@@ -18,14 +19,15 @@ function createMessages() {
       weatherString = `${weatherData.temperature}° Celsius, ${weatherData.condition}`;
       locationString = `Colegiales, ${weatherData.location}, ${weatherData.country}`;
       windString = `Winds are ${weatherData.windSpeed}mph ${weatherData.windDirection}`;
-      rainString = `${weatherData.rain}mm of rain`
+      rainString = `${weatherData.rain}mm of rain`,
+      humidityString = `${weatherData.humidity}% Humidity ` 
       
       const welcomeMessage = `<pre style="font-family:JetBrains Mono;font-size:13px;">
 <span style="color:#ffffff">Welcome to the <span style="font-family:JetBrains Mono;font-size:16px;color:#00ff00">SPCRPNK</span> interface - Alpha v0.1</span>
 
 <span style="color:#ffffff">${timestamp}, ${month}.${date}.${year}</span>
 <span style="color:#ffffff">${locationString}</span>
-<span style="color:#ffffff">${weatherString}</span>
+<span style="color:#ffffff">${weatherString}, ${humidityString}, ${rainString}</span>
 <span style="color:#ffffff">-------------------------------------------</span>
 <span style="color:#ffffff">Press the </span><span style="color:#00ff00">▶</span><span style="color:#ffffff"> on the right...</span>
 <span style="color:#ffffff">-------------------------------------------</span>
@@ -36,9 +38,6 @@ function createMessages() {
 <span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">Version S1.00</span>
 <span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">64280 Tera Bytes free</span>
 <span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">Copyright SPCRPNK Copr. 2024,2025,2026</span>
-<span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">${weatherString}</span>
-<span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">${windString}</span>
-<span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">${rainString}</span>
 </pre>`;
 
       return { welcomeMessage, welcomeLog };
@@ -48,6 +47,9 @@ function createMessages() {
 export { createMessages };
 
 
+//<span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">${weatherString}</span>
+//<span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">${windString}</span>
+//<span style="font-family:JetBrains Mono;font-size:11px;color:#ffffff">${rainString}</span>
 
 
 
