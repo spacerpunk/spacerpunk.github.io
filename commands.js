@@ -41,7 +41,8 @@ A Sound Artist and Creative Technologist based on BA, Argentina but making stuff
 (and other <a href="https://simulation-argument.com/simulation.pdf" target="_blank" style="color: #00ff00;">simulations</a>)
 I create cool technology both for the soft and hardware worlds, bridging the gap between Art and Technology.
 
-Currently I'm a Senior Creative Technologist @ <a href="https://www.monks.com/es" target="_blank" style="color: #00ff00;">Media Monks (.monks)</a>, implementing AI and Scaling solutions for clients around the world.
+Currently I'm a Senior Creative Technologist @ <a href="https://www.monks.com/es" target="_blank" style="color: #00ff00;">Media Monks (.monks)</a>.
+Implementing AI and Scaling solutions for clients around the world.
 
 Type <span style="color: #00ff00;">'labs'</span> to chek my latest weird projects. 
 Type <span style="color: #00ff00;">'music'</span> to check my more artistic side.

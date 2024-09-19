@@ -1,6 +1,5 @@
 // musicGenerator.js
 const MusicGenerator = (function() {
-    console.log('trackerplatz');
 
     const bpm = 104;
     const timeSignature = [9, 8];
