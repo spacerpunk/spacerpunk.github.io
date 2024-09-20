@@ -1,7 +1,7 @@
 import * as Tonal from 'https://cdn.skypack.dev/@tonaljs/tonal';
 
 const MusicPieceOne = (function() {
-    const bpm = 60;
+    const bpm = 40;
     const reverb = new Tone.Reverb();
     const lpf = new Tone.Filter(400, 'lowpass');
     const gainNode = new Tone.Gain(0.2);

@@ -87,7 +87,7 @@ Explore my tech experiments on <a href="https://github.com/spacerpunk" target="_
     start: 'Generating procedural music with MagentaJS, ToneJS and TonalJS.',
     stop: 'Music Stopped.',
     visual: 'Loading... VISUAL Portfolio',
-    soundscape: 'Loading... SOUND Portfolio',
+    sound: 'Loading... SOUND Portfolio',
     welcome: 'pupi'
 };
 

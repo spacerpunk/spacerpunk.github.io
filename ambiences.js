@@ -4,16 +4,90 @@ let audioIsInit = false;
 const now = new Date();
 const reverb = new Tone.Reverb();
 reverb.wet.value = 0.4;
-const lpf = new Tone.Filter(800, 'lowpass');
+const lpf = new Tone.Filter(400, 'lowpass');
 const gainNode = new Tone.Gain(0.7);
+const bpm = 40;
+Tone.Transport.bpm.value = bpm;
 
-const granularSynth = new Tone.GrainPlayer({
-    url: './sound/drones/Amin_Drone_01.wav',
-    loop: true,
-    grainSize: 0.2,
-    overlap: 0.1,
-    playbackRate: 1
+
+// const morningDrones = {
+//     Gmaj: './sound/drones/Gmaj_Drone_01.wav',    
+// }
+
+// const dayDrones = {
+//     Cmaj: './sound/drones/Cmaj_Drone_01.wav',
+// }
+// const afternoonDrones = {
+//     Amin: './sound/drones/Amin_Drone_01.wav',
+// }
+
+// const nightDrones = {
+//     Dmin: './sound/drones/Dmin_Drone_01.wav',
+// }
+
+// const dayGrainSynth = new Tone.GrainPlayer({
+//     url: dayDrones.Cmaj,
+//     loop: true,
+//     grainSize: 0.1,
+//     overlap: 0.8,
+//     playbackRate: 1
+// }).connect(reverb);
+
+// const nightGrainSynth = new Tone.GrainPlayer({
+//     url: nightDrones.Dmin,
+//     loop: true,
+//     loopStart: 0,
+//     loopEnd: 1,
+//     reverse: true,
+//     grainSize: 0.2,
+//     overlap: 0.05,
+//     playbackRate: 1
+// }).connect(reverb);
+
+// const afternoonGrainSynth = new Tone.GrainPlayer({
+//     url: afternoonDrones.Amin,
+//     loop: true,
+//     grainSize: 0.5,
+//     overlap: 0.5,
+//     playbackRate: 0.1
+// }).connect(reverb);
+
+// const morningGrainSynth = new Tone.GrainPlayer({
+//     url: morningDrones.Gmaj,
+//     loop: true,
+//     grainSize: 0.5,
+//     overlap: 0.5,
+//     playbackRate: 0.1
+// }).connect(reverb);
+
+const padSynth = new Tone.Synth({
+    oscillator: {
+      type: 'triangle',
+    },
+    envelope: {
+      attack: 0.8,
+      decay: 0.6,
+      sustain: 0.6,
+      release: 1,
+    },
+  });
+
+const nightSynth = new Tone.PolySynth(Tone.Synth, {
+    oscillator: {
+        type: 'sine'
+    },
+    envelope: {
+        attack: 2,
+        decay: 0.5,
+        sustain: 0.8,
+        release: 1
+    }, 
+    volume
+
 }).connect(reverb);
+
+
+
 
 const samples = {
     morning: {
@@ -60,6 +134,8 @@ function startSoundscape() {
                     //playSample('morning', 'cloudy');  
                     console.log('Cloudy');
                     break;
+                default:
+                    console.log('WHAT');    
             }
         } else if (timeOfDay > 11 && timeOfDay <= 14) {
             console.log('Day');
@@ -72,30 +148,38 @@ function startSoundscape() {
                     //playSample('day', 'cloudy');  
                     console.log('Cloudy');
                     break;
+                default:
+                    console.log('WHAT');
+
             }
         } else if (timeOfDay > 14 && timeOfDay <= 20) {
             console.log('Afternoon');
             switch(condition) {
                 case 'Sunny':
-                    playSample('afternoon', 'sunny');
+                    //playSample('afternoon', 'sunny');
                     console.log('Sunny');
                     break;
                 case 'Cloudy':
                     //playSample('afternoon', 'cloudy');  
                     console.log('Cloudy');
                     break;
+                default:
+                    console.log('WHAT');    
             }
         } else if (timeOfDay > 20 || timeOfDay <= 5) {
             console.log('Night');
             switch(condition) {
-                case 'Sunny':
+                case 'Clear':
                     //playSample('night', 'sunny');
-                    console.log('Sunny');
+                    nightSynth.triggerAttackRelease(["D1", "F2", "A2", "B2"], "1n");
+                    console.log('Clear');
                     break;
                 case 'Cloudy':
                     //playSample('night', 'cloudy');  
                     console.log('Cloudy');
                     break;
+                default:
+                    console.log('WHAT');
             }
         }
     });
@@ -103,13 +187,12 @@ function startSoundscape() {
 document.getElementById('initAudio').addEventListener('click', async () => {
   if (!audioIsInit) {
       try {
-          //await Tone.start();
+          await Tone.start();
           reverb.connect(lpf);
           lpf.connect(gainNode);
           gainNode.toDestination();
-          //await startSoundscape();
+          await startSoundscape();
           audioIsInit = true;
-          granularSynth.start();
           console.log('STARTED SOUNDSCAPE');
       } catch (error) {
           console.log('Error:', error);
