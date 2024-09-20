@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the loading bar animation
     setTimeout(() => {
         loadingBar.style.width = '100%';
-    }, 200);
+    }, 100);
 
     // Hide the loading screen after 5 seconds
     setTimeout(() => {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loadingScreen.style.display = 'none';
         }, 1000); // Wait for fade out animation
-    }, 3000);
+    }, 2000);
 });
 
 let visualizer;

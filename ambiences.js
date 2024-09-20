@@ -3,10 +3,10 @@ import { getWeatherData } from './weather/weather.js';
 let audioIsInit = false;
 const now = new Date();
 const reverb = new Tone.Reverb();
-reverb.wet.value = 0.4;
-const lpf = new Tone.Filter(400, 'lowpass');
+reverb.wet.value = 0.7;
+const lpf = new Tone.Filter(350, 'lowpass');
 const gainNode = new Tone.Gain(0.7);
-const bpm = 40;
+const bpm = 20;
 Tone.Transport.bpm.value = bpm;
 
 
@@ -60,30 +60,26 @@ Tone.Transport.bpm.value = bpm;
 //     playbackRate: 0.1
 // }).connect(reverb);
 
-const padSynth = new Tone.Synth({
-    oscillator: {
-      type: 'triangle',
-    },
-    envelope: {
-      attack: 0.8,
-      decay: 0.6,
-      sustain: 0.6,
-      release: 1,
-    },
-  });
+// Define some chords
+const chords = {
+    Dmin: ["D1", "F2", "A3", "C3"],
+    Amin: ["C2", "A2", "E3", "F3"],
+    Gmaj: ["G1", "D2", "A2", "B2"],
+    Cmaj: ["C1", "C2", "G2", "F3"]
+};
 
-const nightSynth = new Tone.PolySynth(Tone.Synth, {
+const padSynth = new Tone.PolySynth(Tone.Synth, {
+    volume: -24,
+    plyphony: 6,
     oscillator: {
-        type: 'sine'
+        type: 'triangle'
     },
     envelope: {
-        attack: 2,
+        attack: 1.8,
         decay: 0.5,
         sustain: 0.8,
-        release: 1
-    }, 
-    volume
-
+        release: 0.7
+    },
 }).connect(reverb);
 
 
@@ -129,6 +125,7 @@ function startSoundscape() {
                 case 'Sunny':
                     //playSample('morning', 'sunny');
                     console.log('Sunny');
+                    padSynth.triggerAttackRelease(chords.Dmin, "1n");
                     break;
                 case 'Cloudy':
                     //playSample('morning', 'cloudy');  
@@ -171,7 +168,6 @@ function startSoundscape() {
             switch(condition) {
                 case 'Clear':
                     //playSample('night', 'sunny');
-                    nightSynth.triggerAttackRelease(["D1", "F2", "A2", "B2"], "1n");
                     console.log('Clear');
                     break;
                 case 'Cloudy':
