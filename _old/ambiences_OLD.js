@@ -13,23 +13,9 @@ const delay = new Tone.PingPongDelay({
 const widener = new Tone.StereoWidener();
 widener.width.value = 0.5;
 const lpf = new Tone.Filter(250, 'lowpass');
-
-const gainNode = new Tone.Gain(0.6);
+const gainNode = new Tone.Gain(0.7);
 const bpm = 20;
 Tone.Transport.bpm.value = bpm;
-
-//MODULATION
-const lfo = new Tone.LFO(0.1, 0, 1).start();
-const lfoStereo = new Tone.LFO(0.1, 0, 1).start();
-lfo.frequency.value = 0.05; // Oscillation speed (Hz)
-lfo.min = 100; // Minimum wet value
-lfo.max = 1000; // Maximum wet value
-
-lfoStereo.frequency.value = 0.1
-lfoStereo.min = 0.5
-lfoStereo.max = 1
-
-
 
 // Define some chords
 // const chords = {
@@ -58,47 +44,34 @@ lfoStereo.max = 1
 //     }
 // };
 
+let Cmaj = new Tone.Buffer('./sound/drones/Cmaj_Loop_01.mp3')
 
 const morningDrones = {
-    Gmaj1: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_01.mp3'),    
-    Gmaj2: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_02.mp3'),    
-    Gmaj3: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_03.mp3'),    
+    Gmaj1: './sound/drones/Gmaj_Loop_01.mp3',    
+    Gmaj2: './sound/drones/Gmaj_Loop_02.mp3',    
+    Gmaj3: './sound/drones/Gmaj_Loop_03.mp3',    
 }
 
 const dayDrones = {
-    Cmaj1: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_01.mp3'),
-    Cmaj2: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_02.mp3'),
-    Cmaj3: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_03.mp3'),
+    Cmaj1: './sound/drones/Cmaj_Loop_1.mp3',
+    Cmaj2: './sound/drones/Cmaj_Loop_2.mp3',
+    Cmaj3: './sound/drones/Cmaj_Loop_3.mp3',
 }
 const afternoonDrones = {
-    Amin2: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_02.mp3'),
-    Amin1: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_01.mp3'),
-    Amin3: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_03.mp3'),
+    Amin1: './sound/drones/Amin_Loop_01.mp3',
+    Amin2: './sound/drones/Amin_Loop_02.mp3',
+    Amin3: './sound/drones/Amin_Loop_03.mp3',
 }
 
 const nightDrones = {
-    Dmin1: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_01.mp3'),
-    Dmin2: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_02.mp3'),
-    Dmin3: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_03.mp3'),
+    Dmin1: './sound/drones/Dmin_Loop_01.mp3',
+    Dmin2: './sound/drones/Dmin_Loop_02.mp3',
+    Dmin3: './sound/drones/Dmin_Loop_03.mp3',
 }
 
 function playSample(category, type) {
     const sample = samples[category][type];
     sample.autostart = true;
-}
-
-
-
-function getRandomDrone(drones) {
-  const keys = Object.keys(drones);
-  console.log(keys)
-  return drones[keys[Math.floor(Math.random() * keys.length)]];
-}
-
-function updateGrainSynth(synth, drones) {
-    setInterval(() => {
-      synth.buffer = getRandomDrone(drones);
-    }, 10000); // Change every 10 seconds
 }
 
 function startSoundscape() {
@@ -112,7 +85,7 @@ function startSoundscape() {
         console.log(timeOfDay);
                 
         const morningGrainSynth = new Tone.GrainPlayer({
-            url: getRandomDrone(morningDrones),
+            url: morningDrones.Gmaj1,
             loop: true,
             grainSize: 0.5,
             overlap: 0.1,
@@ -121,7 +94,7 @@ function startSoundscape() {
         }).connect(wideRev);
         
         const dayGrainSynth = new Tone.GrainPlayer({
-            url: getRandomDrone(dayDrones),
+            url: afternoonDrones.Amin1,
             loop: true,
             grainSize: 0.5,
             overlap: 0.1,
@@ -129,7 +102,7 @@ function startSoundscape() {
         }).connect(wideRev);
         
         const afternoonGrainSynth = new Tone.GrainPlayer({
-            url: getRandomDrone(afternoonDrones),
+            url: afternoonDrones.Amin1,
             loop: true,
             grainSize: 0.1,
             overlap: 0.3,
@@ -137,7 +110,7 @@ function startSoundscape() {
         }).connect(wideRev);
         
         const nightGrainSynth = new Tone.GrainPlayer({
-            url: getRandomDrone(nightDrones),
+            url: nightDrones.Dmin1,
             loop: true,
             loopStart: 0,
             loopEnd: 1,
@@ -152,12 +125,11 @@ function startSoundscape() {
                 type: 'sine',
               },
               envelope: {
-                attack: 4,
-                decay: 0.8,
+                attack: 1,
+                decay: 0.3,
                 sustain: 0.3,
                 release: 1,
               },
-              volume: 0.5
         }).connect(reverb);
         
         var morningSeq = new Tone.Sequence(function(time, note){
@@ -174,29 +146,15 @@ function startSoundscape() {
         //straight quater notes
         }, ["C1", "C2", "C1", "C2"], "4m");
 
-        var afternoonSeq = new Tone.Sequence(function(time, note){
-            console.log(note);
-            subSynth.triggerAttackRelease(note, '4m', time);
-
-        //straight quater notes
-        }, ["A1", "A2", "A1", "A2"], "4m");
-
-        var nightSeq = new Tone.Sequence(function(time, note){
-            console.log(note);
-            subSynth.triggerAttackRelease(note, '4m', time);
-
-        //straight quater notes
-        }, ["D1", "D2", "D1", "D2"], "4m");
-
 
         if (timeOfDay > 5 && timeOfDay <= 11) {
             console.log('Morning');
             switch(condition) {
                 case 'Sunny':
                     Tone.Transport.start();
-                    morningSeq.start(0);
                     morningGrainSynth.start();
-                    //playSample('morning','sunny');
+                    morningSeq.start(0);
+                    playSample('morning','sunny');
                     console.log('Sunny');
                     break;
                 case 'Cloudy':
@@ -210,8 +168,8 @@ function startSoundscape() {
             switch(condition) {
                 case 'Sunny':
                     Tone.Transport.start();
-                    daySeq.start(0);
                     dayGrainSynth.start();
+                    daySeq.start(0);
                     console.log('Sunny');
                     break;
                 case 'Cloudy':
@@ -226,15 +184,6 @@ function startSoundscape() {
             switch(condition) {
                 case 'Clear':
                     console.log('Clear');
-                    Tone.Transport.start();
-                    afternoonGrainSynth.start();
-                    afternoonSeq.start(0);
-                    break;
-                case 'Sunny':
-                    console.log('Sunny');
-                    Tone.Transport.start();
-                    afternoonGrainSynth.start();
-                    afternoonSeq.start(0);
                     break;
                 case 'Cloudy':
                     console.log('Cloudy');
@@ -247,9 +196,6 @@ function startSoundscape() {
             switch(condition) {
                 case 'Clear':
                     console.log('Clear');
-                    Tone.Transport.start();
-                    nightGrainSynth.start();
-                    nightSeq.start(0);
                     break;
                 case 'Cloudy':
                     console.log('Cloudy');
@@ -268,8 +214,6 @@ document.getElementById('initAudio').addEventListener('click', async () => {
           wideRev.connect(delay);
           delay.connect(lpf);
           lpf.connect(widener);
-          lfo.connect(lpf.frequency);
-          lfoStereo.connect(widener.width);
           widener.connect(gainNode);
 
           gainNode.toDestination();
@@ -286,3 +230,4 @@ document.getElementById('initAudio').addEventListener('click', async () => {
 
 
 export { startSoundscape };
+

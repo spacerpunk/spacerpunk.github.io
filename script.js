@@ -92,8 +92,8 @@ function updateInitAudioButton() {
 document.getElementById('initAudio').addEventListener('click', async () => {
     if (!audioIsInit) {
         try {
-            await MusicPieceOne.init();
-            console.log('Audio context started');
+            //await MusicPieceOne.init();
+            //console.log('Audio context started');
             logMessage('Audio system initialized. You can now use music commands.');
             audioIsInit = true;
             
