@@ -217,6 +217,9 @@ function startSoundscape() {
                 case 'Cloudy':
                     console.log('Cloudy');
                     break;
+                case 'Rain':
+                    console.log('Rain');
+                    break;
                 default:
                     console.log('DEFAULT');
 
@@ -239,6 +242,9 @@ function startSoundscape() {
                 case 'Cloudy':
                     console.log('Cloudy');
                     break;
+                case 'Rain':
+                    console.log('Rain');
+                    break;        
                 default:
                     console.log('DEFAULT');    
             }
@@ -253,6 +259,9 @@ function startSoundscape() {
                     break;
                 case 'Cloudy':
                     console.log('Cloudy');
+                    break;
+                case 'Rain':
+                    console.log('Rain');
                     break;
                 default:
                     console.log('DEFAULT');
