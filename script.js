@@ -167,7 +167,7 @@ async function processCommand(cmd) {
     const lowerCmd = cmd.toLowerCase();
     
     if (terminalCommands.hasOwnProperty(lowerCmd)) {
-        if (lowerCmd === 'images') {
+        if (lowerCmd === 'visual') {
             addOutput(terminalCommands[lowerCmd]);
             setTimeout(() => {
                 window.location.href = 'images.html'; // Replace with your desired HTML file

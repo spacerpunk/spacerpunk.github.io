@@ -11,15 +11,15 @@ Tone.Master.connect(meter);
 
 
 // Control variables
-let pointDensity = 500;
-const displacementAmount = 2.0;
-const animationSpeed = 0.01;
+let pointDensity = 400;
+const displacementAmount = 1.2;
+const animationSpeed = 0.12;
 let pointSize = 2.0;
-const noiseScale = 0.05;
-const octaves = 4;
-let persistence = 0.4;
+let noiseScale = 0.15;
+const octaves = 3;
+let persistence = 0.1;
 const glitchDuration = 0.1;
-const glitchIntensity = 0.2 ;
+const glitchIntensity = 1.0 ;
 
 let isGlitching = false;
 let glitchStartTime = 0;
@@ -98,7 +98,7 @@ function initScene() {
   //document.body.appendChild(renderer.domElement);
 
   // Camera position
-  camera.position.z = 20;
+  camera.position.z = 30;
   camera.position.x = 0
   camera.position.y = -50
   camera.rotation.x = 45; // Rotate 45 degrees around X axis
@@ -130,8 +130,8 @@ function initScene() {
       time: { value: 0 },
       displacementAmount: { value: displacementAmount },
       pointColor: { value: new THREE.Color(1, 1, 1) }, // Initial color (white)
-      glitchFactor: { value: 0.0 },
-      glitchScale: { value: 0.1 },
+      glitchFactor: { value: 1.5 },
+      glitchScale: { value: 0.5 },
       waveform: { value: new Float32Array(waveformSize) }
     },
     transparent: true,
@@ -182,7 +182,7 @@ function animate() {
   requestAnimationFrame(animate);
   width = document.getElementsByClassName("waveform-container")[0].getBoundingClientRect().width;
   height = document.getElementsByClassName("waveform-container")[0].getBoundingClientRect().height;
-  
+
   const currentTime = Date.now();
   const elapsedTime = (currentTime - glitchStartTime) / 1000; // Convert to seconds
   

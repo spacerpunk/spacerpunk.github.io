@@ -99,7 +99,7 @@ void main() {
   
   // Add glitch effect
   float glitch = step(0.8, random(pos.xy + time)) * glitchFactor;
-  noiseVal += glitch * sin(pos.y * glitchScale + time * 50.0);
+  noiseVal += glitch * sin(pos.y * glitchScale + time * 1.0);
   
   // Randomly select points to be affected by the waveform
   float randomValue = random(pos.xy);

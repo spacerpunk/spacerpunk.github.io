@@ -13,6 +13,7 @@ const delay = new Tone.PingPongDelay({
 const widener = new Tone.StereoWidener();
 widener.width.value = 0.5;
 const lpf = new Tone.Filter(250, 'lowpass');
+const samplesGain = new Tone.Gain(0.5).toDestination();
 
 const gainNode = new Tone.Gain(0.6);
 const bpm = 20;
@@ -22,11 +23,11 @@ Tone.Transport.bpm.value = bpm;
 const lfo = new Tone.LFO(0.1, 0, 1).start();
 const lfoStereo = new Tone.LFO(0.1, 0, 1).start();
 lfo.frequency.value = 0.05; // Oscillation speed (Hz)
-lfo.min = 100; // Minimum wet value
-lfo.max = 1000; // Maximum wet value
+lfo.min = 150; // Minimum wet value
+lfo.max = 1500; // Maximum wet value
 
 lfoStereo.frequency.value = 0.1
-lfoStereo.min = 0.5
+lfoStereo.min = 0.6
 lfoStereo.max = 1
 
 
@@ -38,25 +39,6 @@ lfoStereo.max = 1
 //     Gmaj: ["G1", "D2", "A2", "B2"],
 //     Cmaj: ["C1", "C2", "G2", "F3"]
 // };
-
-const samples = {
-    morning: {
-
-    },
-    day: {
-
-    },
-    afternoon: {
-
-    },
-    night: {
-        night1: "sound/samples/night/ambr_crickets_forest_night_a_lp.wav",
-        night2: "sound/samples/night/ambr_crickets_forest_night_b_lp.wav",
-        night2: "sound/samples/night/ambr_crickets_forest_night_c_lp.wav",
-        night2: "sound/samples/night/ambr_crickets_forest_night_d_lp.wav",
-
-    }
-};
 
 
 const morningDrones = {
@@ -94,11 +76,6 @@ const nightDrones = {
     Dmin6: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_06.mp3'),
 }
 
-function playSample(category, type) {
-    const sample = samples[category][type];
-    sample.autostart = true;
-}
-
 function getRandomDrone(drones) {
   const keys = Object.keys(drones);
   console.log(keys)
@@ -130,7 +107,7 @@ function startSoundscape() {
             playbackRate: 0.1
         }).connect(wideRev);
         updateGrainSynth(morningGrainSynth, morningDrones);
-        
+    
         const dayGrainSynth = new Tone.GrainPlayer({
             url: getRandomDrone(dayDrones),
             loop: true,
@@ -205,11 +182,17 @@ function startSoundscape() {
 
         if (timeOfDay > 5 && timeOfDay <= 11) {
             console.log('Morning');
+            let player = new Tone.Player({
+                'url': './sound/samples/Morning_Clear_Sunny_Loop_01.mp3',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
             switch(condition) {
                 case 'Sunny':
                     Tone.Transport.start();
                     morningSeq.start(0);
                     morningGrainSynth.start();
+                    player.autostart = true;
                     console.log('Sunny');
                     break;
                 case 'Cloudy':
@@ -222,49 +205,80 @@ function startSoundscape() {
                     Tone.Transport.start();
                     morningSeq.start(0);
                     morningGrainSynth.start();
+                    player.autostart = true;
                     console.log('DEFAULT');    
             }
         } else if (timeOfDay > 11 && timeOfDay <= 14) {
             console.log('Day');
+            let dayOne = new Tone.Player({
+                'url': './sound/samples/day/amb_misty_forest_4.ogg',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
+            let dayTwo = new Tone.Player({
+                'url': './sound/samples/day/amb_misty_forest_1.ogg',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
+            let dayThree = new Tone.Player({
+                'url': './sound/samples/day/amb_misty_forest_6.ogg',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
             switch(condition) {
                 case 'Sunny':
                     Tone.Transport.start();
                     daySeq.start(0);
                     dayGrainSynth.start();
+                    dayOne.autostart = true;
                     console.log('Sunny');
                     break;
                 case 'Cloudy':
                     Tone.Transport.start();
                     daySeq.start(0);
                     dayGrainSynth.start();
+                    dayTwo.autostart = true;
                     console.log('Cloudy');
                     break;
                 default:
                     Tone.Transport.start();
                     daySeq.start(0);
                     dayGrainSynth.start();
+                    dayThree.autostart = true;
                     console.log('DEFAULT');
-
             }
         } else if (timeOfDay > 14 && timeOfDay <= 20) {
             console.log('Afternoon');
+            let afternoonOne = new Tone.Player({
+                'url': './sound/samples/afternoon/amb_cherry_trees.ogg',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
+            let afternoonTwo = new Tone.Player({
+                'url': './sound/samples/afternoon/amb_desert_dunes_ridge.ogg',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
             switch(condition) {
                 case 'Clear':
                     console.log('Clear');
                     Tone.Transport.start();
                     afternoonGrainSynth.start();
                     afternoonSeq.start(0);
+                    afternoonOne.autostart = true;
                     break;
                 case 'Sunny':
                     console.log('Sunny');
                     Tone.Transport.start();
                     afternoonGrainSynth.start();
                     afternoonSeq.start(0);
+                    afternoonTwo.autostart = true;
                     break;
                 case 'Cloudy':
                     Tone.Transport.start();
                     afternoonGrainSynth.start();
                     afternoonSeq.start(0);
+                    afternoonOne.autostart = true;
                     console.log('Cloudy');
                     break;      
                 default:
@@ -275,31 +289,60 @@ function startSoundscape() {
             }
         } else if (timeOfDay > 20 || timeOfDay <= 5) {
             console.log('Night');
+            let nightOne = new Tone.Player({
+                'url': './sound/samples/night/ambr_crickets_forest_night_d_lp.wav',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
+            let nightTwo = new Tone.Player({
+                'url': './sound/samples/night/ambr_crickets_forest_night_a_lp.wav',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
+            let nightThree = new Tone.Player({
+                'url': './sound/samples/night/ambr_crickets_forest_night_c_lp.wav',
+                'loop': true,
+                'fadeIn': 1,
+            }).connect(samplesGain);
             switch(condition) {
                 case 'Clear':
                     console.log('Clear');
                     Tone.Transport.start();
                     nightGrainSynth.start();
                     nightSeq.start(0);
+                    nightOne.autostart = true;
                     break;
                 case 'Cloudy':
                     Tone.Transport.start();
                     nightGrainSynth.start();
                     nightSeq.start(0);
+                    nightTwo.autostart = true;
                     console.log('Cloudy');
                     break;
                 default:
                     Tone.Transport.start();
                     nightGrainSynth.start();
                     nightSeq.start(0);
+                    nightThree.autostart = true;
                     console.log('DEFAULT');
             }
         }
-
+        let rainLow = new Tone.Player({
+            'url': './sound/samples/rain/amb_weather_rain_drizzle_lp.wav',
+            'loop': true,
+            'fadeIn': 1,
+        }).connect(samplesGain);
+        let rainMid = new Tone.Player({
+            'url': './sound/samples/rain/amb_weather_rain_light_lp.wav',
+            'loop': true,
+            'fadeIn': 1,
+        }).connect(samplesGain);
         if (rain > 0 && rain < 1) {
             console.log('RAINING');
+            rainLow.autostart = true;
         } else if (rain > 1){
             console.log('A LOT OF RAIN');
+            rainMid.autostart = true;
         } else {
             console.log('NO RAIN');
         }
