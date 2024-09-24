@@ -39,55 +39,65 @@ lfoStereo.max = 1
 //     Cmaj: ["C1", "C2", "G2", "F3"]
 // };
 
-// const samples = {
-//     morning: {
-//         sunny: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//         cloudy: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//     },
-//     day: {
-//         sunny: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//         cloudy: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//     },
-//     afternoon: {
-//         sunny: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//         cloudy: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//     },
-//     night: {
-//         sunny: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//         cloudy: new Tone.Player("./sound/samples/test.mp3").connect(lpf),
-//     }
-// };
+const samples = {
+    morning: {
+
+    },
+    day: {
+
+    },
+    afternoon: {
+
+    },
+    night: {
+        night1: "sound/samples/night/ambr_crickets_forest_night_a_lp.wav",
+        night2: "sound/samples/night/ambr_crickets_forest_night_b_lp.wav",
+        night2: "sound/samples/night/ambr_crickets_forest_night_c_lp.wav",
+        night2: "sound/samples/night/ambr_crickets_forest_night_d_lp.wav",
+
+    }
+};
 
 
 const morningDrones = {
     Gmaj1: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_01.mp3'),    
     Gmaj2: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_02.mp3'),    
     Gmaj3: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_03.mp3'),    
+    Gmaj4: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_04.mp3'),    
+    Gmaj5: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_05.mp3'),    
+    Gmaj6: new Tone.ToneAudioBuffer('./sound/drones/Gmaj_Loop_06.mp3'),    
 }
 
 const dayDrones = {
     Cmaj1: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_01.mp3'),
     Cmaj2: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_02.mp3'),
     Cmaj3: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_03.mp3'),
+    Cmaj4: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_04.mp3'),
+    Cmaj5: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_05.mp3'),
+    Cmaj6: new Tone.ToneAudioBuffer('./sound/drones/Cmaj_Loop_06.mp3'),
 }
 const afternoonDrones = {
     Amin2: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_02.mp3'),
     Amin1: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_01.mp3'),
     Amin3: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_03.mp3'),
+    Amin4: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_04.mp3'),
+    Amin5: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_05.mp3'),
+    Amin6: new Tone.ToneAudioBuffer('./sound/drones/Amin_Loop_06.mp3'),
 }
 
 const nightDrones = {
     Dmin1: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_01.mp3'),
     Dmin2: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_02.mp3'),
     Dmin3: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_03.mp3'),
+    Dmin4: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_04.mp3'),
+    Dmin5: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_05.mp3'),
+    Dmin6: new Tone.ToneAudioBuffer('./sound/drones/Dmin_Loop_06.mp3'),
 }
 
 function playSample(category, type) {
     const sample = samples[category][type];
     sample.autostart = true;
 }
-
-
 
 function getRandomDrone(drones) {
   const keys = Object.keys(drones);
@@ -98,7 +108,7 @@ function getRandomDrone(drones) {
 function updateGrainSynth(synth, drones) {
     setInterval(() => {
       synth.buffer = getRandomDrone(drones);
-    }, 10000); // Change every 10 seconds
+    }, 20000); // Change every 10 seconds
 }
 
 function startSoundscape() {
@@ -119,6 +129,7 @@ function startSoundscape() {
             reverse: false,
             playbackRate: 0.1
         }).connect(wideRev);
+        updateGrainSynth(morningGrainSynth, morningDrones);
         
         const dayGrainSynth = new Tone.GrainPlayer({
             url: getRandomDrone(dayDrones),
@@ -127,6 +138,7 @@ function startSoundscape() {
             overlap: 0.1,
             playbackRate: 0.1
         }).connect(wideRev);
+        updateGrainSynth(dayGrainSynth, dayDrones);
         
         const afternoonGrainSynth = new Tone.GrainPlayer({
             url: getRandomDrone(afternoonDrones),
@@ -135,18 +147,20 @@ function startSoundscape() {
             overlap: 0.3,
             playbackRate: 0.5
         }).connect(wideRev);
-        
+        updateGrainSynth(afternoonGrainSynth, afternoonDrones);
+
         const nightGrainSynth = new Tone.GrainPlayer({
             url: getRandomDrone(nightDrones),
             loop: true,
             loopStart: 0,
             loopEnd: 1,
             reverse: false,
-            grainSize: 0.2,
-            overlap: 0.05,
-            playbackRate: 1
+            grainSize: 0.5,
+            overlap: 0.2,
+            playbackRate: 0.2
         }).connect(wideRev);
-        
+        updateGrainSynth(nightGrainSynth, nightDrones);
+
         const subSynth = new Tone.Synth({
             oscillator: {
                 type: 'sine',
@@ -157,7 +171,7 @@ function startSoundscape() {
                 sustain: 0.3,
                 release: 1,
               },
-              volume: 0.5
+              volume: 0.7
         }).connect(reverb);
         
         var morningSeq = new Tone.Sequence(function(time, note){
@@ -196,13 +210,18 @@ function startSoundscape() {
                     Tone.Transport.start();
                     morningSeq.start(0);
                     morningGrainSynth.start();
-                    //playSample('morning','sunny');
                     console.log('Sunny');
                     break;
                 case 'Cloudy':
+                    Tone.Transport.start();
+                    morningSeq.start(0);
+                    morningGrainSynth.start();
                     console.log('Cloudy');
                     break;
                 default:
+                    Tone.Transport.start();
+                    morningSeq.start(0);
+                    morningGrainSynth.start();
                     console.log('DEFAULT');    
             }
         } else if (timeOfDay > 11 && timeOfDay <= 14) {
@@ -215,12 +234,15 @@ function startSoundscape() {
                     console.log('Sunny');
                     break;
                 case 'Cloudy':
+                    Tone.Transport.start();
+                    daySeq.start(0);
+                    dayGrainSynth.start();
                     console.log('Cloudy');
                     break;
-                case 'Rain':
-                    console.log('Rain');
-                    break;
                 default:
+                    Tone.Transport.start();
+                    daySeq.start(0);
+                    dayGrainSynth.start();
                     console.log('DEFAULT');
 
             }
@@ -240,12 +262,15 @@ function startSoundscape() {
                     afternoonSeq.start(0);
                     break;
                 case 'Cloudy':
+                    Tone.Transport.start();
+                    afternoonGrainSynth.start();
+                    afternoonSeq.start(0);
                     console.log('Cloudy');
-                    break;
-                case 'Rain':
-                    console.log('Rain');
-                    break;        
+                    break;      
                 default:
+                    Tone.Transport.start();
+                    afternoonGrainSynth.start();
+                    afternoonSeq.start(0);
                     console.log('DEFAULT');    
             }
         } else if (timeOfDay > 20 || timeOfDay <= 5) {
@@ -258,14 +283,25 @@ function startSoundscape() {
                     nightSeq.start(0);
                     break;
                 case 'Cloudy':
+                    Tone.Transport.start();
+                    nightGrainSynth.start();
+                    nightSeq.start(0);
                     console.log('Cloudy');
                     break;
-                case 'Rain':
-                    console.log('Rain');
-                    break;
                 default:
+                    Tone.Transport.start();
+                    nightGrainSynth.start();
+                    nightSeq.start(0);
                     console.log('DEFAULT');
             }
+        }
+
+        if (rain > 0 && rain < 1) {
+            console.log('RAINING');
+        } else if (rain > 1){
+            console.log('A LOT OF RAIN');
+        } else {
+            console.log('NO RAIN');
         }
     });
 }
