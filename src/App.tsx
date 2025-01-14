@@ -9,7 +9,7 @@ import Home from './pages/Home';
 
 //LABS IMPORTS
 import Electronics from './pages/labs/electronics';
-import Flux from './pages/labs/flux';
+import GenerativeAI from './pages/labs/GenerativeAI';
 
 //WORK IMPORTS
 import Monks from './pages/work/Monks';
@@ -50,7 +50,7 @@ function App() {
               <Route path="/work/Music" element={<Music />} />
               <Route path="/about" element={<About />} />
               <Route path="/labs/electronics" element={<Electronics />} />
-              <Route path="/labs/flux" element={<Flux />} />
+              <Route path="/labs/GenerativeAI" element={<GenerativeAI />} />
             </Routes>
           <SideNotes/>
           </div>
