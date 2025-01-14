@@ -69,46 +69,18 @@ const SubMenu = ({ item, isActive, isOpen, onToggle }: SubMenuProps) => {
   );
 };
 
-const SideNav = () => {
+const SideNotes = () => {
   const location = useLocation();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const menuItems: MenuItem[] = [
     {
-      title: 'spcrpnk',
+      title: 'Notes',
       path: '/home',
       icon: <span></span>,
     },
     {
-      title: 'Projects',
-      icon: <span></span>,
-      submenu: [
-        { title: 'The Noise', path: '/projects/TheNoise' },
-        { title: 'The Glitch', path: '/projects/TheGlitch' },
-        { title: 'The Tape', path: '/projects/TheTape' },
-        { title: 'Trench Run', path: '/projects/TrenchRun' },
-      ],
-    },
-    {
-      title: 'Work',
-      icon: <span></span>,
-      submenu: [
-        { title: '.Monks', path: '/work/monks' },
-        { title: 'Dove', path: '/work/dove' },
-        { title: 'ATEA', path: '/work/atea' },
-        { title: 'AI', path: '/work/Generative' },
-        { title: 'Unreal Engine', path: '/work/unrealengine' },
-        { title: 'VFX', path: '/work/vfx' },
-        { title: 'Music', path: '/work/Music' },
-      ],
-    },
-    {
-      title: 'Me',
-      path: '/about',
-      icon: <span></span>,
-    },
-    {
-      title: 'Labs',
+      title: 'Links',
       path: '/labs',
       icon: <span></span>,
     },
@@ -150,4 +122,4 @@ const SideNav = () => {
   );
 };
 
-export default SideNav;
+export default SideNotes;

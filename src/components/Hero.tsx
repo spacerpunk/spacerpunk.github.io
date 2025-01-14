@@ -1,5 +1,5 @@
 import { DESCRIPTION } from './index';
-import profilePic from '../assets/Images/Tuki.png';
+import profilePic from '../assets/Images/Profile.png';
 import { motion } from 'framer-motion';
 
 const container = (delay: number) => ({
@@ -9,7 +9,7 @@ const container = (delay: number) => ({
 
 const Hero = () => {
   return (
-    <div className="border-b border-neutral-100 pb-4 lg:mb-35">
+    <div className="pb-4 lg:mb-35">
       <div className="flex flex-wrap">
         <div className="w-full lg:w-1/2">
           <div className="flex flex-col item-center lg:items-start">
@@ -17,9 +17,9 @@ const Hero = () => {
               variants={container(0)}
               initial="hidden"
               animate="visible"
-              className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text8xl"
+              className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text8xl text-nasared"
             >
-              ARCANO XIII
+              SPACERPUNK
             </motion.h1>
             <motion.span
               variants={container(0.3)}
@@ -27,7 +27,7 @@ const Hero = () => {
               animate="visible"
               className="bg-gradient-to-r from-slate-700 via-slate-400 to-red-500 bg-clip-text text-2xl tracking-tight text-transparent"
             >
-              an Interactive Album
+              Greatness Cannot Be Planned
             </motion.span>
             <motion.p
               variants={container(0.6)}

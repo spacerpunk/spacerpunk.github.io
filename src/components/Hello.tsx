@@ -2,47 +2,47 @@ import { motion } from 'framer-motion';
 
 const Hello = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4">
+    <div className="pb-4 mb-8">
       <motion.h2
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         className="my-20 text-center text-4xl"
       >
-        Le
-        <span className="text-neutral-400"> Mat</span>
+        Nicolas Requena
       </motion.h2>
-      <div className="flex flex-wrap">
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: -100 }}
-          transition={{ duraction: 1.5 }}
-          className="w-full lg:w-1/2 lg:p-8"
-        >
-          {/* <div className="flex item-center justify-center">
-            <img className="rounded-lg" src={aboutImg} alt="about" />
-          </div> */}
-        </motion.div>
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: 100 }}
-          transition={{ duraction: 1.5 }}
-          className="w-full lg:w-1/2"
-        >
-          <div className="flex ustify-center lg:justify-start">
-            <p className="my-2 maxw-xl py-6">
-              Hello there! Creative Technologist @ .Monks I'm a Music Producer,
-              Composer and Audio Engineer who taught himself to code, do VFX and
-              loves making Films (and other weird stuff). The means of
-              entertainment are changing every day and I love to find new ways
-              to work with that tech, AI, Generative tools, Game Development,
-              VR, AR, Web experiences, Mobile Apps, Films and more. I'd love to
-              collaborate on a project together and find the best sound (or
-              music) tailored for you.
-            </p>
-          </div>
-        </motion.div>
-      </div>
+      <motion.div
+        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, x: 100 }}
+        transition={{ duration: 1.5 }}
+        className="w-full font-light"
+      >
+        <p>Hello there!</p>
+        <br/> {/* Add two line breaks for more space */}
+        <p>I'm Nicolas Daniel Requena a Creative Technologist (previously a Senior Video Editor) <a className="font-bold text-gray-900" href="https://www.monks.com">@ .Monks</a></p>
+        <br/>       
+        <p>Who is me?</p>
+        <p>Music Producer, Composer and Audio Engineer who taught himself to do VFX and 3D Work for the love of Films...</p>        
+        <p>...and was later forced into study programming when I found out that's the only way to make software to do what you want.</p>
+        <br/>        
+        <p>I'd always thought of myself as an artist that loves to tinker with technology, but I find the line between those getting blurrier every day.</p>
+        <p>The means to make Art are changing fast and I love to find ways to work with new technology both in the Hard and Software worlds.</p>
+        <br/>        
+        <p>Generative Music, VFX, 3D Animation, Sound Design, Software Development, Scripting, Generative AI, Video Games, 3D Experiences, Original Music, are some of the creative ouputs I found for my creativity.</p>
+        <br/>        
+        <p>I'm currently working as a Senior Creative Technologist in .Monks, creating pipelines for the Design, Editing and VFX teams that include AI generative tools, custom Models and Scripts.</p>
+        <p>Creating Image Generation Apps and Tools with Flux and Stable Diffusion.</p>
+        <p>Working in between the Backend team and the Client to figure out the best uses and tools with AI.</p>
+        <br/>
+        <p>Also still working as a VFX Artist and Video Editor for brands like General Motors, Buick, Amazon, Google, SCJ, Cadillac and many more. </p>
+        <p>Hands on editing, Compositing, and doing full VFX work (Animation, Lighting, Rendering) with Unreal Engine and Blender.</p>
+        <br/>
+        <p>I'd love to collaborate on a project together and find the best (creative and technical) solutions for you and your vision.</p>
+        <br/>        
+        <p>Stay Curious and Keep on Learning!</p>
+        <br/>        
+        <p>Cheers!</p>
+      </motion.div>
     </div>
   );
 };
