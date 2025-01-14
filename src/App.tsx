@@ -14,6 +14,7 @@ import Dove from './pages/work/Dove';
 import Atea from './pages/work/Atea';
 import Generative from './pages/work/Generative';
 import Music from './pages/work/Music';
+import Tungsteno from './pages/work/Tungsteno';
 
 //PROJECT IMPORTS
 import TheNoise from './pages/projects/TheNoise';
@@ -36,6 +37,7 @@ function App() {
             <Route path="/work/Monks" element={<Monks />} />
             <Route path="/work/Dove" element={<Dove />} />
             <Route path="/work/atea" element={<Atea />} />
+            <Route path="/work/Tungsteno" element={<Tungsteno />} />
             <Route path="/projects/TheNoise" element={<TheNoise />} />
             <Route path="/projects/TheGlitch" element={<TheGlitch />} />
             <Route path="/projects/TheTape" element={<TheTape />} />
@@ -46,9 +48,9 @@ function App() {
             <Route path="/Labs" element={<Labs />} />
           </Routes>
         </main>
-        {/* <div>
+        <div className="">
           <SideNotes/>
-          </div> */}
+          </div>
         </div>
     </Router>
   );

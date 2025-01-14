@@ -1,121 +1,65 @@
-// src/components/SideNav.tsx
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// src/components/SideNotes.tsx
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-interface MenuItem {
+interface HeadingItem {
+  id: string;
   title: string;
-  path?: string;
-  icon?: React.ReactNode;
-  submenu?: MenuItem[];
 }
 
-interface SubMenuProps {
-  item: MenuItem;
-  isActive?: boolean;
-  isOpen: boolean;
-  onToggle: (isOpen: boolean) => void;
-}
-
-const LINK_BASE_STYLES =
-  'flex items-center p-2 transition-colors duration-200 font-bold';
-const LINK_HOVER_STYLES = 'hover:bg-nasared hover:text-white';
-const ACTIVE_STYLES = 'bg-white text-nasared';
-const INACTIVE_STYLES = 'text-gray-800 bg-white';
-const SUBMENU_LINK_STYLES = `${LINK_BASE_STYLES} text-sm font-medium`;
-
-const SubMenu = ({ item, isActive, isOpen, onToggle }: SubMenuProps) => {
-  const location = useLocation();
-
-  return (
-    <div className="mb-2">
-      <button
-        className={`${LINK_BASE_STYLES} w-full justify-between ${LINK_HOVER_STYLES}
-          ${isActive ? ACTIVE_STYLES : INACTIVE_STYLES}`}
-        onClick={() => onToggle(!isOpen)}
-      >
-        <span className="flex items-center gap-2">
-          {item.icon}
-          {item.title}
-        </span>
-        <svg
-          className={`h-4 w-4 transition-transform duration-200 
-            ${isOpen ? 'rotate-90' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-
-      {isOpen && item.submenu && (
-        <div className="ml-4 mt-2 space-y-2">
-          {item.submenu.map((subItem) => {
-            const isSubItemActive = location.pathname === subItem.path;
-            return (
-              <Link
-                key={subItem.path}
-                to={subItem.path ?? ''}
-                className={`${SUBMENU_LINK_STYLES} ${LINK_HOVER_STYLES}
-                  ${isSubItemActive ? ACTIVE_STYLES : INACTIVE_STYLES}`}
-              >
-                {subItem.title}
-              </Link>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-};
+const LINK_BASE_STYLES = "flex items-center p-2 transition-colors duration-200 font-normal text-sm";
+const LINK_HOVER_STYLES = "hover:text-nasared";
 
 const SideNotes = () => {
   const location = useLocation();
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [headings, setHeadings] = useState<HeadingItem[]>([]);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const menuItems: MenuItem[] = [
-    {
-      title: 'Notes',
-      path: '/home',
-      icon: <span></span>,
-    },
-    {
-      title: 'Links',
-      path: '/labs',
-      icon: <span></span>,
-    },
-  ];
+  useEffect(() => {
+    const h1Elements = document.querySelectorAll('h2');
+    const headingItems: HeadingItem[] = Array.from(h1Elements).map((heading, index) => {
+      if (!heading.id) {
+        heading.id = `heading-${index}`;
+      }
+      return {
+        id: heading.id,
+        title: heading.textContent || ''
+      };
+    });
+    setHeadings(headingItems);
+  }, [location]);
+
+  const scrollToHeading = (id: string) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <nav className="bg-white h-screen w-64 shadow-lg">
+    <nav 
+      className={`fixed top-0 right-0 bg-white h-screen shadow-lg transition-all duration-300 
+        ${isExpanded ? 'w-64' : 'w-16'}`}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+    >
       <div className="p-4">
         <div className="space-y-2">
-          {menuItems.map((item) => {
-            const isActive = location.pathname === item.path;
-            return (
-              <div key={item.path ?? item.title}>
-                {item.submenu ? (
-                  <SubMenu
-                    item={item}
-                    isActive={isActive}
-                    isOpen={activeDropdown === item.title}
-                    onToggle={(isOpen) => {
-                      setActiveDropdown(isOpen ? item.title : null);
-                    }}
-                  />
-                ) : (
-                  <Link
-                    to={item.path ?? ''}
-                    className={`${LINK_BASE_STYLES} ${LINK_HOVER_STYLES}
-                      ${isActive ? ACTIVE_STYLES : INACTIVE_STYLES}`}
-                  >
-                    {item.icon}
-                    <span className="ml-2">{item.title}</span>
-                  </Link>
-                )}
-              </div>
-            );
-          })}
+          {headings.map((heading) => (
+            <button
+              key={heading.id}
+              onClick={() => scrollToHeading(heading.id)}
+              className={`${LINK_BASE_STYLES} ${LINK_HOVER_STYLES}
+                w-full text-left
+                ${!isExpanded ? 'justify-center' : ''}`}
+            >
+              {isExpanded ? (
+                <span className="ml-2">{heading.title}</span>
+              ) : (
+                <span className="w-4 overflow-hidden">
+                  {heading.title[0]}
+                </span>
+              )}
+            </button>
+          ))}
         </div>
       </div>
     </nav>

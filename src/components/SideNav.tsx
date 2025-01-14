@@ -95,6 +95,7 @@ const SideNav = () => {
       submenu: [
         { title: '.Monks', path: '/work/monks' },
         { title: 'Dove', path: '/work/dove' },
+        { title: 'Tungsteno Films', path: '/work/Tungsteno' },
         { title: 'ATEA', path: '/work/atea' },
         { title: 'AI', path: '/work/Generative' },
         { title: 'Unreal Engine', path: '/work/unrealengine' },

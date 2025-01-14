@@ -15,11 +15,12 @@ const Hello = () => {
         whileInView={{ opacity: 1, x: 0 }}
         initial={{ opacity: 0, x: 100 }}
         transition={{ duration: 1.5 }}
-        className="w-full font-light"
+        className="w-full text-sm font-light py-4"
       >
-        <p>Hello there!</p>
+ 
+        <h2 className="font-semibold text-nasared">Hello there!</h2>
         <br/> {/* Add two line breaks for more space */}
-        <p>I'm Nicolas Daniel Requena a Creative Technologist (previously a Senior Video Editor) <a className="font-bold text-gray-900" href="https://www.monks.com">@ .Monks</a></p>
+        <p>I'm Nicolas Daniel Requena a Creative Technologist <a className="font-thin">(previously a Senior Video Editor)</a> <a className="font-black text-nasared" href="https://www.monks.com">@ .Monks</a></p>
         <br/>       
         <p>Who is me?</p>
         <p>Music Producer, Composer and Audio Engineer who taught himself to do VFX and 3D Work for the love of Films...</p>        

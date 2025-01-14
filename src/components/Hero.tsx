@@ -13,14 +13,14 @@ const Hero = () => {
       <div className="flex flex-wrap">
         <div className="w-full lg:w-1/2">
           <div className="flex flex-col item-center lg:items-start">
-            <motion.h1
+            <motion.h2
               variants={container(0)}
               initial="hidden"
               animate="visible"
               className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text8xl text-nasared"
             >
               SPACERPUNK
-            </motion.h1>
+            </motion.h2>
             <motion.span
               variants={container(0.3)}
               initial="hidden"
