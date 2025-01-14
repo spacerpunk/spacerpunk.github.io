@@ -19,9 +19,9 @@ interface SubMenuProps {
 const LINK_BASE_STYLES =
   'flex items-center p-2 transition-colors duration-200 font-bold';
 const LINK_HOVER_STYLES = 'hover:bg-nasared hover:text-white';
-const ACTIVE_STYLES = 'bg-white text-nasared';
-const INACTIVE_STYLES = 'text-gray-800 bg-white';
-const SUBMENU_LINK_STYLES = `${LINK_BASE_STYLES} text-sm font-medium`;
+const ACTIVE_STYLES = 'bg-white text-nasared text-normal font-semibold';
+const INACTIVE_STYLES = 'text-gray-800 bg-white font-normal text-sm';
+const SUBMENU_LINK_STYLES = `${LINK_BASE_STYLES} text-sm font-normal`;
 
 const SubMenu = ({ item, isActive, isOpen, onToggle }: SubMenuProps) => {
   const location = useLocation();
@@ -75,12 +75,12 @@ const SideNav = () => {
 
   const menuItems: MenuItem[] = [
     {
-      title: 'spcrpnk',
+      title: 'SPCRPNK',
       path: '/home',
       icon: <span></span>,
     },
     {
-      title: 'Projects',
+      title: 'PROJECTS',
       icon: <span></span>,
       submenu: [
         { title: 'The Noise', path: '/projects/TheNoise' },
@@ -90,7 +90,7 @@ const SideNav = () => {
       ],
     },
     {
-      title: 'Work',
+      title: 'WORKS',
       icon: <span></span>,
       submenu: [
         { title: '.Monks', path: '/work/monks' },
@@ -104,13 +104,16 @@ const SideNav = () => {
       ],
     },
     {
-      title: 'Me',
-      path: '/about',
+      title: 'TECH LABS',
       icon: <span></span>,
+      submenu: [
+        { title: 'Electronic Arts', path: '/labs/electronics' },
+        { title: 'Flux', path: '/labs/flux' },
+      ],
     },
     {
-      title: 'Labs',
-      path: '/labs',
+      title: 'ME',
+      path: '/about',
       icon: <span></span>,
     },
   ];

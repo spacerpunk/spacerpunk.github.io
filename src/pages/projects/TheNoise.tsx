@@ -1,7 +1,7 @@
 
 const TheNoise = () => {
     return (
-        <div className="p-4">
+        <div className="p-4 background-gray-800">
              <h2 className="w-full font-light py-6">
                 BANNER
             </h2>
@@ -26,7 +26,7 @@ const TheNoise = () => {
                 <h3 className="text-sm">
                      Spotify Playlist - The Music
                     </h3>
-                    <iframe className="md:flex" src="https://open.spotify.com/embed/playlist/3S0sljsAvx3rlWQlZJDkag?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe className="md:flex" src="https://open.spotify.com/embed/playlist/3S0sljsAvx3rlWQlZJDkag?utm_source=generator&theme=0" width="50%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <h2 className="w-full font-light py-4">
                  Images
                 </h2>

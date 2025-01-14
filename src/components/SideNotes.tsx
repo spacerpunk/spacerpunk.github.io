@@ -7,7 +7,7 @@ interface HeadingItem {
   title: string;
 }
 
-const LINK_BASE_STYLES = "flex items-center p-2 transition-colors duration-200 font-normal text-sm";
+const LINK_BASE_STYLES = "flex items-center p-2 transition-colors duration-200 font-light text-sm";
 const LINK_HOVER_STYLES = "hover:text-nasared";
 
 const SideNotes = () => {
@@ -37,7 +37,7 @@ const SideNotes = () => {
   return (
     <nav 
       className={`fixed top-0 right-0 bg-white h-screen shadow-lg transition-all duration-300 
-        ${isExpanded ? 'w-64' : 'w-16'}`}
+        ${isExpanded ? 'w-64' : 'w-16'} z-10`}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
