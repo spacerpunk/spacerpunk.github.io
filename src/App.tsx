@@ -6,10 +6,12 @@ import SideNotes from './components/SideNotes';
 import Dashboard from './pages/Home';
 import About from './pages/About';
 import Home from './pages/Home';
+import ThemeToggle from './components/ThemeToggle';
 
 //LABS IMPORTS
 import Electronics from './pages/labs/electronics';
 import GenerativeAI from './pages/labs/GenerativeAI';
+import AlternativeTechnology from './pages/labs/AlternativTechnology';
 
 //WORK IMPORTS
 import Monks from './pages/work/Monks';
@@ -51,9 +53,11 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/labs/electronics" element={<Electronics />} />
               <Route path="/labs/GenerativeAI" element={<GenerativeAI />} />
+              <Route path="/labs/AlternativeTechnology" element={<AlternativeTechnology />} />
             </Routes>
-          <SideNotes/>
           </div>
+          <SideNotes/>
+          {/* <ThemeToggle /> */}
         </main>
           
         </div>

@@ -109,6 +109,7 @@ const SideNav = () => {
       submenu: [
         { title: 'Electronic Arts', path: '/labs/electronics' },
         { title: 'Gen. AI', path: '/labs/GenerativeAI' },
+        { title: 'AltTech', path: '/labs/AlternativeTechnology' },
       ],
     },
     {
