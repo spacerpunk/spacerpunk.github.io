@@ -56,7 +56,7 @@ function App() {
               <Route path="/labs/AlternativeTechnology" element={<AlternativeTechnology />} />
             </Routes>
           </div>
-          <SideNotes/>
+          {/* <SideNotes/> */}
           {/* <ThemeToggle /> */}
         </main>
           
