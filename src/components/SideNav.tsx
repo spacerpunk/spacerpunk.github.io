@@ -100,17 +100,17 @@ const SideNav = () => {
         { title: 'AI', path: '/work/Generative' },
         { title: 'Unreal Engine', path: '/work/unrealengine' },
         { title: 'VFX', path: '/work/vfx' },
-        { title: 'Music', path: '/work/Music' },
       ],
     },
     {
-      title: 'TECH LABS',
+      title: 'MUSIC',
+      path: '/Music',
       icon: <span></span>,
-      submenu: [
-        { title: 'Electronic Arts', path: '/labs/electronics' },
-        { title: 'Gen. AI', path: '/labs/GenerativeAI' },
-        { title: 'AltTech', path: '/labs/AlternativeTechnology' },
-      ],
+    },
+    {
+      title: 'TECH LABS',
+      path: '/Labs',
+      icon: <span></span>,
     },
     {
       title: 'ME',

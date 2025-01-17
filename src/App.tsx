@@ -1,24 +1,20 @@
 // src/App.tsx
-import React from 'react';
+// import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SideNav from './components/SideNav';
-import SideNotes from './components/SideNotes';
+// import SideNotes from './components/SideNotes';
 import Dashboard from './pages/Home';
 import About from './pages/About';
 import Home from './pages/Home';
-import ThemeToggle from './components/ThemeToggle';
-
-//LABS IMPORTS
-import Electronics from './pages/labs/electronics';
-import GenerativeAI from './pages/labs/GenerativeAI';
-import AlternativeTechnology from './pages/labs/AlternativTechnology';
+import Labs from './pages/Labs';
+import Music from './pages/Music';
+// import ThemeToggle from './components/ThemeToggle';
 
 //WORK IMPORTS
 import Monks from './pages/work/Monks';
 import Dove from './pages/work/Dove';
 import Atea from './pages/work/Atea';
 import Generative from './pages/work/Generative';
-import Music from './pages/work/Music';
 import Tungsteno from './pages/work/Tungsteno';
 
 //PROJECT IMPORTS
@@ -26,7 +22,6 @@ import TheNoise from './pages/projects/TheNoise';
 import TheGlitch from './pages/projects/TheGlitch';
 import TheTape from './pages/projects/TheTape';
 import TrenchRun from './pages/projects/TrenchRun';
-
 
 function App() {
   return (
@@ -49,18 +44,15 @@ function App() {
               <Route path="/projects/TheTape" element={<TheTape />} />
               <Route path="/projects/TrenchRun" element={<TrenchRun />} />
               <Route path="/work/Generative" element={<Generative />} />
-              <Route path="/work/Music" element={<Music />} />
               <Route path="/about" element={<About />} />
-              <Route path="/labs/electronics" element={<Electronics />} />
-              <Route path="/labs/GenerativeAI" element={<GenerativeAI />} />
-              <Route path="/labs/AlternativeTechnology" element={<AlternativeTechnology />} />
+              <Route path="/Labs" element={<Labs />} />
+              <Route path="/Music" element={<Music />} />
             </Routes>
           </div>
           {/* <SideNotes/> */}
           {/* <ThemeToggle /> */}
         </main>
-          
-        </div>
+      </div>
     </Router>
   );
 }
