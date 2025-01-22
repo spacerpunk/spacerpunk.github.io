@@ -1,5 +1,145 @@
 import BANNER from '../../assets/Images/TheNoise-Banner.png';
 import TheNoise01 from '../../assets/Videos/thenoise01.mp4';
+import TheNoise05 from '../../assets/Videos/thenoise05.mp4';
+import TheNoiseImage01 from '../../assets/Images/thenoise1.png';
+import TheNoiseImage02 from '../../assets/Images/thenoise2.png';
+import TheNoiseImage03 from '../../assets/Images/thenoise3.png';
+import TheNoiseImage04 from '../../assets/Images/thenoise4.png';
+import TheNoiseImage05 from '../../assets/Images/thenoise5.png';
+import TheNoiseImage06 from '../../assets/Images/thenoise6.png';
+import TheNoiseImage07 from '../../assets/Images/thenoise7.png';
+import TheNoiseImage08 from '../../assets/Images/thenoise8.png';
+import TheNoiseImage09 from '../../assets/Images/thenoise9.png';
+import TheNoiseImage010 from '../../assets/Images/thenoise10.png';
+import TheNoiseImage011 from '../../assets/Images/thenoise11.png';
+import TheNoiseImage012 from '../../assets/Images/thenoise12.png';
+import TheNoiseImage013 from '../../assets/Images/thenoise13.png';
+import TheNoiseImage014 from '../../assets/Images/thenoise14.png';
+import TheNoiseImage015 from '../../assets/Images/thenoise15.png';
+import TheNoiseImage016 from '../../assets/Images/thenoise16.png';
+import TheNoiseImage017 from '../../assets/Images/thenoise17.png';
+import TheNoiseImage018 from '../../assets/Images/thenoise18.png';
+import ImageGrid from './ImageGrid';
+
+const imageList = [
+  {
+    src: TheNoiseImage01,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage02,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage014,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage03,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage012,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage04,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+
+
+];
+
+const imageList2 = [  
+  {
+    src: TheNoiseImage015,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage08,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage010,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage013,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage09,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage016,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+
+];
+
+const imageList3 = [
+  {
+    src: TheNoiseImage011,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage017,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage06,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage018,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage07,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  },
+  {
+    src: TheNoiseImage05,
+    alt: "Description 1",
+    title: "Optional Title 1",
+    aspect: "video"
+  }
+];
 
 const TheNoise = () => {
   return (
@@ -20,25 +160,24 @@ const TheNoise = () => {
           src="https://open.spotify.com/embed/playlist/3S0sljsAvx3rlWQlZJDkag?utm_source=generator&theme=0"
           width="50%"
           height="152"
-          frameBorder="0"
+          // frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
-        <h2 className="w-full text-normal font-semibold pt-4">CONCEPT</h2>
+        <h2 className="w-full text-normal font-semibold pt-4">The Noise - Horror Series - Small Short Videos and Clips and Experiences to piece together a big Story at S4</h2>
         <h3 className="w-full text-sm font-light pt-2 pb-4">
-          Researching and falling deep on a Close Encounters, Random Event
+          <p>Researching and falling deep on a Close Encounters, Random Event
           Generators, UFOs and Liminal spaces rabbit hole I came up with and
-          idea for a story (Actually it was a video game first). A world,
-          characters, events, interactions and lore for a world in which my
-          story develops. I don't like to think of it as a Film, Book or
-          Game...it's an idea, a SPACE, and I'd like to explore it and see what
-          outputs I can get from it. Go deep into it and see what I can come out
-          with. Concept work will be feautred here as well as the process of
-          using this creative space to generate Art, working towards making a
-          Short Horror First Person Retro Game and a Short Film. I like the idea
-          of creating things that may exist in the universe that I'm writing
-          about. For that I'm also prototyping some Electronic Devices that
-          generate Sounds with AI and data from weird events
+          idea for a story (Actually it was a video game first). </p>
+          <p>A world,
+          characters, events, interactions and lore for a world. I don't want to think of it as a Film, Book or
+          Game...it's an idea. </p>
+          <p>A SPACE, and I'd like to explore it and see what
+          outputs I can get from it.
+          </p>
+          <p>I like the idea of creating things that may exist in the universe that I'm writing
+          about.</p>
+          <p>And if you pay attention to each small piece you may figure out the whole thing.</p>
         </h3>
         <div className="relative w-full h-[200px] my-8">
           <video
@@ -54,20 +193,62 @@ const TheNoise = () => {
         <h2 className="w-full font-light py-4">Stills</h2>
         <h3>
           <p>AI Generated Concept Art.</p>
-          <p>
-            Reference Images, Storyboard Images and some of the were later used
-            for img2vid AI generation.
+          <p className="w-full font-light text-sm pt-2">
+            Created using Flux and ComfyUI.
           </p>
+
+          <h2 className="w-full font-normal py-4 text-nasared">
+          <div className="container mx-auto">
+            <ImageGrid 
+              images={imageList} 
+              columns={3} // Optional: 2, 3, or 4 columns
+            />
+          </div>
+
+        </h2>
+        <h2>
+        <p className="w-full font-light text-sm py-0">
+            I created a custom Flux Workflow using input images with blur and a high denoise value, this way I can control the lighting of the images and composition.
+          </p>
+        </h2>
+        
+        <h2 className="w-full font-normal py-4 text-nasared">
+          <div className="container mx-auto">
+            <ImageGrid 
+              images={imageList2} 
+              columns={3} // Optional: 2, 3, or 4 columns
+            />
+          </div>
+        </h2>
+
+        <div className="relative w-full h-[200px] my-8">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute w-full h-full object-cover"
+          >
+            <source src={TheNoise05} type="video/mp4" />
+          </video>
+        </div>
+
+        <h2 className="w-full font-normal py-4 text-nasared">
+          <div className="container mx-auto">
+            <ImageGrid 
+              images={imageList3} 
+              columns={3} // Optional: 2, 3, or 4 columns
+            />
+          </div>
+        </h2>
+
         </h3>
-        <h2 className="w-full font-light py-4">Short Film Clips (WIP)</h2>
         <h2 className="w-full font-light py-4">The Story</h2>
         <h2 className="w-full font-light py-4">
-          Design and Generate with AI - Storyboard
+        <iframe width="100%" height="360" src="https://www.youtube.com/embed/_22onA4dyhs?si=ggjkxXk-ZSHbEZA5" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </h2>
-        <h3 className="text-sm">ComfyUI - FLUX</h3>
-        <h3 className="text-sm">Text2Speech</h3>
-        <h3 className="text-sm">PyramidFlow, Runway, LTX</h3>
-        <h2 className="w-full font-light py-4">The Game</h2>
+        <h2 className="w-full font-light py-4">Unreal Engine</h2>
+        <h2 className="w-full font-light py-4">Retro Boomer FPS Horror Walking Sim</h2>
         <h2 className="w-full font-light py-4">
           SoundDesign App with Electronics
         </h2>

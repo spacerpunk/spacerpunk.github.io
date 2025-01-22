@@ -1,3 +1,5 @@
+import AudioVisualRow from '../components/AudioVisualRow';
+
 export default function Music() {
   return (
     <div className="p-4">
@@ -8,6 +10,9 @@ export default function Music() {
         #tags and description…and we could have a link on the bottom to redirect
         to Spotify or Bandcamp.
       </p>
+      <div className="w-full p-4">
+        <AudioVisualRow />
+      </div>
     </div>
   );
 }

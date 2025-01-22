@@ -12,35 +12,56 @@ export const EXPERIENCES = [
     year: '2023 - Present',
     role: 'Senior Creative Technologist',
     company: 'Monks',
-    description: `Led a team in developing and maintaining web applications using JavaScript, React.js, and Node.js. Implemented RESTful APIs and integrated with MongoDB databases. Collaborated with stakeholders to define project requirements and timelines.`,
+    description: `Creating pipelines for the Design, Editing and VFX teams
+        that include AI generative tools, Custom Fine Tuned Models (LLMs and Image Gen) and Scripting.
+        Also creating Image Generation Apps and Tools with Flux
+        and Stable Diffusion, working in between the Backend team
+        and the Client.`,
     technologies: ['Python', 'AI', 'ExtendScript', 'Typescript', 'AfterEffects', 'ComfyUI', 'Blender'],
   },
   {
     year: '2021 - 2023',
     role: 'Senior Video Editor',
     company: 'Monks',
-    description: `Designed and developed user interfaces for web applications using Next.js and React. Worked closely with backend developers to integrate frontend components with Node.js APIs. Implemented responsive designs and optimized frontend performance.`,
+    description: `VFX Artist and Video Editor for brands like General Motors,
+            Buick, Amazon, Google, SCJ, Cadillac and many more.
+            Hands on editing, Compositing, and doing full VFX work
+            (Animation, Lighting, Rendering) with Unreal Engine and
+            Blender`,
     technologies: ['Premiere Pro', 'C4D', 'After Effects', 'ExtendScript', 'Python'],
   },
   {
     year: '2017 - 2020',
     role: 'VFX Artist & 3D Generalist',
     company: 'Tungsteno Films',
-    description: `Contributed to the development of web applications using JavaScript, React.js, and Node.js. Managed databases and implemented data storage solutions using MongoDB. Worked closely with product managers to prioritize features and enhancements.`,
+    description: `Worked as a Video Editor and VFX artist working on indie short films and
+          advertising for clients like Dove, Eco de los
+          Andes, Visa, Santander, Macsha, and more. Creating
+          Pipelines in Unrea Engine, Davinci and Blender as well as
+          simple scripts .`,
     technologies: ['Blender', 'Unreal Engine', 'Davinci Resolve', 'After Effects'],
   },
   {
     year: '2015 - 2018',
     role: 'Audio Director',
     company: 'Tungsteno Films',
-    description: `Developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to deliver high-quality software products on schedule.`,
+    description: `Main audio post production for an indie film company, from
+        in site recording of dialogues and sounds to final mix and
+        editing.
+        Worked on many advertising spots and short films both as
+        composer and sound designer aswell as mixer and editor.`,
     technologies: ['Ableton', 'Cubase', 'Dialogue Editing', 'Davinci Resolve'],
   },
   {
     year: '2013 - Present',
     role: 'Music Composer',
     company: 'Spacerpunk',
-    description: `Developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to deliver high-quality software products on schedule.`,
+    description: `Music production and composition for various brands and
+          projects. Advertising, Video Game Audio implementation,
+          films, social media content.
+          Working with industry standard tools such as Pro Tools,
+          Cubase, and Nuendo to create mixes and scores for
+          different rooms and media.`,
     technologies: ['Ableton', 'Cubase', 'MaxMSP', 'Unreal Engine', 'Unity'],
   },
 ];
