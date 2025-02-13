@@ -7,7 +7,6 @@ import Dashboard from './pages/Home';
 import About from './pages/About';
 import Home from './pages/Home';
 import Labs from './pages/Labs';
-import Music from './pages/Music';
 // import ThemeToggle from './components/ThemeToggle';
 
 //WORK IMPORTS
@@ -46,7 +45,6 @@ function App() {
               <Route path="/work/Generative" element={<Generative />} />
               <Route path="/about" element={<About />} />
               <Route path="/Labs" element={<Labs />} />
-              <Route path="/Music" element={<Music />} />
             </Routes>
           </div>
           {/* <SideNotes/> */}
