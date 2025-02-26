@@ -19,7 +19,7 @@ interface SubMenuProps {
 const LINK_BASE_STYLES =
   'flex items-center p-2 transition-colors duration-200 font-bold';
 const LINK_HOVER_STYLES = 'hover:bg-nasared hover:text-white';
-const ACTIVE_STYLES = 'bg-white text-nasared text-normal font-semibold';
+const ACTIVE_STYLES = 'bg-white text-nasared text-sm font-semibold';
 const INACTIVE_STYLES = 'text-gray-800 bg-white font-normal text-sm';
 const SUBMENU_LINK_STYLES = `${LINK_BASE_STYLES} text-sm font-normal`;
 
@@ -84,9 +84,11 @@ const SideNav = () => {
       icon: <span></span>,
       submenu: [
         { title: 'The Noise', path: '/projects/TheNoise' },
-        { title: 'The Glitch', path: '/projects/TheGlitch' },
+        { title: 'Badger Safety!', path: '/projects/aiff' },
         { title: 'The Tape', path: '/projects/TheTape' },
         { title: 'Trench Run', path: '/projects/TrenchRun' },
+        { title: 'The Glitch', path: '/projects/TheGlitch' },
+        { title: 'Jodo (WIP)', path: '/projects/Jodo' },
       ],
     },
     {
@@ -95,17 +97,10 @@ const SideNav = () => {
       submenu: [
         { title: '.Monks', path: '/work/monks' },
         { title: 'Dove', path: '/work/dove' },
+        { title: 'Gen AI', path: '/work/Generative' },
         { title: 'Tungsteno Films', path: '/work/Tungsteno' },
         { title: 'ATEA', path: '/work/atea' },
-        { title: 'AI', path: '/work/Generative' },
-        { title: 'Unreal Engine', path: '/work/unrealengine' },
-        { title: 'VFX', path: '/work/vfx' },
       ],
-    },
-    {
-      title: 'MUSIC',
-      path: '/Music',
-      icon: <span></span>,
     },
     {
       title: 'TECH LABS',

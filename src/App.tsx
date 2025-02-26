@@ -5,8 +5,8 @@ import SideNav from './components/SideNav';
 // import SideNotes from './components/SideNotes';
 import Dashboard from './pages/Home';
 import About from './pages/About';
-import Home from './pages/Home';
 import Labs from './pages/Labs';
+import HoverMediaGrid from './pages/Home';
 // import ThemeToggle from './components/ThemeToggle';
 
 //WORK IMPORTS
@@ -18,6 +18,8 @@ import Tungsteno from './pages/work/Tungsteno';
 
 //PROJECT IMPORTS
 import TheNoise from './pages/projects/TheNoise';
+import AIFF from './pages/projects/aiff'
+import Jodo from './pages/projects/Jodo'
 import TheGlitch from './pages/projects/TheGlitch';
 import TheTape from './pages/projects/TheTape';
 import TrenchRun from './pages/projects/TrenchRun';
@@ -33,12 +35,21 @@ function App() {
           <div className="max-w-[calc(100vw-8rem)]">
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/Home" element={<Home />} />
+              {/* <Route path="/Home" element={<Home />} /> */}
+              <Route path="/Home" element={<HoverMediaGrid
+              containerWidth={200}
+              aspectRatio="aspect-[2/3]"
+              gap={0}
+              minColumns={2}
+              maxColumns={5}
+              />} />
               <Route path="/work/Monks" element={<Monks />} />
               <Route path="/work/Dove" element={<Dove />} />
               <Route path="/work/atea" element={<Atea />} />
               <Route path="/work/Tungsteno" element={<Tungsteno />} />
               <Route path="/projects/TheNoise" element={<TheNoise />} />
+              <Route path="/projects/Jodo" element={<Jodo />} />
+              <Route path="/projects/aiff" element={<AIFF />} />
               <Route path="/projects/TheGlitch" element={<TheGlitch />} />
               <Route path="/projects/TheTape" element={<TheTape />} />
               <Route path="/projects/TrenchRun" element={<TrenchRun />} />

@@ -26,37 +26,37 @@ const imageList = [
     src: TheNoiseImage01,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage02,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage014,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage03,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage012,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage04,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
 
 
@@ -67,37 +67,37 @@ const imageList2 = [
     src: TheNoiseImage015,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage08,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage010,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
-  },
+    aspect: "video" as "video"
+  }, 
   {
     src: TheNoiseImage013,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage09,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage016,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
 
 ];
@@ -107,38 +107,38 @@ const imageList3 = [
     src: TheNoiseImage011,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage017,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage06,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage018,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage07,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
+    aspect: "video" as "video"
   },
   {
     src: TheNoiseImage05,
     alt: "Description 1",
     title: "Optional Title 1",
-    aspect: "video"
-  }
+    aspect: "video" as "video"
+  } 
 ];
 
 const TheNoise = () => {
@@ -247,11 +247,10 @@ const TheNoise = () => {
         <h2 className="w-full font-light py-4">
         <iframe width="100%" height="360" src="https://www.youtube.com/embed/_22onA4dyhs?si=ggjkxXk-ZSHbEZA5" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </h2>
-        <h2 className="w-full font-light py-4">Unreal Engine</h2>
-        <h2 className="w-full font-light py-4">Retro Boomer FPS Horror Walking Sim</h2>
-        <h2 className="w-full font-light py-4">
-          SoundDesign App with Electronics
+        <h2 className="w-full font-light py-4">Unreal Engine
+          <h3 className="text-normal text-nasared font-bold">WIP</h3>
         </h2>
+
       </div>
     </div>
   );

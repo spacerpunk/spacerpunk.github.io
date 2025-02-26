@@ -1,3 +1,15 @@
+import ImageGrid from '..projects/ImageGrid'
+
+
+const imageList = [
+  {
+    src: ,
+    alt: ,
+    title: ,
+    aspect: ""
+  }
+]
+
 export default function Generative() {
     return (
       <div className="p-4">

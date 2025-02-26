@@ -12,7 +12,7 @@ export default function TheTape() {
           #unrealengine #vfx #blender #music #rendering #modeling
           </h3>
         <h2 className="w-full font-light py-4">
-          <p>The tape is a short concept film to learn Unreal Engine, sing Lumen and rendering in real time.</p>
+          <p>The tape is a short concept film to learn Unreal Engine.</p>
           <br/>
           <p>I wanted to focus on light, rendering and getting a simple story and short film from a few assets from the Unreal Library.</p> 
           <br/>
