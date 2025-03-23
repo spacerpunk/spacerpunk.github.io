@@ -15,6 +15,7 @@ import Dove from './pages/work/Dove';
 import Atea from './pages/work/Atea';
 import Generative from './pages/work/Generative';
 import Tungsteno from './pages/work/Tungsteno';
+import Reel from './pages/Reel';
 
 //PROJECT IMPORTS
 import TheNoise from './pages/projects/TheNoise';
@@ -23,6 +24,7 @@ import Jodo from './pages/projects/Jodo';
 import TheGlitch from './pages/projects/TheGlitch';
 import TheTape from './pages/projects/TheTape';
 import TrenchRun from './pages/projects/TrenchRun';
+import SpaceMusic from './pages/projects/SpaceMusic';
 
 function App() {
   return (
@@ -56,9 +58,11 @@ function App() {
               <Route path="/projects/TheGlitch" element={<TheGlitch />} />
               <Route path="/projects/TheTape" element={<TheTape />} />
               <Route path="/projects/TrenchRun" element={<TrenchRun />} />
+              <Route path="/projects/SpaceMusic" element={<SpaceMusic />} />
               <Route path="/work/Generative" element={<Generative />} />
               <Route path="/about" element={<About />} />
               <Route path="/Labs" element={<Labs />} />
+              <Route path="/Reel" element={<Reel />} />
             </Routes>
           </div>
           {/* <SideNotes/> */}

@@ -83,11 +83,12 @@ const SideNav = () => {
       title: 'PROJECTS',
       icon: <span></span>,
       submenu: [
+        { title: 'Space Music', path: '/projects/SpaceMusic' },
         { title: 'The Noise', path: '/projects/TheNoise' },
-        { title: 'Badger Safety!', path: '/projects/aiff' },
         { title: 'The Tape', path: '/projects/TheTape' },
         { title: 'Trench Run', path: '/projects/TrenchRun' },
         { title: 'The Glitch', path: '/projects/TheGlitch' },
+        { title: 'Badger Safety! (WIP)', path: '/projects/aiff' },
         { title: 'Jodo (WIP)', path: '/projects/Jodo' },
       ],
     },
@@ -105,6 +106,11 @@ const SideNav = () => {
     {
       title: 'TECH LABS',
       path: '/Labs',
+      icon: <span></span>,
+    },
+    {
+      title: 'Reel',
+      path: '/Reel',
       icon: <span></span>,
     },
     {
