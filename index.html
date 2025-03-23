@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spcrpnk</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
-    <link rel="stylesheet" href="/style/styles.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="/style/styles.css" />
+  </head>
+  <body>
     <div id="loading-screen">
-        <div class="loading-content">
-            <div class="loading-text">Loading...</div>
-            <div class="loading-bar-container">
-                <div class="loading-bar"></div>
-            </div>
+      <div class="loading-content">
+        <div class="loading-text">Loading...</div>
+        <div class="loading-bar-container">
+          <div class="loading-bar"></div>
         </div>
+      </div>
     </div>
     <div class="terminal-container">
-        <div class="banner">
-            <div class="logo">
-                <a href="https://linktr.ee/spacerpunk" target="_blank"><img src="images/spacerpunk-logo.png" alt="spcrpk logo"></a>
-            </div>
-            <h1 class="title" data-text="spcrpnk">spacerpunk</h1>
-            <div class="buttons">
-                <button id="themeToggle">Toggle Theme</button>
-                <button id="initAudio">|></button>
-            </div>
+      <div class="banner">
+        <div class="logo">
+          <a
+            href="https://spacerpunk.github.io/spacerpunk-portfolio/"
+            target="_blank"
+            ><img src="images/spacerpunk-logo.png" alt="spcrpk logo"
+          /></a>
         </div>
-        <div class="main-content">
-            <div class="terminal-column">
-                <div class="terminal">
-                    <div id="terminal-content"></div>
-                </div>
-            </div>
-            <div class="visualization-column">
-                <div class="waveform-container">
-                    <!-- <canvas id="waveform"></canvas> -->
-                </div>
-                <div cass="log-container">
-                    <div id="log-content"></div>
-                </div>
-            </div>
+        <h1 class="title" data-text="spcrpnk">spacerpunk</h1>
+        <div class="buttons">
+          <button id="themeToggle">Toggle Theme</button>
+          <button id="initAudio">|></button>
         </div>
+      </div>
+      <div class="main-content">
+        <div class="terminal-column">
+          <div class="terminal">
+            <div id="terminal-content"></div>
+          </div>
+        </div>
+        <div class="visualization-column">
+          <div class="waveform-container">
+            <!-- <canvas id="waveform"></canvas> -->
+          </div>
+          <div cass="log-container">
+            <div id="log-content"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
@@ -59,6 +66,5 @@
     <script type="module" src="./weather/weather.js"></script>
     <!-- <script type="module" src="test.js"></script> -->
     <script type="module" src="./ambiences.js"></script>
-
-</body>
+  </body>
 </html>
