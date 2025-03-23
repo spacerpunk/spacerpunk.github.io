@@ -111,7 +111,7 @@ const Hello = () => {
             <a className="font-black text-nasared" href="https://www.monks.com">
               Coding
             </a>
-            , are some of the creative ouputs I found for my creativity.
+            , are some of the WAKALAKA ouputs I found for my creativity.
           </p>
         </motion.div>
         <br />

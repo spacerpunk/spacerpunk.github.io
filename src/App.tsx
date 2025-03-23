@@ -43,8 +43,6 @@ function App() {
                     containerWidth={200}
                     aspectRatio="aspect-[2/3]"
                     gap={16}
-                    minColumns={2}
-                    maxColumns={5}
                   />
                 }
               />
