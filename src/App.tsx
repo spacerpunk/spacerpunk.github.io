@@ -18,8 +18,8 @@ import Tungsteno from './pages/work/Tungsteno';
 
 //PROJECT IMPORTS
 import TheNoise from './pages/projects/TheNoise';
-import AIFF from './pages/projects/aiff'
-import Jodo from './pages/projects/Jodo'
+import AIFF from './pages/projects/aiff';
+import Jodo from './pages/projects/Jodo';
 import TheGlitch from './pages/projects/TheGlitch';
 import TheTape from './pages/projects/TheTape';
 import TrenchRun from './pages/projects/TrenchRun';
@@ -36,13 +36,18 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               {/* <Route path="/Home" element={<Home />} /> */}
-              <Route path="/Home" element={<HoverMediaGrid
-              containerWidth={200}
-              aspectRatio="aspect-[2/3]"
-              gap={0}
-              minColumns={2}
-              maxColumns={5}
-              />} />
+              <Route
+                path="/Home"
+                element={
+                  <HoverMediaGrid
+                    containerWidth={200}
+                    aspectRatio="aspect-[2/3]"
+                    gap={16}
+                    minColumns={2}
+                    maxColumns={5}
+                  />
+                }
+              />
               <Route path="/work/Monks" element={<Monks />} />
               <Route path="/work/Dove" element={<Dove />} />
               <Route path="/work/atea" element={<Atea />} />

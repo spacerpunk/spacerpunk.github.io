@@ -2,6 +2,14 @@ import React, { useRef, useState, useEffect } from 'react';
 import video01 from '../assets/Home/vid01.mp4';
 import image01 from '../assets/Home/image01.png';
 import music01 from '../assets/Home/music01.mp3';
+import music02 from '../assets/Home/1968.mp3';
+import music03 from '../assets/Home/ADRIFT.mp3';
+import music04 from '../assets/Home/Analog Sunset.mp3';
+import music05 from '../assets/Home/Androids.mp3';
+import music06 from '../assets/Home/Controlled Machines.mp3';
+import music07 from '../assets/Home/Pale Blue Dot (ft. Carl Sagan).mp3';
+import music08 from '../assets/Home/Cyberpunk.mp3';
+import music09 from '../assets/Home/And Then There Was Nothing.mp3';
 
 type MediaItem = {
   id: number;
@@ -20,30 +28,134 @@ const mediaItems: MediaItem[] = [
     image: image01,
     video: video01,
     audio: music01,
-    audioStartOffset: 2, // Start audio 5 seconds in
+    audioStartOffset: 1, // Start audio 5 seconds in
     title: 'Delta City',
     description: 'Why are we even trying?',
     links: [
-      { text: 'Official Website', url: 'https://peach.blender.org/' },
+      { text: 'Track on Bandcamp', url: 'https://peach.blender.org/' },
       {
-        text: 'Watch in HD',
-        url: 'https://www.youtube.com/watch?v=YE7VzlLtp-4',
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
       },
     ],
   },
   {
     id: 2,
-    image: 'https://via.placeholder.com/300x500?text=First+Frame+2',
-    video: 'https://www.w3schools.com/html/movie.mp4',
-    audio: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    image: image01,
+    video: video01,
+    audio: music02,
     audioStartOffset: 10, // Start audio 10 seconds in
-    title: 'Sample Video',
-    description:
-      'This is a demonstration video used for HTML5 video element examples.',
+    title: 'Yeah',
+    description: 'Why are we even trying?',
     links: [
       {
-        text: 'Learn more',
-        url: 'https://www.w3schools.com/html/html5_video.asp',
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
+      },
+    ],
+  },
+  {
+    id: 3,
+    image: image01,
+    video: video01,
+    audio: music03,
+    audioStartOffset: 10, // Start audio 10 seconds in
+    title: 'Yeah',
+    description: 'Why are we even trying?',
+    links: [
+      {
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
+      },
+    ],
+  },
+  {
+    id: 4,
+    image: image01,
+    video: video01,
+    audio: music04,
+    audioStartOffset: 10, // Start audio 10 seconds in
+    title: 'Yeah',
+    description: 'Why are we even trying?',
+    links: [
+      {
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
+      },
+    ],
+  },
+  {
+    id: 5,
+    image: image01,
+    video: video01,
+    audio: music05,
+    audioStartOffset: 10, // Start audio 10 seconds in
+    title: 'Yeah',
+    description: 'Why are we even trying?',
+    links: [
+      {
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
+      },
+    ],
+  },
+  {
+    id: 5,
+    image: image01,
+    video: video01,
+    audio: music06,
+    audioStartOffset: 10, // Start audio 10 seconds in
+    title: 'Yeah',
+    description: 'Why are we even trying?',
+    links: [
+      {
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
+      },
+    ],
+  },
+  {
+    id: 5,
+    image: image01,
+    video: video01,
+    audio: music07,
+    audioStartOffset: 10, // Start audio 10 seconds in
+    title: 'Yeah',
+    description: 'Why are we even trying?',
+    links: [
+      {
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
+      },
+    ],
+  },
+  {
+    id: 5,
+    image: image01,
+    video: video01,
+    audio: music08,
+    audioStartOffset: 10, // Start audio 10 seconds in
+    title: 'Yeah',
+    description: 'Why are we even trying?',
+    links: [
+      {
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
+      },
+    ],
+  },
+  {
+    id: 5,
+    image: image01,
+    video: video01,
+    audio: music09,
+    audioStartOffset: 10, // Start audio 10 seconds in
+    title: 'Yeah',
+    description: 'Why are we even trying?',
+    links: [
+      {
+        text: 'More Stuff',
+        url: 'https://linktr.ee/spacerpunk',
       },
     ],
   },
@@ -66,28 +178,37 @@ const MediaCard: React.FC<MediaCardProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isHovering, setIsHovering] = useState(false);
+  const hoverTimeout = useRef<number | null>(null);
 
   const handleMouseEnter = () => {
-    setIsHovering(true);
+    // Start a timeout to begin playback after 2 seconds
+    hoverTimeout.current = window.setTimeout(() => {
+      setIsHovering(true);
 
-    // Start video from beginning
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-    }
-
-    // Start audio with offset if specified
-    if (audioRef.current) {
-      if (item.audioStartOffset && item.audioStartOffset > 0) {
-        audioRef.current.currentTime = item.audioStartOffset;
-      } else {
-        audioRef.current.currentTime = 0;
+      // Start video from beginning
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play();
       }
-      audioRef.current.play();
-    }
+
+      // Start audio with offset if specified
+      if (audioRef.current) {
+        if (item.audioStartOffset && item.audioStartOffset > 0) {
+          audioRef.current.currentTime = item.audioStartOffset;
+        } else {
+          audioRef.current.currentTime = 0;
+        }
+        audioRef.current.play();
+      }
+    }, 500);
   };
 
   const handleMouseLeave = () => {
+    // Clear the timeout if the user stops hovering before 2 seconds
+    if (hoverTimeout.current !== null) {
+      clearTimeout(hoverTimeout.current);
+      hoverTimeout.current = null;
+    }
     setIsHovering(false);
     if (videoRef.current) {
       videoRef.current.pause();
@@ -106,11 +227,8 @@ const MediaCard: React.FC<MediaCardProps> = ({
       onMouseLeave={handleMouseLeave}
       onClick={() => onClick(item)}
     >
-      {/* Use inline style for width */}
       <div style={{ width: `${width}px` }}>
-        {/* Dynamic aspect ratio container based on props */}
         <div className={`relative ${aspectRatio} rounded-lg overflow-hidden`}>
-          {/* Show the image when not hovering */}
           {!isHovering && (
             <img
               src={item.image}
@@ -118,8 +236,6 @@ const MediaCard: React.FC<MediaCardProps> = ({
               className="w-full h-full object-cover absolute inset-0"
             />
           )}
-
-          {/* Video stays in DOM but is hidden when not hovering */}
           <video
             ref={videoRef}
             src={item.video}
@@ -160,7 +276,7 @@ const Modal: React.FC<ModalProps> = ({ item, onClose }) => {
   // Play both video and audio when component mounts
   useEffect(() => {
     if (videoRef.current && audioRef.current) {
-      // Set initial muted state (unmuted)
+      // Set the audio element's muted property based on isMuted
       audioRef.current.muted = isMuted;
 
       // Set audio offset if specified
@@ -168,7 +284,7 @@ const Modal: React.FC<ModalProps> = ({ item, onClose }) => {
         audioRef.current.currentTime = item.audioStartOffset;
       }
 
-      // Start playback
+      // Start playback for both video and audio
       const playMedia = async () => {
         try {
           if (videoRef.current) {
@@ -194,7 +310,7 @@ const Modal: React.FC<ModalProps> = ({ item, onClose }) => {
         audioRef.current.pause();
       }
     };
-  }, [item.audioStartOffset]);
+  }, [item.audioStartOffset, isMuted]);
 
   return (
     <div
@@ -228,7 +344,7 @@ const Modal: React.FC<ModalProps> = ({ item, onClose }) => {
 
         {/* Video container - maintains original aspect ratio */}
         <div className="w-full md:w-2/3 relative">
-          <div className={`relative ${item.aspectRatio || 'aspect-[4/5]'}`}>
+          <div className="relative aspect-[4/5]">
             <video
               ref={videoRef}
               src={item.video}
@@ -324,16 +440,12 @@ type HoverMediaGridProps = {
   containerWidth?: number; // Default card width in pixels
   aspectRatio?: string; // Default aspect ratio
   gap?: number; // Gap between items in pixels
-  minColumns?: number; // Minimum number of columns
-  maxColumns?: number; // Maximum number of columns
 };
 
 const HoverMediaGrid: React.FC<HoverMediaGridProps> = ({
   containerWidth = 240, // Default width in pixels
   aspectRatio = 'aspect-[4/5]', // Default aspect ratio
-  gap = 16, // Default gap in pixels
-  minColumns = 1,
-  maxColumns = 6,
+  gap = 32, // Default gap in pixels
 }) => {
   const [selectedItem, setSelectedItem] = useState<MediaItem | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);

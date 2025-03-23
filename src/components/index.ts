@@ -17,7 +17,15 @@ export const EXPERIENCES = [
         Also creating Image Generation Apps and Tools with Flux
         and Stable Diffusion, working in between the Backend team
         and the Client.`,
-    technologies: ['Python', 'AI', 'ExtendScript', 'Typescript', 'AfterEffects', 'ComfyUI', 'Blender'],
+    technologies: [
+      'Python',
+      'AI',
+      'ExtendScript',
+      'Typescript',
+      'AfterEffects',
+      'ComfyUI',
+      'Blender',
+    ],
   },
   {
     year: '2021 - 2023',
@@ -28,7 +36,13 @@ export const EXPERIENCES = [
             Hands on editing, Compositing, and doing full VFX work
             (Animation, Lighting, Rendering) with Unreal Engine and
             Blender`,
-    technologies: ['Premiere Pro', 'C4D', 'After Effects', 'ExtendScript', 'Python'],
+    technologies: [
+      'Premiere Pro',
+      'C4D',
+      'After Effects',
+      'ExtendScript',
+      'Python',
+    ],
   },
   {
     year: '2017 - 2020',
@@ -39,10 +53,15 @@ export const EXPERIENCES = [
           Andes, Visa, Santander, Macsha, and more. Creating
           Pipelines in Unrea Engine, Davinci and Blender as well as
           simple scripts .`,
-    technologies: ['Blender', 'Unreal Engine', 'Davinci Resolve', 'After Effects'],
+    technologies: [
+      'Blender',
+      'Unreal Engine',
+      'Davinci Resolve',
+      'After Effects',
+    ],
   },
   {
-    year: '2015 - 2018',
+    year: '2015 - 2020',
     role: 'Audio Director',
     company: 'Tungsteno Films',
     description: `Main audio post production for an indie film company, from
@@ -53,7 +72,7 @@ export const EXPERIENCES = [
     technologies: ['Ableton', 'Cubase', 'Dialogue Editing', 'Davinci Resolve'],
   },
   {
-    year: '2013 - Present',
+    year: '2011 - Present',
     role: 'Music Composer',
     company: 'Spacerpunk',
     description: `Music production and composition for various brands and
