@@ -76,42 +76,62 @@ const Hello = () => {
           transition={{ duration: 1.4 }}
         >
           <p>
-            <a className="font-black text-nasared" href="https://www.monks.com">
+            <a
+              className="font-black text-nasared p-2"
+              href="https://spacerpunk.bandcamp.com/"
+            >
               Music
             </a>
             ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
+            <a
+              className="font-black text-nasared p-2"
+              href="https://www.behance.net/nicolasrequena"
+            >
               VFX
             </a>
             ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
+            <a
+              className="font-black text-nasared p-2"
+              href="https://www.behance.net/gallery/87684661/Tungsteno-FIlms-Intro"
+            >
               Sound Design
             </a>
             ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
+            <a
+              className="font-black text-nasared p-2"
+              href="https://www.behance.net/gallery/153780873/Dove-Real-Virtual-Beauty"
+            >
               3D Animation
             </a>
             ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
-              Video GAmes
+            <a
+              className="font-black text-nasared p-2"
+              href="https://nrequena.itch.io/the-glitch"
+            >
+              Video Games
             </a>
             ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
+            <a
+              className="font-black text-nasared p-2"
+              href="https://www.instagram.com/spacrpunk/"
+            >
               Generative Art
             </a>
             ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
+            <a
+              className="font-black text-nasared p-2"
+              href="https://www.youtube.com/watch?v=_22onA4dyhs&ab_channel=spacerpunk"
+            >
               Films
             </a>
             ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
-              Gen AI
-            </a>
-            ,
-            <a className="font-black text-nasared" href="https://www.monks.com">
+            <a
+              className="font-black text-nasared p-2"
+              href="https://github.com/spacerpunk"
+            >
               Coding
             </a>
-            , are some of the WAKALAKA ouputs I found for my creativity.
+            , are some of the creative ouputs I found for my creativity.
           </p>
         </motion.div>
         <br />
