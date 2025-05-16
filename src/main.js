@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import * as Tone from 'tone';
+
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
@@ -12,6 +14,10 @@ const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 let ambienceAudio;
 const AMBIENCE_VOLUME = 0.85;
 const DUCKED_VOLUME = 0.1;
+// new global for generative ambience
+let genAmbienceAudio;
+const GEN_AMBIENCE_VOLUME = 0.3; // normal level
+const GEN_DUCK_VOLUME = 0.05; // when hovering a particle
 
 // Resume and _then_ play ambience on first click:
 window.addEventListener(
@@ -299,6 +305,7 @@ function fadeInAudio(audio, duration = fadeDuration) {
 }
 
 function fadeOutAudio(audio, duration = fadeDuration) {
+  if (!audio) return;
   const stepTime = 50;
   const steps = duration / stepTime;
   let currentStep = 0;
@@ -310,7 +317,7 @@ function fadeOutAudio(audio, duration = fadeDuration) {
       clearInterval(fadeOutInterval);
       audio.pause();
       audio.currentTime = 0;
-      audio.volume = 0.5;
+      audio.volume = initialVolume;
     }
   }, stepTime);
 }
@@ -372,6 +379,10 @@ function spawnParticles(category) {
     depthWrite: true,
   });
 
+  const isGenerative = category === 'generative';
+  // define a C minor scale
+  const scale = ['C4', 'D4', 'D#4', 'F4', 'G4', 'G#4', 'A#4', 'C5'];
+
   const N = 80;
   for (let i = 0; i < N; i++) {
     // **make sure we declare item here before using it**
@@ -422,6 +433,25 @@ function spawnParticles(category) {
         (Math.random() - 0.5) * 0.5
       ),
     };
+
+    if (isGenerative) {
+      // create a synth for this mesh
+      const synth = new Tone.Synth({
+        oscillator: { type: 'triangle' },
+        envelope: { attack: 0.02, decay: 0.1, sustain: 0.3, release: 1 },
+      }).toDestination();
+
+      // build a random 8-note melody from the scale
+      const melody = Array.from(
+        { length: 8 },
+        () => scale[Math.floor(Math.random() * scale.length)]
+      );
+
+      // store in userData
+      mesh.userData.melodySynth = synth;
+      mesh.userData.melodyNotes = melody;
+      mesh.userData.melodyIndex = 0;
+    }
 
     scene.add(mesh);
     particles.push(mesh);
@@ -503,11 +533,47 @@ function init() {
   //  if (event.code === 'KeyS') moveBackward = false;
   //});
 
+  // document.querySelectorAll('#navbar a').forEach((link) => {
+  //   link.addEventListener('click', (event) => {
+  //     event.preventDefault();
+  //     if (link.hasAttribute('data-category')) {
+  //       const selectedCategory = link.getAttribute('data-category');
+  //       spawnParticles(selectedCategory);
+  //     } else if (link.hasAttribute('data-popup')) {
+  //       const popupType = link.getAttribute('data-popup');
+  //       const modal = document.getElementById(`modal-${popupType}`);
+  //       if (modal) modal.style.display = 'flex';
+  //     }
+  //   });
+  // });
+
   document.querySelectorAll('#navbar a').forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
+
       if (link.hasAttribute('data-category')) {
         const selectedCategory = link.getAttribute('data-category');
+
+        // Cross-fade ambiences over 2 seconds (2000 ms)
+        if (selectedCategory === 'generative') {
+          // Fade out the music ambience
+          if (ambienceAudio) fadeOutAudio(ambienceAudio, 2000);
+          // Start & fade in the generative ambience
+          if (genAmbienceAudio) {
+            genAmbienceAudio.play().catch(() => {});
+            fadeInAudio(genAmbienceAudio, 2000);
+          }
+        } else {
+          // Fade out the generative ambience
+          if (genAmbienceAudio) fadeOutAudio(genAmbienceAudio, 2000);
+          // Start & fade in the music ambience
+          if (ambienceAudio) {
+            ambienceAudio.play().catch(() => {});
+            fadeInAudio(ambienceAudio, 2000);
+          }
+        }
+
+        // Now spawn the new set of particles
         spawnParticles(selectedCategory);
       } else if (link.hasAttribute('data-popup')) {
         const popupType = link.getAttribute('data-popup');
@@ -529,6 +595,10 @@ function init() {
   ambienceAudio.loop = true;
   ambienceAudio.volume = AMBIENCE_VOLUME;
   ambienceAudio.play().catch(() => {});
+
+  genAmbienceAudio = new Audio('/audio/ambience/ambiente1.mp3');
+  genAmbienceAudio.loop = true;
+  genAmbienceAudio.volume = 0;
 }
 
 // --- Document Click Handler ---
@@ -560,14 +630,14 @@ function animate() {
   requestAnimationFrame(animate);
   const delta = clock.getDelta();
 
-  // 1) Drift
+  // 1) Drift & rotation
   particles.forEach((p) => {
     p.position.addScaledVector(p.userData.drift, delta);
     p.rotation.x += 0.1 * delta;
     p.rotation.y += 0.1 * delta;
   });
 
-  // 2) Camera sluggish parallax
+  // 2) Camera parallax
   const maxTilt = 0.1,
     smoothing = 0.02;
   const tx = mouseVec.y * maxTilt,
@@ -575,66 +645,59 @@ function animate() {
   camera.rotation.x += (tx - camera.rotation.x) * smoothing;
   camera.rotation.y += (ty - camera.rotation.y) * smoothing;
 
-  // 3) Forward/back movement
-  //velocity.set(0, 0, 0);
-  //const dir = new THREE.Vector3();
-  //camera.getWorldDirection(dir);
-  //dir.y = 0;
-  //dir.normalize();
-  //if (moveForward) velocity.add(dir.clone().multiplyScalar(3 * delta));
-  //if (moveBackward) velocity.add(dir.clone().multiplyScalar(-3 * delta));
-  //camera.position.add(velocity);
-
-  // 3) Scroll Logic
-  // moveSpeed is your base units (e.g. 3). You can multiply scrollVelocity by it if desired.
+  // 3) Scroll movement
   const forward = new THREE.Vector3();
   camera.getWorldDirection(forward);
   forward.y = 0;
   forward.normalize();
-  // advance camera by scrollVelocity (units/sec) * deltaTime
   camera.position.addScaledVector(forward, scrollVelocity * delta);
-
-  // apply decay so scrollVelocity drifts back toward zero
-  // this makes it take a few seconds to come to a stop
-  const decay = DECAY_RATE * delta;
-  scrollVelocity += (0 - scrollVelocity) * decay;
+  scrollVelocity += (0 - scrollVelocity) * DECAY_RATE * delta;
 
   // 4) Raycast
   raycaster.setFromCamera(mouseVec, camera);
   const hits = raycaster.intersectObjects(particles);
   const hovered = hits.length ? hits[0].object : null;
 
-  // Duck the ambience smoothly:
-  if (ambienceAudio) {
-    const target = hovered ? DUCKED_VOLUME : AMBIENCE_VOLUME;
-    const lerp = 0.05;
-    ambienceAudio.volume += (target - ambienceAudio.volume) * lerp;
+  // 5) Manage background audio
+  if (currentCategory === 'generative') {
+    // only ensure generative ambience is playing
+    if (genAmbienceAudio.paused) {
+      genAmbienceAudio.play().catch(() => {});
+    }
+    // no ducking or pausing of music ambience here
+  } else {
+    // ensure music ambience is playing
+    if (ambienceAudio.paused) {
+      ambienceAudio.play().catch(() => {});
+    }
+    // duck/restore on hover
+    const musTarget = hovered ? DUCKED_VOLUME : AMBIENCE_VOLUME;
+    ambienceAudio.volume += (musTarget - ambienceAudio.volume) * 0.05;
+
+    // do not touch genAmbienceAudio here
   }
 
-  // 5) Update scale & color targets
+  // 6) Scale & color
   particles.forEach((p) => {
     const base = p.userData.baseScale;
-    const targetScale = p === hovered ? base * 1.3 : base;
-    // lerp scale
-    const lerpFactor = 0.1;
-    p.scale.x += (targetScale - p.scale.x) * lerpFactor;
-    p.scale.y += (targetScale - p.scale.y) * lerpFactor;
-    p.scale.z += (targetScale - p.scale.z) * lerpFactor;
+    const isH = p === hovered;
+    const tScale = isH ? base * 1.3 : base;
+    const f = 0.1;
+    p.scale.x += (tScale - p.scale.x) * f;
+    p.scale.y += (tScale - p.scale.y) * f;
+    p.scale.z += (tScale - p.scale.z) * f;
 
-    // lerp color
-    const origColor = new THREE.Color(
-      categories[currentCategory].particleColor
-    );
-    const highlight = origColor.clone().lerp(new THREE.Color('#d92906'), 1.0);
-    const colorTarget = p === hovered ? highlight : origColor;
-    p.material.uniforms.uInner.value.lerp(colorTarget, lerpFactor);
+    const orig = new THREE.Color(categories[currentCategory].particleColor);
+    const high = orig.clone().lerp(new THREE.Color('#d92906'), 1.0);
+    p.material.uniforms.uInner.value.lerp(isH ? high : orig, f);
   });
 
-  // 6) Handle tooltip & audio
+  // 7) Tooltip & audio/melody
   if (hovered) {
-    const pos = hovered.position.clone().project(camera);
-    tooltip.style.left = `${((pos.x + 1) / 2) * innerWidth}px`;
-    tooltip.style.top = `${((-pos.y + 1) / 2) * innerHeight}px`;
+    // position
+    const proj = hovered.position.clone().project(camera);
+    tooltip.style.left = `${((proj.x + 1) / 2) * innerWidth}px`;
+    tooltip.style.top = `${((-proj.y + 1) / 2) * innerHeight}px`;
     tooltip.innerHTML = `
       <div class="tooltip-content">
         <h2>${hovered.userData.name}</h2>
@@ -643,21 +706,34 @@ function animate() {
     tooltip.style.opacity = '1';
 
     if (hovered !== lastHovered) {
-      if (lastHovered && lastHovered.userData.audio)
+      if (lastHovered && lastHovered.userData.audio) {
         fadeOutAudio(lastHovered.userData.audio);
-      hovered.userData.audio.pause();
-      hovered.userData.audio.currentTime = 0;
-      fadeInAudio(hovered.userData.audio);
+      }
+
+      if (currentCategory === 'generative' && hovered.userData.melodySynth) {
+        // play next generative note
+        const synth = hovered.userData.melodySynth;
+        const notes = hovered.userData.melodyNotes;
+        const idx = hovered.userData.melodyIndex % notes.length;
+        synth.triggerAttackRelease(notes[idx], '8n');
+        hovered.userData.melodyIndex++;
+      } else if (hovered.userData.audio) {
+        hovered.userData.audio.pause();
+        hovered.userData.audio.currentTime = 0;
+        fadeInAudio(hovered.userData.audio);
+      }
+
       lastHovered = hovered;
     }
   } else {
     tooltip.style.opacity = '0';
-    if (lastHovered && lastHovered.userData.audio)
+    if (lastHovered && lastHovered.userData.audio) {
       fadeOutAudio(lastHovered.userData.audio);
+    }
     lastHovered = null;
   }
 
-  // 7) Render
+  // 8) Render
   composer.render(delta);
 }
 
