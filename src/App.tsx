@@ -6,7 +6,7 @@ import SideNav from './components/SideNav';
 import Dashboard from './pages/Home';
 import About from './pages/About';
 import Labs from './pages/Labs';
-import HoverMediaGrid from './pages/Home';
+import Home from './pages/Home';
 // import ThemeToggle from './components/ThemeToggle';
 
 //WORK IMPORTS
@@ -19,12 +19,10 @@ import Reel from './pages/Reel';
 
 //PROJECT IMPORTS
 import TheNoise from './pages/projects/TheNoise';
-import AIFF from './pages/projects/aiff';
-import Jodo from './pages/projects/Jodo';
 import TheGlitch from './pages/projects/TheGlitch';
 import TheTape from './pages/projects/TheTape';
 import TrenchRun from './pages/projects/TrenchRun';
-import SpaceMusic from './pages/projects/SpaceMusic';
+import Anomaly from './pages/projects/Anomaly';
 
 function App() {
   return (
@@ -38,27 +36,17 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               {/* <Route path="/Home" element={<Home />} /> */}
-              <Route
-                path="/Home"
-                element={
-                  <HoverMediaGrid
-                    containerWidth={200}
-                    aspectRatio="aspect-[2/3]"
-                    gap={16}
-                  />
-                }
-              />
+              <Route path="/Home" element={<Home />} />
               <Route path="/work/Monks" element={<Monks />} />
               <Route path="/work/Dove" element={<Dove />} />
               <Route path="/work/atea" element={<Atea />} />
               <Route path="/work/Tungsteno" element={<Tungsteno />} />
               <Route path="/projects/TheNoise" element={<TheNoise />} />
-              <Route path="/projects/Jodo" element={<Jodo />} />
-              <Route path="/projects/aiff" element={<AIFF />} />
+              {/* <Route path="/projects/Jodo" element={<Jodo />} /> */}
               <Route path="/projects/TheGlitch" element={<TheGlitch />} />
               <Route path="/projects/TheTape" element={<TheTape />} />
               <Route path="/projects/TrenchRun" element={<TrenchRun />} />
-              <Route path="/projects/SpaceMusic" element={<SpaceMusic />} />
+              <Route path="/projects/Anomaly" element={<Anomaly />} />
               <Route path="/work/Generative" element={<Generative />} />
               <Route path="/about" element={<About />} />
               <Route path="/Labs" element={<Labs />} />

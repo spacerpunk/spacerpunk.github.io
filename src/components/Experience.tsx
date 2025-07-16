@@ -21,7 +21,7 @@ const Experience = () => {
               transition={{ duration: 1 }}
               className="w-full lg:w-1/4"
             >
-              <p className="mb-2 text-sm text-neutral-800">{experience.year}</p>
+              <p className="mb-2 text-sm text-neutral-500">{experience.year}</p>
             </motion.div>
             <motion.div
               whileInView={{ opacity: 1, x: 0 }}

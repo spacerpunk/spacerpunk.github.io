@@ -144,9 +144,7 @@ const TheNoise = () => {
       <div className="w-full pb-4 background-gray-800">
         <img src={BANNER} alt="TheNoiseTeaser" className="w-full h-auto" />
       </div>
-      <h1 className="text-2xl text-semibold text-gray-800 font-bold">
-        The Noise
-      </h1>
+      <h1 className="text-2xl text-semibold font-bold">The Noise</h1>
       <div>
         <h3 className="w-full font-extralight text-sm py-1 text-nasared">
           #flux-ai #generativeai #blender #unrealengine #music #python #vfx

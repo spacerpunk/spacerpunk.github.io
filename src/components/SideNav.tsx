@@ -19,8 +19,8 @@ interface SubMenuProps {
 const LINK_BASE_STYLES =
   'flex items-center p-2 transition-colors duration-200 font-bold';
 const LINK_HOVER_STYLES = 'hover:bg-nasared hover:text-white';
-const ACTIVE_STYLES = 'bg-white text-nasared text-sm font-semibold';
-const INACTIVE_STYLES = 'text-gray-800 bg-white font-normal text-sm';
+const ACTIVE_STYLES = 'bg-nasared text-white text-sm font-semibold';
+const INACTIVE_STYLES = 'text-white bg-black-900 font-normal text-sm';
 const SUBMENU_LINK_STYLES = `${LINK_BASE_STYLES} text-sm font-normal`;
 
 const SubMenu = ({ item, isActive, isOpen, onToggle }: SubMenuProps) => {
@@ -83,17 +83,15 @@ const SideNav = () => {
       title: 'PROJECTS',
       icon: <span></span>,
       submenu: [
-        { title: 'Space Music', path: '/projects/SpaceMusic' },
+        { title: 'Anomaly', path: '/projects/Anomaly' },
         { title: 'The Noise', path: '/projects/TheNoise' },
         { title: 'The Tape', path: '/projects/TheTape' },
         { title: 'Trench Run', path: '/projects/TrenchRun' },
         { title: 'The Glitch', path: '/projects/TheGlitch' },
-        { title: 'Badger Safety! (WIP)', path: '/projects/aiff' },
-        { title: 'Jodo (WIP)', path: '/projects/Jodo' },
       ],
     },
     {
-      title: 'WORKS',
+      title: 'WORK',
       icon: <span></span>,
       submenu: [
         { title: '.Monks', path: '/work/monks' },
@@ -103,25 +101,25 @@ const SideNav = () => {
         { title: 'ATEA', path: '/work/atea' },
       ],
     },
+    // {
+    //   title: 'TECH LABS',
+    //   path: '/Labs',
+    //   icon: <span></span>,
+    // },
+    // {
+    //   title: 'Reel',
+    //   path: '/Reel',
+    //   icon: <span></span>,
+    // },
     {
-      title: 'TECH LABS',
-      path: '/Labs',
-      icon: <span></span>,
-    },
-    {
-      title: 'Reel',
-      path: '/Reel',
-      icon: <span></span>,
-    },
-    {
-      title: 'ME',
+      title: 'ABOUT',
       path: '/about',
       icon: <span></span>,
     },
   ];
 
   return (
-    <nav className="bg-white h-screen w-64 shadow-lg">
+    <nav className="bg-black-900 h-screen w-64 shadow-lg">
       <div className="p-4">
         <div className="space-y-2">
           {menuItems.map((item) => {

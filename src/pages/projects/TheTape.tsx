@@ -40,7 +40,7 @@ export default function TheTape() {
           <img src={BANNER} alt="TheNoiseTeaser" className="w-full h-auto" />
         </div>
       </h2>
-      <h1 className="text-2xl text-semibold text-gray-800 font-bold">
+      <h1 className="text-2xl text-semibold font-bold">
         The Tape (2021) - Unreal Engine Short Film
       </h1>
       <div>

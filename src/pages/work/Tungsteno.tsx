@@ -6,7 +6,7 @@ import LEGENDS from '../../assets/Tungsteno/legends.png';
 const Tungsteno = () => {
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold text-gray-800">
+      <h1 className="text-2xl font-bold text-white">
         VFX + Audio Director @
         <a
           className="font-black text-green-500"
@@ -24,24 +24,24 @@ const Tungsteno = () => {
         <h3 className="w-full font-extralight text-sm py-1 text-nasared">
           #films #sounddesign #vfx #originalmusic #editing
         </h3>
-        <h2 className="w-full text-italic font-normal pt-4">
+        <h2 className="w-full text-italic font-normal pt-4 text-white">
           From 2016 to 2021 I worked as an Audio Director and later as a VFX &
           3D Generalist at this Indie Film Company in Buenos Aires (now also in
           Barcelona). I did 4 short films, 1 45 minutes series pilot, an
           animated weekly series, Unreal Engine Pitches for clients, a lot of
           original music, learned Blender, Unity, Unreal Engine and many more.
         </h2>
-        <h2 className="w-full text-italic font-normal pt-4 pb-4 ">
+        <h2 className="w-full text-italic font-normal pt-4 pb-4 text-white ">
           These are some of the projects I worked on.
         </h2>
         {/* <div className="w-full pb-4 background-gray-800">
           <img src={SPLIT} alt="TheNoiseTeaser" className="w-full h-auto" />
         </div> */}
 
-        <h2 className="w-full text-normal font-semibold pt-8">
+        <h2 className="w-full text-normal font-semibold pt-8 text-white">
           Tungsteno Intro
         </h2>
-        <h3 className="w-full text-sm font-light pt-2 pb-4">
+        <h3 className="w-full text-sm font-light pt-2 pb-4 text-white">
           <p className="w-full text-sm font-light pt-2 pb-4">
             This is the custom intro for the Film Company, for which I did 40%
             of the 3D Animation, Rendering, and Shading. As well as the Full
