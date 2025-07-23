@@ -4,13 +4,13 @@ export default function Home() {
       <h1 className="text-5xl text-black text-white font-bold">spacerpunk</h1>
       <div>
         <h3 className="text-xl w-full font-extralight text-sm py-4 text-nasared">
-          i make music & visuals{' '}
+          i make music & sound & visuals{' '}
           <h2 className="text-lg w-full font-extralight text-sm py-0 text-nasared">
             <a
               href="https://spacerpunk.github.io/"
               className="text-nasared hover:underline"
             >
-              (sometimes with code)
+              (sometimes with code && sometimes with ai)
             </a>
           </h2>
         </h3>
@@ -293,7 +293,6 @@ export default function Home() {
           </ul>
         </section>
         <h2 className="w-full font-light py-4">
-          {' '}
           SITE
           <a
             href="https://spacerpunk.github.io/"

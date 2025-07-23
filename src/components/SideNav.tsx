@@ -80,6 +80,17 @@ const SideNav = () => {
       icon: <span></span>,
     },
     {
+      title: 'WORK',
+      icon: <span></span>,
+      submenu: [
+        { title: 'Creative Tech', path: '/work/Generative' },
+        { title: '@Monks', path: '/work/monks' },
+        { title: 'Dove', path: '/work/dove' },
+        { title: 'ATEA', path: '/work/atea' },
+        { title: '@Tungsteno Films', path: '/work/Tungsteno' },
+      ],
+    },
+    {
       title: 'PROJECTS',
       icon: <span></span>,
       submenu: [
@@ -88,17 +99,6 @@ const SideNav = () => {
         { title: 'The Tape', path: '/projects/TheTape' },
         { title: 'Trench Run', path: '/projects/TrenchRun' },
         { title: 'The Glitch', path: '/projects/TheGlitch' },
-      ],
-    },
-    {
-      title: 'WORK',
-      icon: <span></span>,
-      submenu: [
-        { title: '.Monks', path: '/work/monks' },
-        { title: 'Dove', path: '/work/dove' },
-        { title: 'Gen AI', path: '/work/Generative' },
-        { title: 'Tungsteno Films', path: '/work/Tungsteno' },
-        { title: 'ATEA', path: '/work/atea' },
       ],
     },
     // {
