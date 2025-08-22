@@ -6,7 +6,7 @@ interface ImageGridProps {
       aspect?: 'square' | 'video' | 'portrait' | 'custom';
       customAspect?: string;
     }[];
-    columns?: 2 | 3 | 4;
+    columns?: 2 | 3 | 4 ;
   }
   
   const ImageGrid = ({ images, columns = 3 }: ImageGridProps) => {
