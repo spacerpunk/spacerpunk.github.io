@@ -21,19 +21,11 @@ const Hero = () => {
             >
               SPACERPUNK
             </motion.h2>
-            <motion.span
-              variants={container(0.3)}
-              initial="hidden"
-              animate="visible"
-              className="bg-gradient-to-r from-slate-700 via-slate-400 to-red-500 bg-clip-text text-2xl tracking-tight text-transparent"
-            >
-              Greatness Cannot Be Planned
-            </motion.span>
             <motion.p
               variants={container(0.6)}
               initial="hidden"
               animate="visible"
-              className="my-2 max-w-xl py-6 font-light tracking-tighter"
+              className="my-2 max-w-xl py-0 font-light tracking-tighter"
             >
               {DESCRIPTION}
             </motion.p>

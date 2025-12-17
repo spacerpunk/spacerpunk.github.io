@@ -83,7 +83,7 @@ const SideNav = () => {
       title: 'WORK',
       icon: <span></span>,
       submenu: [
-        { title: 'Creative Tech', path: '/work/Generative' },
+        { title: 'AI', path: '/work/Generative' },
         { title: '@Monks', path: '/work/monks' },
         { title: 'Dove', path: '/work/dove' },
         { title: 'ATEA', path: '/work/atea' },
