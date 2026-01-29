@@ -2,9 +2,12 @@ export default function Home() {
   return (
     <div className="p-4">
       <h1 className="text-5xl text-black text-white font-bold">spacerpunk</h1>
+      <h3 className="text-lg w-full font-extralight text-sm py-2">
+        Nico Requena
+      </h3>
       <div>
         <h3 className="text-xl w-full font-extralight text-sm py-4 text-nasared">
-          i make music & sound & visuals{' '}
+          i make music & visuals{' '}
           <h2 className="text-lg w-full font-extralight text-sm py-0 text-nasared">
             <a
               href="https://spacerpunk.github.io/"
@@ -14,39 +17,6 @@ export default function Home() {
             </a>
           </h2>
         </h3>
-
-        {/* CONTACT */}
-        <section className="py-4">
-          <h2 className="text-2xl font-semibold">CONTACT</h2>
-          <ul className="list-disc list-inside ml-4">
-            <li>
-              <a
-                href="https://www.instagram.com/nico.reque/"
-                className="text-nasared hover:underline"
-              >
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/nicolas-requena-90b16110b/"
-                className="text-nasared hover:underline"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                href="mailto:requena.nicolas@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-nasared hover:underline"
-              >
-                Mail
-              </a>
-            </li>
-          </ul>
-        </section>
 
         {/* DISCOGRAPHY */}
         <section className="py-4">
@@ -255,6 +225,40 @@ export default function Home() {
                 className="text-nasared hover:underline"
               >
                 Brand Intro: Tungsteno Films
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        {/* CONTACT */}
+        {/* CONTACT */}
+        <section className="py-4">
+          <h2 className="text-2xl font-semibold">CONTACT</h2>
+          <ul className="list-disc list-inside ml-4">
+            <li>
+              <a
+                href="https://www.instagram.com/nico.reque/"
+                className="text-nasared hover:underline"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/nicolas-requena-90b16110b/"
+                className="text-nasared hover:underline"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:requena.nicolas@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-nasared hover:underline"
+              >
+                Mail
               </a>
             </li>
           </ul>
