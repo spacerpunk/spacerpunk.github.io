@@ -99,6 +99,7 @@ const SideNav = () => {
         { title: 'The Tape', path: '/projects/TheTape' },
         { title: 'Trench Run', path: '/projects/TrenchRun' },
         { title: 'The Glitch', path: '/projects/TheGlitch' },
+        { title: 'Yutani-Log', path: '/projects/YutaniLog' },
       ],
     },
     // {

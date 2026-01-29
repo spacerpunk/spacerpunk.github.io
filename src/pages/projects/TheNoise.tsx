@@ -149,6 +149,19 @@ const TheNoise = () => {
         <h3 className="w-full font-extralight text-sm py-1 text-nasared">
           #flux-ai #generativeai #blender #unrealengine #music #python #vfx
         </h3>
+
+        {/* YouTube Video */}
+        <div className="w-full py-4">
+          <iframe
+            width="100%"
+            height="500"
+            src="https://www.youtube.com/embed/SuLCzrZaNeE"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </div>
         <h3 className="text-normal font-semibold pt-4 pb-4">Moody Playlist</h3>
         <iframe
           className="md:flex"
@@ -171,7 +184,8 @@ const TheNoise = () => {
           </p>
           <p>
             A world, characters, events, interactions and lore for a world. I
-            don't want to think of it as a Film, Book or Game...it's an idea.{' '}
+            don't want to think of it as a Film, Book or Game...it's an
+            idea.{' '}
           </p>
           <p>
             A SPACE, and I'd like to explore it and see what outputs I can get

@@ -185,6 +185,16 @@ export default function Home() {
           <ul className="list-disc list-inside ml-4">
             <li>
               <a
+                href="https://www.youtube.com/watch?v=SuLCzrZaNeE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-nasared hover:underline"
+              >
+                Ruido
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://youtu.be/fbZuxEJJvhA?si=mEeRvy1I6tYd7cPJ"
                 className="text-nasared hover:underline"
               >

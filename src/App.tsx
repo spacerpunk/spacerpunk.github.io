@@ -19,6 +19,7 @@ import TheGlitch from './pages/projects/TheGlitch';
 import TheTape from './pages/projects/TheTape';
 import TrenchRun from './pages/projects/TrenchRun';
 import Anomaly from './pages/projects/Anomaly';
+import YutaniLog from './pages/projects/YutaniLog';
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/projects/thetape" element={<TheTape />} />
             <Route path="/projects/trenchrun" element={<TrenchRun />} />
             <Route path="/projects/anomaly" element={<Anomaly />} />
+            <Route path="/projects/yutanilog" element={<YutaniLog />} />
 
             {/* optional: catch-all → home */}
             {/* <Route path="*" element={<Home />} /> */}
