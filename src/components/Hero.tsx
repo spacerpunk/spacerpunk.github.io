@@ -1,4 +1,5 @@
 import { DESCRIPTION } from './index';
+import LazyImage from './LazyImage';
 import profilePic from '../assets/Images/Profile.png';
 import { motion } from 'framer-motion';
 
@@ -9,15 +10,15 @@ const container = (delay: number) => ({
 
 const Hero = () => {
   return (
-    <div className="pb-4 lg:mb-35">
-      <div className="flex flex-wrap">
+    <div className="pb-4 lg:mb-16">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
         <div className="w-full lg:w-1/2">
-          <div className="flex flex-col item-center lg:items-start">
+          <div className="flex flex-col items-center lg:items-start">
             <motion.h2
               variants={container(0)}
               initial="hidden"
               animate="visible"
-              className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text8xl text-nasared"
+              className="pb-8 lg:pb-16 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight lg:mt-16 text-nasared text-center lg:text-left"
             >
               SPACERPUNK
             </motion.h2>
@@ -25,22 +26,26 @@ const Hero = () => {
               variants={container(0.6)}
               initial="hidden"
               animate="visible"
-              className="my-2 max-w-xl py-0 font-light tracking-tighter"
+              className="my-2 max-w-xl py-0 font-light tracking-tighter text-sm sm:text-base text-center lg:text-left"
             >
               {DESCRIPTION}
             </motion.p>
           </div>
         </div>
         <div className="w-full lg:w-1/2 lg:p-8">
-          <div className="flex justify-center">
-            <motion.img
+          <div className="flex justify-center lg:justify-end">
+            <motion.div
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
-              className="rounded-lg"
-              src={profilePic}
-              alt="Nico"
-            />
+              className="w-full max-w-md"
+            >
+              <LazyImage
+                className="rounded-lg w-full h-auto"
+                src={profilePic}
+                alt="Nico"
+              />
+            </motion.div>
           </div>
         </div>
       </div>

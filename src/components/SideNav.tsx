@@ -1,6 +1,8 @@
 // src/components/SideNav.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface MenuItem {
   title: string;
@@ -14,6 +16,7 @@ interface SubMenuProps {
   isActive?: boolean;
   isOpen: boolean;
   onToggle: (isOpen: boolean) => void;
+  onNavigate?: () => void;
 }
 
 const LINK_BASE_STYLES =
@@ -23,7 +26,13 @@ const ACTIVE_STYLES = 'bg-nasared text-white text-sm font-semibold';
 const INACTIVE_STYLES = 'text-white bg-black-900 font-normal text-sm';
 const SUBMENU_LINK_STYLES = `${LINK_BASE_STYLES} text-sm font-normal`;
 
-const SubMenu = ({ item, isActive, isOpen, onToggle }: SubMenuProps) => {
+const SubMenu = ({
+  item,
+  isActive,
+  isOpen,
+  onToggle,
+  onNavigate,
+}: SubMenuProps) => {
   const location = useLocation();
 
   return (
@@ -56,6 +65,7 @@ const SubMenu = ({ item, isActive, isOpen, onToggle }: SubMenuProps) => {
               <Link
                 key={subItem.path}
                 to={subItem.path ?? ''}
+                onClick={onNavigate}
                 className={`${SUBMENU_LINK_STYLES} ${LINK_HOVER_STYLES}
                   ${isSubItemActive ? ACTIVE_STYLES : INACTIVE_STYLES}`}
               >
@@ -72,6 +82,26 @@ const SubMenu = ({ item, isActive, isOpen, onToggle }: SubMenuProps) => {
 const SideNav = () => {
   const location = useLocation();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  const handleNavigate = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const menuItems: MenuItem[] = [
     {
@@ -100,6 +130,19 @@ const SideNav = () => {
         { title: 'Trench Run', path: '/projects/TrenchRun' },
         { title: 'The Glitch', path: '/projects/TheGlitch' },
         { title: 'Yutani-Log', path: '/projects/YutaniLog' },
+        { title: 'Music Moodboards', path: '/projects/MusicMoodboards' },
+        { title: 'Toyota Concept Film', path: '/projects/ToyotaConcept' },
+        { title: 'NASAXHONDA', path: '/projects/NasaXHonda' },
+        { title: 'UGC Slopntent', path: '/projects/UGCSlopntent' },
+        {
+          title: 'Generative Concepts Album',
+          path: '/projects/GenerativeConceptsAlbum',
+        },
+        {
+          title: 'Vertical Sliced Music Waves',
+          path: '/projects/VerticalMusicWaves',
+        },
+        { title: 'UPLOAD', path: '/projects/Upload' },
       ],
     },
     // {
@@ -120,38 +163,189 @@ const SideNav = () => {
   ];
 
   return (
-    <nav className="bg-black-900 h-screen w-64 shadow-lg">
-      <div className="p-4">
-        <div className="space-y-2">
-          {menuItems.map((item) => {
-            const isActive = location.pathname === item.path;
-            return (
-              <div key={item.path ?? item.title}>
-                {item.submenu ? (
-                  <SubMenu
-                    item={item}
-                    isActive={isActive}
-                    isOpen={activeDropdown === item.title}
-                    onToggle={(isOpen) => {
-                      setActiveDropdown(isOpen ? item.title : null);
-                    }}
-                  />
-                ) : (
-                  <Link
-                    to={item.path ?? ''}
-                    className={`${LINK_BASE_STYLES} ${LINK_HOVER_STYLES}
-                      ${isActive ? ACTIVE_STYLES : INACTIVE_STYLES}`}
+    <>
+      {/* Mobile Menu Button */}
+      <motion.button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-nasared text-white rounded-md shadow-lg hover:bg-opacity-80 transition-colors"
+        aria-label="Toggle menu"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <AnimatePresence mode="wait">
+          {isMobileMenuOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <XMarkIcon className="w-6 h-6" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="open"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Bars3Icon className="w-6 h-6" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.button>
+
+      {/* Overlay for mobile */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Side Navigation */}
+      <motion.nav
+        initial={false}
+        animate={{
+          x: isMobileMenuOpen || window.innerWidth >= 1024 ? 0 : -256,
+        }}
+        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        className="bg-black-900 h-screen w-64 shadow-lg z-40 fixed lg:static flex flex-col"
+      >
+        {/* Menu Items Container */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-4">
+            <div className="space-y-2">
+              {menuItems.map((item, index) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <motion.div
+                    key={item.path ?? item.title}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {item.icon}
-                    <span className="ml-2">{item.title}</span>
-                  </Link>
-                )}
-              </div>
-            );
-          })}
+                    {item.submenu ? (
+                      <SubMenu
+                        item={item}
+                        isActive={isActive}
+                        isOpen={activeDropdown === item.title}
+                        onToggle={(isOpen) => {
+                          setActiveDropdown(isOpen ? item.title : null);
+                        }}
+                        onNavigate={handleNavigate}
+                      />
+                    ) : (
+                      <Link
+                        to={item.path ?? ''}
+                        onClick={handleNavigate}
+                        className={`${LINK_BASE_STYLES} ${LINK_HOVER_STYLES}
+                          ${isActive ? ACTIVE_STYLES : INACTIVE_STYLES}`}
+                      >
+                        {item.icon}
+                        <span className="ml-2">{item.title}</span>
+                      </Link>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
+
+        {/* Social Links at Bottom - Icons Only */}
+        <motion.div
+          className="border-t border-gray-800 p-3 bg-black"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <div className="flex justify-center gap-4">
+            <motion.a
+              href="https://www.instagram.com/nico.reque/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-nasared transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              title="Instagram"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/nicolas-requena-90b16110b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-nasared transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              title="LinkedIn"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </motion.a>
+            <motion.a
+              href="https://github.com/spacerpunk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-nasared transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              title="GitHub"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </motion.a>
+            <motion.a
+              href="mailto:requena.nicolas@gmail.com"
+              className="text-gray-400 hover:text-nasared transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              title="Email"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </motion.a>
+            <motion.a
+              href="https://spacerpunk.bandcamp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-nasared transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              title="Bandcamp"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M0 18.75l7.437-13.5h16.563l-7.438 13.5z" />
+              </svg>
+            </motion.a>
+          </div>
+        </motion.div>
+      </motion.nav>
+    </>
   );
 };
 

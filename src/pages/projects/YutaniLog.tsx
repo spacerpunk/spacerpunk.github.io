@@ -1,4 +1,4 @@
-import TearsRainPreview from '../../assets/Yutani/TearsRain-Preview.mp4';
+import TearsRainPreview from '../../assets/Yutani/TearsInRain-WanAnimateTest.mp4';
 
 export default function YutaniLog() {
   return (
@@ -19,7 +19,10 @@ export default function YutaniLog() {
 
         <h2 className="w-full text-normal font-semibold pt-4">PREVIEW</h2>
         <h3 className="w-full text-sm font-light pt-2 pb-4">
-          <p>Wan Animate Preview of Face Animation.</p>
+          <p>
+            Wan Animate, Face Animation test from Flux 2 pro images and Blade
+            Runner Videos :P
+          </p>
         </h3>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import LazyImage from '../../components/LazyImage';
+import LazyVideo from '../../components/LazyVideo';
 import BANNER from '../../assets/Images/TheNoise-Banner.png';
 import TheNoise01 from '../../assets/Videos/thenoise01.mp4';
 import TheNoise05 from '../../assets/Videos/thenoise05.mp4';
@@ -142,7 +144,11 @@ const TheNoise = () => {
   return (
     <div className="w-full pt-0 pr-0 pl-0 p-4 background-gray-800">
       <div className="w-full pb-4 background-gray-800">
-        <img src={BANNER} alt="TheNoiseTeaser" className="w-full h-auto" />
+        <LazyImage
+          src={BANNER}
+          alt="TheNoiseTeaser"
+          className="w-full h-auto"
+        />
       </div>
       <h1 className="text-2xl text-semibold font-bold">The Noise</h1>
       <div>
@@ -201,15 +207,16 @@ const TheNoise = () => {
           </p>
         </h3>
         <div className="relative w-full h-[200px] my-8">
-          <video
+          <LazyVideo
             autoPlay
             loop
             muted
             playsInline
+            src={TheNoise01}
             className="absolute w-full h-full object-cover"
           >
             <source src={TheNoise01} type="video/mp4" />
-          </video>
+          </LazyVideo>
         </div>
         <h2 className="w-full font-light py-4">Stills</h2>
         <h3>
@@ -244,15 +251,16 @@ const TheNoise = () => {
           </h2>
 
           <div className="relative w-full h-[200px] my-8">
-            <video
+            <LazyVideo
               autoPlay
               loop
               muted
               playsInline
+              src={TheNoise05}
               className="absolute w-full h-full object-cover"
             >
               <source src={TheNoise05} type="video/mp4" />
-            </video>
+            </LazyVideo>
           </div>
 
           <h2 className="w-full font-normal py-4 text-nasared">

@@ -1,14 +1,23 @@
+import SEO from '../components/SEO';
+import LatestProjects from '../components/LatestProjects';
+
 export default function Home() {
   return (
-    <div className="p-4">
-      <h1 className="text-5xl text-black text-white font-bold">spacerpunk</h1>
-      <h3 className="text-lg w-full font-extralight text-sm py-2">
+    <div className="p-4 md:p-6 lg:p-8">
+      <SEO
+        title="Home"
+        description="SPACERPUNK - Music, Visuals, and Creative Technology by Nico Requena. Exploring generative AI, sound design, and visual experiences."
+      />
+      <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold">
+        spacerpunk
+      </h1>
+      <h3 className="text-base md:text-lg font-extralight py-2">
         Nico Requena
       </h3>
       <div>
-        <h3 className="text-xl w-full font-extralight text-sm py-4 text-nasared">
+        <h3 className="text-lg md:text-xl font-extralight py-4 text-nasared">
           i make music & visuals{' '}
-          <h2 className="text-lg w-full font-extralight text-sm py-0 text-nasared">
+          <h2 className="text-sm md:text-base font-extralight py-0 text-nasared">
             <a
               href="https://spacerpunk.github.io/"
               className="text-nasared hover:underline"
@@ -18,10 +27,15 @@ export default function Home() {
           </h2>
         </h3>
 
+        {/* LATEST PROJECTS */}
+        <LatestProjects />
+
         {/* DISCOGRAPHY */}
-        <section className="py-4">
-          <h2 className="text-2xl font-semibold">DISCOGRAPHY</h2>
-          <ul className="list-disc list-inside ml-4">
+        <section className="py-4 md:py-6">
+          <h2 className="text-xl md:text-2xl font-semibold mb-2">
+            DISCOGRAPHY
+          </h2>
+          <ul className="list-disc list-inside ml-4 space-y-1">
             <li>
               <a
                 href="https://spacerpunk.bandcamp.com/album/-"
@@ -150,9 +164,9 @@ export default function Home() {
         </section>
 
         {/* VISUAL */}
-        <section className="py-4">
-          <h2 className="text-2xl font-semibold">VISUAL</h2>
-          <ul className="list-disc list-inside ml-4">
+        <section className="py-4 md:py-6">
+          <h2 className="text-xl md:text-2xl font-semibold mb-2">VISUAL</h2>
+          <ul className="list-disc list-inside ml-4 space-y-1">
             <li>
               <a
                 href="https://www.youtube.com/watch?v=SuLCzrZaNeE"
@@ -232,9 +246,9 @@ export default function Home() {
 
         {/* CONTACT */}
         {/* CONTACT */}
-        <section className="py-4">
-          <h2 className="text-2xl font-semibold">CONTACT</h2>
-          <ul className="list-disc list-inside ml-4">
+        <section className="py-4 md:py-6">
+          <h2 className="text-xl md:text-2xl font-semibold mb-2">CONTACT</h2>
+          <ul className="list-disc list-inside ml-4 space-y-1">
             <li>
               <a
                 href="https://www.instagram.com/nico.reque/"
@@ -264,12 +278,12 @@ export default function Home() {
           </ul>
         </section>
         {/* CODE */}
-        <section className="py-4">
-          <h2 className="text-2xl font-semibold">CODE</h2>
-          <h3 className="text-sm w-full font-extralight text-sm py-0 pb-4 text-nasared">
+        <section className="py-4 md:py-6">
+          <h2 className="text-xl md:text-2xl font-semibold mb-2">CODE</h2>
+          <h3 className="text-sm font-extralight py-0 pb-4 text-nasared">
             (this is not a serious operation)
           </h3>
-          <ul className="list-disc list-inside ml-4">
+          <ul className="list-disc list-inside ml-4 space-y-1">
             <li>
               <a
                 href="https://github.com/spacerpunk/TheGlitch_v01"
