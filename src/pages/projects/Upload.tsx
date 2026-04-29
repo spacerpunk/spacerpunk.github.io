@@ -1,4 +1,7 @@
 import SEO from '../../components/SEO';
+import LazyImage from '../../components/LazyImage';
+import BG from '../../assets/Upload/BG.jpg';
+import Pill from '../../assets/Upload/Pill.png';
 
 export default function Upload() {
   return (
@@ -23,8 +26,22 @@ export default function Upload() {
           </p>
         </div>
 
-        <div className="py-4">
-          <p className="text-sm text-gray-500">Coming soon...</p>
+        {/* Image Gallery */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-6">
+          <div className="w-full">
+            <LazyImage
+              src={BG}
+              alt="Upload - Digital Background"
+              className="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="w-full">
+            <LazyImage
+              src={Pill}
+              alt="Upload - Pill Concept"
+              className="w-full h-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+            />
+          </div>
         </div>
       </div>
     </div>

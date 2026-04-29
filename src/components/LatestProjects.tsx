@@ -4,10 +4,10 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import LazyImage from './LazyImage';
 
 // Import preview images
-import YutaniPreview from '../assets/Yutani/TearsRain-Preview.mp4';
+import DovePreview from '../assets/Dove/dove (1).png';
+import UploadPreview from '../assets/Upload/BG.jpg';
 import TheNoisePreview from '../assets/Images/project2.png';
-import NasaHondaPreview from '../assets/CT/Fox  (8).png';
-import UploadPreview from '../assets/Images/project3.png';
+import YutaniPreview from '../assets/Yutani/TearsRain-Preview.mp4';
 
 interface Project {
   title: string;
@@ -20,12 +20,18 @@ interface Project {
 
 const latestProjects: Project[] = [
   {
-    title: 'Yutani-Log',
-    path: '/projects/yutanilog',
-    description: 'Face animation experiments with Wan Animate',
-    tags: ['animation', 'experimental'],
-    preview: YutaniPreview,
-    isVideo: true,
+    title: 'Dove: Real Virtual Beauty',
+    path: '/work/dove',
+    description: 'Real women inside video games — rigging, animation & Unreal Engine',
+    tags: ['animation', 'characters'],
+    preview: DovePreview,
+  },
+  {
+    title: 'UPLOAD',
+    path: '/projects/upload',
+    description: 'Upload yourself to stop living in poverty',
+    tags: ['digital', 'virtual'],
+    preview: UploadPreview,
   },
   {
     title: 'The Noise',
@@ -35,18 +41,12 @@ const latestProjects: Project[] = [
     preview: TheNoisePreview,
   },
   {
-    title: 'NASAXHONDA',
-    path: '/projects/nasaxhonda',
-    description: 'What if Honda made a motorcycle for ExoPlanet exploration?',
-    tags: ['nasa', 'space'],
-    preview: NasaHondaPreview,
-  },
-  {
-    title: 'UPLOAD',
-    path: '/projects/upload',
-    description: 'Upload yourself to stop living in poverty',
-    tags: ['digital', 'virtual'],
-    preview: UploadPreview,
+    title: 'Yutani-Log',
+    path: '/projects/yutanilog',
+    description: 'Face animation experiments with Wan Animate',
+    tags: ['animation', 'experimental'],
+    preview: YutaniPreview,
+    isVideo: true,
   },
 ];
 

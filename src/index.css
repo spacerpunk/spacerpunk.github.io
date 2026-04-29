@@ -7,8 +7,8 @@
   font-family: 'JetBrains Mono', monospace;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #181818;
-  color: #ffffff; /* Changed to black for better default contrast */
+  background-color: #000000;
+  color: #ffffff;
 }
 
 @layer base {
@@ -41,6 +41,6 @@ button {
 
 @media (prefers-color-scheme: light) {
   :root {
-    background-color: #111011;
+    background-color: #000000;
   }
 }
