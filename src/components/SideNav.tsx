@@ -134,7 +134,6 @@ const SideNav = () => {
         { title: 'UPLOAD', path: '/projects/Upload' },
         { title: 'Yutani-Log', path: '/projects/YutaniLog' },
         { title: 'Music Moodboards', path: '/projects/MusicMoodboards' },
-        { title: 'Toyota Concept Film', path: '/projects/ToyotaConcept' },
         { title: 'NASAXHONDA', path: '/projects/NasaXHonda' },
         { title: 'UGC Slopntent', path: '/projects/UGCSlopntent' },
         {
