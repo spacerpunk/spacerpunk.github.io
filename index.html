@@ -5,6 +5,22 @@
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spcrpnk</title>
+    <script>
+      // Restore path encoded by 404.html for GitHub Pages SPA routing
+      (function () {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+        // Also handle ?p= query param redirect from 404.html
+        var search = window.location.search;
+        if (search.indexOf('?p=') === 0) {
+          var decoded = decodeURIComponent(search.slice(3));
+          history.replaceState(null, null, decoded + window.location.hash);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
