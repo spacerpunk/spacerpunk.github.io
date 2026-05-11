@@ -16,6 +16,8 @@ const Dove = lazy(() => import('./pages/work/Dove'));
 const Atea = lazy(() => import('./pages/work/Atea'));
 const Generative = lazy(() => import('./pages/work/Generative'));
 const Tungsteno = lazy(() => import('./pages/work/Tungsteno'));
+const AgenticMonks = lazy(() => import('./pages/work/AgenticMonks'));
+const ToyotaTeam23 = lazy(() => import('./pages/work/ToyotaTeam23'));
 
 // PROJECTS - Lazy loaded
 const TheNoise = lazy(() => import('./pages/projects/TheNoise'));
@@ -59,6 +61,8 @@ export default function App() {
                 <Route path="/work/atea" element={<Atea />} />
                 <Route path="/work/tungsteno" element={<Tungsteno />} />
                 <Route path="/work/generative" element={<Generative />} />
+                <Route path="/work/agenticmonks" element={<AgenticMonks />} />
+                <Route path="/work/toyotateam23" element={<ToyotaTeam23 />} />
 
                 {/* projects */}
                 <Route path="/projects/thenoise" element={<TheNoise />} />

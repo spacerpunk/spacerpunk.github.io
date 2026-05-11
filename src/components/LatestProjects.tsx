@@ -4,8 +4,9 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import LazyImage from './LazyImage';
 
 // Import preview images
-import DovePreview from '../assets/Dove/dove (1).png';
-import UploadPreview from '../assets/Upload/BG.jpg';
+import DovePreview from '../assets/Dove/Dove_Thumb.png';
+import AgenticPreview from '../assets/Monks/GoogleAgent/UI Gif_q90_fps15_1350x1080.gif';
+import ToyotaPreview from '../assets/Team23/Toyota/Toyota_Storyboard (1).jpg';
 import TheNoisePreview from '../assets/Images/project2.png';
 import YutaniPreview from '../assets/Yutani/TearsRain-Preview.mp4';
 
@@ -27,11 +28,18 @@ const latestProjects: Project[] = [
     preview: DovePreview,
   },
   {
-    title: 'UPLOAD',
-    path: '/projects/upload',
-    description: 'Upload yourself to stop living in poverty',
-    tags: ['digital', 'virtual'],
-    preview: UploadPreview,
+    title: 'Agentic @Monks',
+    path: '/work/agenticmonks',
+    description: 'Always-on-brand AI renders populating After Effects templates dynamically',
+    tags: ['agentic', 'AI'],
+    preview: AgenticPreview,
+  },
+  {
+    title: 'Toyota @Team23',
+    path: '/work/toyotateam23',
+    description: 'AI-generated storyboard for a Toyota concept short film',
+    tags: ['automotive', 'storyboard'],
+    preview: ToyotaPreview,
   },
   {
     title: 'The Noise',
@@ -83,7 +91,7 @@ export default function LatestProjects() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
       >
         {latestProjects.map((project) => (
           <motion.div key={project.path} variants={item}>

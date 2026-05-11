@@ -9,14 +9,14 @@ export default function Home() {
         description="SPACERPUNK - Music, Visuals, and Creative Technology by Nico Requena. Exploring generative AI, sound design, and visual experiences."
       />
       <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold">
-        spacerpunk
+        nico requena
       </h1>
       <h3 className="text-base md:text-lg font-extralight py-2">
-        Nico Requena
+        creative technolgy
       </h3>
       <div>
         <h3 className="text-lg md:text-xl font-extralight py-4 text-nasared">
-          i make music & visuals{' '}
+          i make music & sound & visuals & films{' '}
           <h2 className="text-sm md:text-base font-extralight py-0 text-nasared">
             <a
               href="https://spacerpunk.github.io/"
