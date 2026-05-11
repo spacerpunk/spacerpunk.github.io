@@ -67,6 +67,7 @@ export default function App() {
                 {/* projects */}
                 <Route path="/projects/thenoise" element={<TheNoise />} />
                 <Route path="/projects/theglitch" element={<TheGlitch />} />
+                <Route path="/projects/upload" element={<Upload />} />
                 <Route path="/projects/thetape" element={<TheTape />} />
                 <Route path="/projects/trenchrun" element={<TrenchRun />} />
                 <Route path="/projects/anomaly" element={<Anomaly />} />
@@ -92,7 +93,6 @@ export default function App() {
                   path="/projects/verticalmusicwaves"
                   element={<VerticalMusicWaves />}
                 />
-                <Route path="/projects/upload" element={<Upload />} />
 
                 {/* 404 catch-all */}
                 <Route path="*" element={<NotFound />} />

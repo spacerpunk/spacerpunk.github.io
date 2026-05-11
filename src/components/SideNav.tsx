@@ -131,6 +131,7 @@ const SideNav = () => {
         { title: 'The Tape', path: '/projects/TheTape' },
         { title: 'Trench Run', path: '/projects/TrenchRun' },
         { title: 'The Glitch', path: '/projects/TheGlitch' },
+        { title: 'UPLOAD', path: '/projects/Upload' },
         { title: 'Yutani-Log', path: '/projects/YutaniLog' },
         { title: 'Music Moodboards', path: '/projects/MusicMoodboards' },
         { title: 'Toyota Concept Film', path: '/projects/ToyotaConcept' },
@@ -144,7 +145,6 @@ const SideNav = () => {
           title: 'Vertical Sliced Music Waves',
           path: '/projects/VerticalMusicWaves',
         },
-        { title: 'UPLOAD', path: '/projects/Upload' },
       ],
     },
     // {
