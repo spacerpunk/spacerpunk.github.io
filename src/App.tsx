@@ -18,6 +18,9 @@ const Generative = lazy(() => import('./pages/work/Generative'));
 const Tungsteno = lazy(() => import('./pages/work/Tungsteno'));
 const AgenticMonks = lazy(() => import('./pages/work/AgenticMonks'));
 const ToyotaTeam23 = lazy(() => import('./pages/work/ToyotaTeam23'));
+const Superside = lazy(() => import('./pages/work/Superside'));
+const NoeAssociates = lazy(() => import('./pages/work/NoeAssociates'));
+const FirstAveMachine = lazy(() => import('./pages/work/FirstAveMachine'));
 
 // PROJECTS - Lazy loaded
 const TheNoise = lazy(() => import('./pages/projects/TheNoise'));
@@ -63,6 +66,9 @@ export default function App() {
                 <Route path="/work/generative" element={<Generative />} />
                 <Route path="/work/agenticmonks" element={<AgenticMonks />} />
                 <Route path="/work/toyotateam23" element={<ToyotaTeam23 />} />
+                <Route path="/work/superside" element={<Superside />} />
+                <Route path="/work/noeassociates" element={<NoeAssociates />} />
+                <Route path="/work/firstavemachine" element={<FirstAveMachine />} />
 
                 {/* projects */}
                 <Route path="/projects/thenoise" element={<TheNoise />} />

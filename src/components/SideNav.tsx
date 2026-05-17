@@ -120,6 +120,9 @@ const SideNav = () => {
         { title: 'Dove', path: '/work/dove' },
         { title: 'ATEA', path: '/work/atea' },
         { title: '@Tungsteno Films', path: '/work/Tungsteno' },
+        { title: 'Superside — AI Work', path: '/work/superside' },
+        { title: 'Noe&Associates', path: '/work/noeassociates' },
+        { title: '1stAveMachine', path: '/work/firstavemachine' },
       ],
     },
     {
