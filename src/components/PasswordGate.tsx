@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CORRECT_PASSWORD = 'spcrpnk1993';
+const DEFAULT_PASSWORD = 'spcrpnk1993';
 
 interface PasswordGateProps {
   storageKey: string;
+  password?: string;
   children: React.ReactNode;
 }
 
-export default function PasswordGate({ storageKey, children }: PasswordGateProps) {
+export default function PasswordGate({ storageKey, password = DEFAULT_PASSWORD, children }: PasswordGateProps) {
   const [unlocked, setUnlocked] = useState(
     () => sessionStorage.getItem(storageKey) === 'unlocked',
   );
@@ -18,7 +19,7 @@ export default function PasswordGate({ storageKey, children }: PasswordGateProps
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input === CORRECT_PASSWORD) {
+    if (input === password) {
       sessionStorage.setItem(storageKey, 'unlocked');
       setUnlocked(true);
     } else {

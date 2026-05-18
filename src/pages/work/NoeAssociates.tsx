@@ -190,17 +190,17 @@ function LightboxImage({ src, alt }: { src: string; alt: string }) {
 
 export default function NoeAssociates() {
   return (
-    <PasswordGate storageKey="noeassociates-unlocked">
+    <PasswordGate storageKey="noeassociates-unlocked" password="n0e&2026">
       <div className="w-full p-4 max-w-6xl">
         {/* Header */}
         <h1 className="text-2xl font-bold mb-1">
-          Noe&amp;Associates — Social Content
+          Noe&amp;Associates — Social Content Showcase
         </h1>
         <h3 className="text-nasared text-sm font-extralight mb-4">
           #noeassociates #AI #generativeAI #social #videogen #imagegen #comfyui
         </h3>
         <p className="text-base font-normal text-gray-200 mb-2 max-w-3xl">
-          A body of AI-generated social content produced for Noe&amp;Associates
+          A body of AI-generated social content produced for several brands
           — spanning video generation, image synthesis, and composite work
           across a mix of closed and open-source tools.
         </p>
