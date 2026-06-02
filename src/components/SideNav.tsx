@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface MenuItem {
   title: string;
   path?: string;
   icon?: React.ReactNode;
   submenu?: MenuItem[];
+  highlight?: boolean;
 }
 
 interface SubMenuProps {
@@ -81,6 +83,7 @@ const SubMenu = ({
 
 const SideNav = () => {
   const location = useLocation();
+  const { lang } = useLanguage();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -103,6 +106,8 @@ const SideNav = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const es = lang === 'es';
+
   const menuItems: MenuItem[] = [
     {
       title: 'SPCRPNK',
@@ -110,15 +115,19 @@ const SideNav = () => {
       icon: <span></span>,
     },
     {
-      title: 'WORK',
+      title: es ? 'SERVICIOS' : 'SERVICES',
+      path: '/services',
+      icon: <span></span>,
+    },
+    {
+      title: es ? 'TRABAJO' : 'WORK',
       icon: <span></span>,
       submenu: [
         { title: 'Dove', path: '/work/dove' },
-        { title: 'AI', path: '/work/Generative' },
+        { title: es ? 'IA' : 'AI', path: '/work/Generative' },
         { title: 'Agentic @Monks', path: '/work/agenticmonks' },
         { title: 'Superside — AI Work', path: '/work/superside' },
         { title: 'Toyota @Team23', path: '/work/toyotateam23' },
-        { title: 'Noe&Associates', path: '/work/noeassociates' },
         { title: '@Monks', path: '/work/monks' },
         { title: 'ATEA', path: '/work/atea' },
         { title: '@Tungsteno Films', path: '/work/Tungsteno' },
@@ -126,7 +135,7 @@ const SideNav = () => {
       ],
     },
     {
-      title: 'PROJECTS',
+      title: es ? 'PROYECTOS' : 'PROJECTS',
       icon: <span></span>,
       submenu: [
         { title: 'Anomaly', path: '/projects/Anomaly' },
@@ -136,33 +145,29 @@ const SideNav = () => {
         { title: 'The Glitch', path: '/projects/TheGlitch' },
         { title: 'UPLOAD', path: '/projects/Upload' },
         { title: 'Yutani-Log', path: '/projects/YutaniLog' },
-        { title: 'Music Moodboards', path: '/projects/MusicMoodboards' },
+        { title: es ? 'Moodboards Musicales' : 'Music Moodboards', path: '/projects/MusicMoodboards' },
         { title: 'NASAXHONDA', path: '/projects/NasaXHonda' },
         { title: 'UGC Slopntent', path: '/projects/UGCSlopntent' },
         {
-          title: 'Generative Concepts Album',
+          title: es ? 'Álbum Conceptos Generativos' : 'Generative Concepts Album',
           path: '/projects/GenerativeConceptsAlbum',
         },
         {
-          title: 'Vertical Sliced Music Waves',
+          title: es ? 'Ondas Musicales en Corte Vertical' : 'Vertical Sliced Music Waves',
           path: '/projects/VerticalMusicWaves',
         },
       ],
     },
-    // {
-    //   title: 'TECH LABS',
-    //   path: '/Labs',
-    //   icon: <span></span>,
-    // },
-    // {
-    //   title: 'Reel',
-    //   path: '/Reel',
-    //   icon: <span></span>,
-    // },
     {
-      title: 'ABOUT',
+      title: es ? 'SOBRE MÍ' : 'ABOUT',
       path: '/about',
       icon: <span></span>,
+    },
+    {
+      title: 'POLVO LAB',
+      path: '/polvolab',
+      icon: <span></span>,
+      highlight: true,
     },
   ];
 
@@ -247,6 +252,19 @@ const SideNav = () => {
                         }}
                         onNavigate={handleNavigate}
                       />
+                    ) : item.highlight ? (
+                      <Link
+                        to={item.path ?? ''}
+                        onClick={handleNavigate}
+                        className={`${LINK_BASE_STYLES} italic
+                          ${isActive
+                            ? 'bg-nasared text-white text-sm font-semibold'
+                            : 'text-nasared bg-black-900 font-bold text-sm hover:bg-nasared hover:text-white'
+                          }`}
+                      >
+                        {item.icon}
+                        <span className="ml-2">{item.title}</span>
+                      </Link>
                     ) : (
                       <Link
                         to={item.path ?? ''}
