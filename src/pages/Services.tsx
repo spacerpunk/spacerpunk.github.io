@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { useLanguage, type Lang } from '../contexts/LanguageContext';
 
@@ -15,6 +16,8 @@ const fadeUp = {
   }),
 };
 
+interface CaseStudyLink { label: string; url: string; external?: boolean }
+
 interface Pack {
   id: number;
   tag: string;
@@ -22,7 +25,13 @@ interface Pack {
   description: string;
   includes: string[];
   forWhom: string;
-  caseStudy: { label: string; title: string; body: string; placeholder: boolean };
+  caseStudy: {
+    label: string;
+    title: string;
+    body: string;
+    placeholder: boolean;
+    links?: CaseStudyLink[];
+  };
 }
 
 function getPacks(lang: Lang): Pack[] {
@@ -43,11 +52,12 @@ function getPacks(lang: Lang): Pack[] {
         : 'Creative agencies, brand teams, independent producers',
       caseStudy: {
         label: es ? 'Caso de Estudio' : 'Case Study',
-        title: es ? 'Conceptos de Campaña con IA — Superside' : 'Generative Campaign Concepts — Superside',
+        title: es ? 'Storyboard con IA para Film Conceptual — Toyota @ Team23' : 'AI Storyboard for Concept Film — Toyota @ Team23',
         body: es
-          ? 'Exploración visual rápida con IA para un pitch de campaña global. Se produjeron más de 40 style frames en 3 direcciones visuales distintas en 48 horas usando pipelines personalizados de Flux, permitiendo al cliente presentar con confianza antes de filmar un solo cuadro.'
-          : 'Rapid AI visual exploration for a global campaign pitch. Produced 40+ style frames across 3 distinct visual directions in 48 hours using custom Flux pipelines, enabling the client to present confidently to their end client before a single frame was shot.',
+          ? 'Pipeline de generación de imágenes con IA (ComfyUI + Weave + Fal.ai, modelos Flux 2, NanoBanana2, Seedream y ChatGPT Image 2) para producir un storyboard de un film conceptual de Toyota. Cada frame iterado contra referencias del vehículo para mantener geometría, color e iluminación pixel-accurate. El storyboard es la base del film conceptual actualmente en producción.'
+          : 'AI image generation pipeline (ComfyUI + Weave + Fal.ai, running Flux 2, NanoBanana2, Seedream and ChatGPT Image 2) to produce a storyboard for a Toyota concept film. Each frame iterated against vehicle references to nail exact geometry, colour and lighting. The storyboard is now the foundation for the concept film in production.',
         placeholder: false,
+        links: [{ label: es ? 'Ver proyecto →' : 'View project →', url: '/work/toyotateam23' }],
       },
     },
     {
@@ -65,11 +75,12 @@ function getPacks(lang: Lang): Pack[] {
         : 'Production companies, brands, content studios',
       caseStudy: {
         label: es ? 'Caso de Estudio' : 'Case Study',
-        title: es ? 'Versionado y Finalización de Campaña — [Cliente Pendiente]' : 'Campaign Versioning & Finishing — [Client Placeholder]',
+        title: es ? 'Director de Audio y Post — Tungsteno Films (2016–2021)' : 'Audio Direction & Post Production — Tungsteno Films (2016–2021)',
         body: es
-          ? 'Pack post completo para una campaña multi-mercado — edición, color, audio post y 12 entregables versionados en distintos formatos. Entregado en 5 días hábiles desde el picture lock.'
-          : 'Full post package for a multi-market campaign — edit, color, audio post and 12 versioned deliverables across formats. Delivered in 5 business days from locked picture.',
-        placeholder: true,
+          ? '5 años como Director de Audio y luego VFX & 3D Generalist en esta productora indie de Buenos Aires. Cortometrajes (La Grieta, ¡NO!), piloto de serie sci-fi (Abismo), serie animada semanal y publicidad para Dove, Pringles y Visa. Post completo: grabación en set, re-grabación, diseño de sonido, edición, mezcla 5.1, más edición de video, compositing y 3D en Blender y Unreal Engine.'
+          : '5 years as Audio Director and later VFX & 3D Generalist at this Buenos Aires indie film company. Short films (La Grieta, ¡NO!), sci-fi series pilot (Abismo), animated weekly series and advertising for Dove, Pringles and Visa. Full pipeline: on-set recording, re-recording, sound design, editing, 5.1 mixing, plus video editing, compositing and 3D in Blender and Unreal Engine.',
+        placeholder: false,
+        links: [{ label: es ? 'Ver proyecto →' : 'View project →', url: '/work/Tungsteno' }],
       },
     },
     {
@@ -86,12 +97,16 @@ function getPacks(lang: Lang): Pack[] {
         ? 'Marcas de producto, e-commerce, agencias que necesitan visuales hero'
         : 'Product brands, e-commerce, agencies needing hero visuals',
       caseStudy: {
-        label: es ? 'Caso de Estudio' : 'Case Study',
-        title: es ? 'Visualización de Producto en Tiempo Real — Dove' : 'Real-Time Product Visualization — Dove',
+        label: es ? 'Casos de Estudio' : 'Case Studies',
+        title: es ? 'Visualización 3D — Dove + NASAXHONDA' : '3D Visualization — Dove + NASAXHONDA',
         body: es
-          ? "Animación 3D completa, shading y rendering para la campaña 'Real Virtual Beauty' de Dove. Assets de producto fotorrealistas construidos en Blender e integrados con compositing de acción real para la entrega final."
-          : "Full 3D animation, shading and rendering for Dove's \"Real Virtual Beauty\" campaign. Built and rendered photorealistic product assets in Blender, integrated with live-action compositing for final delivery.",
+          ? 'Dos proyectos: Dove "Real Virtual Beauty" — animación 3D completa, shading y rendering en Blender integrado con compositing de acción real. Y NASAXHONDA XR-LRV — visualización conceptual de una moto lunar NASA×Honda art-directed a través de pipelines de generación de imágenes con IA, desde diseño de placa hasta renders hero del vehículo.'
+          : 'Two projects: Dove "Real Virtual Beauty" — full 3D animation, shading and rendering in Blender integrated with live-action compositing. And NASAXHONDA XR-LRV — concept visualization of a NASA×Honda lunar rover bike, art-directed through AI image generation pipelines from spec sheet to hero vehicle renders.',
         placeholder: false,
+        links: [
+          { label: 'Dove →', url: '/work/dove' },
+          { label: 'NASAXHONDA →', url: '/projects/nasaxhonda' },
+        ],
       },
     },
     {
@@ -108,12 +123,16 @@ function getPacks(lang: Lang): Pack[] {
         ? 'Cine, publicidad, videojuegos, apps, proyectos de identidad de marca'
         : 'Film, advertising, games, apps, brand identity projects',
       caseStudy: {
-        label: es ? 'Caso de Estudio' : 'Case Study',
-        title: es ? 'Score Original y Diseño de Sonido — ATEA' : 'Original Score & Sound Design — ATEA',
+        label: es ? 'Casos de Estudio' : 'Case Studies',
+        title: es ? 'Score Original — ATEA OST + Discografía Spacerpunk' : 'Original Score — ATEA OST + Spacerpunk Discography',
         body: es
-          ? 'Composición de la banda sonora original completa para la serie documental ATEA — score original, texturas ambientales, diseño de sonido y audio post en todos los episodios. Lanzado como álbum independiente.'
-          : 'Composed the full original soundtrack for the ATEA documentary series — original score, ambient textures, sound design and audio post across all episodes. Released as a standalone album.',
+          ? 'Banda sonora original completa para la serie documental ATEA — score, texturas ambientales, diseño de sonido y audio post en todos los episodios, lanzado como álbum independiente. Más de una década de lanzamientos que abarcan scores para cine, electrónica experimental y diseño de sonido disponibles en Bandcamp.'
+          : 'Full original soundtrack for the ATEA documentary series — score, ambient textures, sound design and audio post across all episodes, released as a standalone album. Over a decade of releases spanning film scores, experimental electronics and sound design work available on Bandcamp.',
         placeholder: false,
+        links: [
+          { label: 'ATEA →', url: '/work/atea' },
+          { label: 'Bandcamp →', url: 'https://spacerpunk.bandcamp.com/', external: true },
+        ],
       },
     },
     {
@@ -124,18 +143,22 @@ function getPacks(lang: Lang): Pack[] {
         ? 'IA, automatización y pipelines de producción para equipos visuales, de audio y de contenido. Más velocidad de output sin quemar a tu equipo.'
         : 'AI, automation and production pipelines for visual, audio and content teams. Speed up output without burning out your people.',
       includes: es
-        ? ['Auditoría de flujo de trabajo y análisis de brechas', 'Integración de herramientas de IA (Flux, SD, modelos custom)', 'Scripts de automatización y plantillas', 'Sesiones de capacitación del equipo', 'Soporte async continuo (opción retainer)']
-        : ['Workflow audit & gap analysis', 'AI tool integration (Flux, SD, custom models)', 'Automation scripts & templates', 'Team training sessions', 'Ongoing async support (retainer option)'],
+        ? ['Auditoría de flujo de trabajo y análisis de brechas', 'Integración de herramientas de IA (Agentes, IA Generativa, modelos personalizados, IA + Postproducción)', 'Scripts de automatización y plantillas', 'Sesiones de capacitación del equipo', 'Soporte async continuo (opción retainer)']
+        : ['Workflow audit & gap analysis', 'AI tool integration (Agents, Generative AI, custom models, AI + PostProduction Pipelines)', 'Automation scripts & templates', 'Team training sessions', 'Ongoing async support (retainer option)'],
       forWhom: es
         ? 'Agencias, equipos creativos internos, estudios de post'
         : 'Agencies, in-house creative teams, post studios',
       caseStudy: {
-        label: es ? 'Caso de Estudio' : 'Case Study',
-        title: es ? 'Build de Pipeline con IA — .Monks' : 'AI Pipeline Build — .Monks',
+        label: es ? 'Casos de Estudio' : 'Case Studies',
+        title: es ? 'Pipelines Agénticos — .Monks + Superside' : 'Agentic Pipelines — .Monks + Superside',
         body: es
-          ? 'Diseño y despliegue de pipelines asistidos por IA para equipos de Design, Edición y VFX — incluyendo apps de generación de imágenes con Flux/SD, herramientas de prompts y scripts de producción. Reducción del tiempo de iteración conceptual en ~60% en proyectos calificados.'
-          : 'Designed and deployed AI-assisted pipelines for Design, Editing and VFX teams — including custom Flux/SD image generation apps, prompt tooling and production scripts. Reduced concept iteration time by ~60% on qualifying projects.',
+          ? 'Dos sistemas en .Monks: (1) Pipeline completamente agéntico (Cursor + Claude Sonnet + Google Imagen/Gemini/Veo + n8n + After Effects) que genera assets siempre on-brand y puebla templates de broadcast automáticamente — de días de trabajo a minutos. (2) Sistema de moodboard-a-entrega para Superside usando Flux 2 Pro y ChatGPT Agentic, produciendo entregables multi-formato desde el brief hasta el output final.'
+          : 'Two systems built at .Monks: (1) A fully agentic pipeline (Cursor + Claude Sonnet + Google Imagen/Gemini/Veo + n8n + After Effects) that generates always-on-brand assets and auto-populates broadcast templates — turning multi-day manual work into minutes. (2) A moodboard-to-delivery system for Superside using Flux 2 Pro and ChatGPT Agentic, producing multi-format deliverables from creative brief to final output.',
         placeholder: false,
+        links: [
+          { label: es ? 'Agentic @Monks →' : 'Agentic @Monks →', url: '/work/agenticmonks' },
+          { label: 'Superside →', url: '/work/superside' },
+        ],
       },
     },
   ];
@@ -252,6 +275,31 @@ function PackCard({ pack, lang, index }: { pack: Pack; lang: Lang; index: number
                 <p className={`text-sm leading-relaxed font-light ${pack.caseStudy.placeholder ? 'text-gray-700 italic' : 'text-gray-400'}`}>
                   {pack.caseStudy.body}
                 </p>
+                {pack.caseStudy.links && pack.caseStudy.links.length > 0 && (
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    {pack.caseStudy.links.map((l) =>
+                      l.external ? (
+                        <a
+                          key={l.url}
+                          href={l.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-mono text-nasared hover:underline"
+                        >
+                          {l.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={l.url}
+                          to={l.url}
+                          className="text-xs font-mono text-nasared hover:underline"
+                        >
+                          {l.label}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -304,24 +352,40 @@ export default function Services() {
           <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-white leading-none mb-4">
             {es ? 'SERVICIOS' : 'SERVICES'}
           </h1>
-          <p className="text-gray-400 text-lg max-w-xl font-light">
+          <p className="text-gray-500 text-sm max-w-xl font-light">
             {es
               ? 'Trabajo creativo empaquetado para agencias, marcas y estudios que necesitan output rápido y de alta calidad en visuales, audio e IA.'
               : 'Packaged creative work for agencies, brands and studios that need fast, high-quality output across visuals, audio and AI.'}
           </p>
         </motion.div>
 
-        <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="h-px bg-gray-800 mb-12" />
+        <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="h-px bg-gray-800 mb-10" />
 
-        {/* Intro grid */}
+        {/* Packs list — right after hero */}
+        <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" className="mb-2">
+          <p className="text-gray-600 text-xs font-mono mb-4">
+            {es ? '↓ Hacé clic en cada pack para ver detalles y caso de estudio.' : '↓ Click any pack to expand details and case study.'}
+          </p>
+        </motion.div>
+
+        <div className="space-y-2 mb-16">
+          {packs.map((pack, i) => (
+            <PackCard key={pack.id} pack={pack} lang={lang} index={i} />
+          ))}
+        </div>
+
+        <motion.div custom={1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="h-px bg-gray-800 mb-12" />
+
+        {/* Intro grid — below packs */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-800 mb-16">
           {intro.map((item, i) => (
             <motion.div
               key={item.id}
-              custom={i + 2}
+              custom={i}
               variants={fadeUp}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true }}
               className="bg-black p-6"
             >
               <p className="text-nasared text-xs font-mono tracking-widest uppercase mb-3">
@@ -341,26 +405,6 @@ export default function Services() {
                 <p className="text-gray-500 text-sm font-light leading-relaxed">{item.body}</p>
               )}
             </motion.div>
-          ))}
-        </div>
-
-        {/* Packs heading */}
-        <motion.div custom={6} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-8">
-          <p className="text-nasared text-xs font-mono tracking-widest uppercase mb-2">
-            {es ? 'Packs de Servicio' : 'Service Packs'}
-          </p>
-          <h2 className="text-2xl font-bold text-white">
-            {es ? 'Elegí lo que necesitás' : 'Pick what you need'}
-          </h2>
-          <p className="text-gray-600 text-sm font-light mt-1">
-            {es ? 'Hacé clic en cada pack para ver los detalles y el caso de estudio.' : 'Click any pack to expand details and case study.'}
-          </p>
-        </motion.div>
-
-        {/* Packs list */}
-        <div className="space-y-2 mb-20">
-          {packs.map((pack, i) => (
-            <PackCard key={pack.id} pack={pack} lang={lang} index={i} />
           ))}
         </div>
 
