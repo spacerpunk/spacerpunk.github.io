@@ -124,7 +124,7 @@ const SideNav = () => {
       icon: <span></span>,
       submenu: [
         { title: 'Dove', path: '/work/dove' },
-        { title: es ? 'IA' : 'AI', path: '/work/Generative' },
+        { title: es ? 'AI Creative' : 'AI Creative', path: '/work/Generative' },
         { title: 'Agentic @Monks', path: '/work/agenticmonks' },
         { title: 'Superside — AI Work', path: '/work/superside' },
         { title: 'Toyota @Team23', path: '/work/toyotateam23' },

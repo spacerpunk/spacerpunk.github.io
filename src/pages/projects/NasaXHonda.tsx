@@ -1,5 +1,6 @@
 import SEO from '../../components/SEO';
 import LazyImage from '../../components/LazyImage';
+import Teaser from '../../assets/nasaxhonda/NASAXHONDATeaser.mp4';
 
 import FilmRef1 from '../../assets/nasaxhonda/Film References/FilmRef (1).jpg';
 import FilmRef2 from '../../assets/nasaxhonda/Film References/FilmRef (2).jpg';
@@ -63,19 +64,37 @@ export default function NasaXHonda() {
         #nasa #honda #conceptfilm #space #engineering #shortfilm
       </h3>
 
-      {/* Concept */}
-      <div className="py-8 max-w-2xl">
-        <h2 className="text-xl font-semibold mb-3">The Concept</h2>
-        <p className="text-gray-400 leading-relaxed text-sm">
-          A 15 to 30-second short dynamic film. Honda engineers — working under
-          a classified NASA joint program — have built a bike for any terrain:
-          the Honda XR-LRV, TEST UNIT 03. The same thinking that drove the Mars
-          and Lunar Rovers now runs through a two-wheeled machine: LOX oxidizer
-          fuel injection, low-gravity suspension geometry, sealed terrain tires,
-          and a full telemetry suite. The rider wears a custom suit. The terrain
-          does not matter.
-        </p>
-      </div>
+      {/* Teaser + Concept side by side */}
+      <section className="py-6 flex flex-col md:flex-row gap-8 items-start">
+        {/* Video — constrained width for vertical format */}
+        <div className="w-full md:w-64 lg:w-72 shrink-0">
+          <p className="text-xs font-mono text-nasared tracking-widest uppercase mb-3">
+            Teaser — Full film coming soon
+          </p>
+          <video
+            src={Teaser}
+            autoPlay
+            loop
+            playsInline
+            controls
+            className="w-full rounded-sm"
+          />
+        </div>
+
+        {/* Concept text */}
+        <div className="flex-1 pt-0 md:pt-7">
+          <h2 className="text-xl font-semibold mb-3">The Concept</h2>
+          <p className="text-gray-400 leading-relaxed text-sm">
+            A 15 to 30-second short dynamic film. Honda engineers — working under
+            a classified NASA joint program — have built a bike for any terrain:
+            the Honda XR-LRV, TEST UNIT 03. The same thinking that drove the Mars
+            and Lunar Rovers now runs through a two-wheeled machine: LOX oxidizer
+            fuel injection, low-gravity suspension geometry, sealed terrain tires,
+            and a full telemetry suite. The rider wears a custom suit. The terrain
+            does not matter.
+          </p>
+        </div>
+      </section>
 
       {/* Bike Design — Hero */}
       <section className="py-6">

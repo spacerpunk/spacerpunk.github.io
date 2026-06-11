@@ -6,7 +6,7 @@ import LazyImage from './LazyImage';
 // Import preview images
 import DovePreview from '../assets/Dove/Dove_Thumb.png';
 import AgenticPreview from '../assets/Monks/GoogleAgent/UI Gif_q90_fps15_1350x1080.gif';
-import ToyotaPreview from '../assets/Team23/Toyota/Toyota_Storyboard (1).jpg';
+import NasaXHondaPreview from '../assets/nasaxhonda/Bike Design/BikeDesign (5).png';
 import TheNoisePreview from '../assets/Images/project2.png';
 import YutaniPreview from '../assets/Yutani/TearsRain-Preview.mp4';
 
@@ -35,11 +35,11 @@ const latestProjects: Project[] = [
     preview: AgenticPreview,
   },
   {
-    title: 'Toyota @Team23',
-    path: '/work/toyotateam23',
-    description: 'AI-generated storyboard for a Toyota concept short film',
-    tags: ['automotive', 'storyboard'],
-    preview: ToyotaPreview,
+    title: 'NASAXHONDA',
+    path: '/projects/nasaxhonda',
+    description: 'A NASA-engineered Honda concept bike built for any terrain',
+    tags: ['concept', 'automotive'],
+    preview: NasaXHondaPreview,
   },
   {
     title: 'The Noise',

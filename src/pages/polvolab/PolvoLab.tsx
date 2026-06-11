@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import SEO from '../../components/SEO';
+import PasswordGate from '../../components/PasswordGate';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const fadeUp = {
@@ -53,7 +54,7 @@ export default function PolvoLab() {
   const tx = t[lang];
 
   return (
-    <>
+    <PasswordGate storageKey="polvolab" password="p0lv0">
       <SEO title={tx.seoTitle} description={tx.seoDesc} />
 
       <div className="p-4 lg:p-8 min-h-screen">
@@ -132,6 +133,6 @@ export default function PolvoLab() {
           <p className="text-gray-500 text-sm mt-4 font-mono">{tx.wipSig}</p>
         </motion.div>
       </div>
-    </>
+    </PasswordGate>
   );
 }
