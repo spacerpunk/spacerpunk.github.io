@@ -1,14 +1,10 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import LazyImage from './LazyImage';
+import { SectionHeader, HomeCard, HomeGrid, item } from './HomeCard';
 
 // Import preview images
 import DovePreview from '../assets/Dove/Dove_Thumb.png';
 import AgenticPreview from '../assets/Monks/GoogleAgent/UI Gif_q90_fps15_1350x1080.gif';
-import NasaXHondaPreview from '../assets/nasaxhonda/Bike Design/BikeDesign (5).png';
-import TheNoisePreview from '../assets/Images/project2.png';
-import YutaniPreview from '../assets/Yutani/TearsRain-Preview.mp4';
+import ToyotaPreview from '../assets/Team23/Toyota/Toyota_Storyboard (1).jpg';
 
 interface Project {
   title: string;
@@ -19,6 +15,7 @@ interface Project {
   isVideo?: boolean;
 }
 
+// Newest first — only the latest 3 show on the home page.
 const latestProjects: Project[] = [
   {
     title: 'Dove: Real Virtual Beauty',
@@ -35,127 +32,38 @@ const latestProjects: Project[] = [
     preview: AgenticPreview,
   },
   {
-    title: 'NASAXHONDA',
-    path: '/projects/nasaxhonda',
-    description: 'A NASA-engineered Honda concept bike built for any terrain',
-    tags: ['concept', 'automotive'],
-    preview: NasaXHondaPreview,
-  },
-  {
-    title: 'The Noise',
-    path: '/projects/thenoise',
-    description: 'Horror series exploring liminal spaces and UFOs',
-    tags: ['horror', 'AI'],
-    preview: TheNoisePreview,
-  },
-  {
-    title: 'Yutani-Log',
-    path: '/projects/yutanilog',
-    description: 'Face animation experiments with Wan Animate',
-    tags: ['animation', 'experimental'],
-    preview: YutaniPreview,
-    isVideo: true,
+    title: 'Toyota @Team23',
+    path: '/work/toyotateam23',
+    description: 'AI storyboards and composited video for a Toyota concept film',
+    tags: ['automotive', 'AI'],
+    preview: ToyotaPreview,
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
-
 export default function LatestProjects() {
   return (
-    <section className="py-6 md:py-8">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl md:text-2xl font-bold">Latest Projects</h2>
-        <Link
-          to="/projects/thenoise"
-          className="text-nasared hover:underline text-xs md:text-sm flex items-center gap-1"
-        >
-          View all
-          <ArrowRightIcon className="w-3 h-3 md:w-4 md:h-4" />
-        </Link>
-      </div>
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
-      >
-        {latestProjects.map((project) => (
+    <section className="py-4 md:py-5">
+      <SectionHeader
+        kicker="Selected work"
+        title="Latest Projects"
+        to="/work/dove"
+      />
+      <HomeGrid>
+        {latestProjects.slice(0, 3).map((project) => (
           <motion.div key={project.path} variants={item}>
-            <Link to={project.path} className="block group">
-              <div className="relative overflow-hidden rounded-lg border border-gray-800 bg-black hover:border-nasared transition-all duration-300 hover:shadow-lg hover:shadow-nasared/20">
-                {/* Preview Image/Video */}
-                <div className="relative aspect-video w-full overflow-hidden bg-gray-900">
-                  {project.isVideo ? (
-                    <video
-                      src={project.preview}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                    />
-                  ) : (
-                    <LazyImage
-                      src={project.preview}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  )}
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-
-                {/* Content */}
-                <div className="p-3 md:p-4">
-                  {/* Title */}
-                  <h3 className="text-sm md:text-base font-semibold mb-1 group-hover:text-nasared transition-colors line-clamp-1">
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-xs text-gray-400 mb-2 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1 mb-2">
-                    {project.tags.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[10px] px-1.5 py-0.5 bg-nasared/10 text-nasared rounded border border-nasared/20"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Arrow indicator */}
-                  <div className="flex items-center text-nasared text-xs font-medium">
-                    <span className="group-hover:translate-x-1 transition-transform">
-                      Explore
-                    </span>
-                    <ArrowRightIcon className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <HomeCard
+              to={project.path}
+              cover={project.preview}
+              coverAlt={project.title}
+              isVideo={project.isVideo}
+              badge={project.tags[0]}
+              title={project.title}
+              description={project.description}
+              cta="Explore"
+            />
           </motion.div>
         ))}
-      </motion.div>
+      </HomeGrid>
     </section>
   );
 }

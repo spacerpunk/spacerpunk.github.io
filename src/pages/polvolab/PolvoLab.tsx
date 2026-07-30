@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import SEO from '../../components/SEO';
-import PasswordGate from '../../components/PasswordGate';
+import LazyImage from '../../components/LazyImage';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { getPolvoProjects } from './projects';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -26,8 +29,10 @@ const t = {
     d2title: 'Product Design',
     d2body: 'Objects and systems designed with intent. From concept to physical form — accessories, tools, and product lines that carry the POLVO philosophy: functional, durable, honest.',
     d2tags: ['Industrial Design', 'Accessories', 'Prototyping', 'Packaging', 'Systems'],
+    projectsKicker: 'Latest',
+    projectsTitle: 'Projects & Builds',
     wip: 'Under Construction',
-    wipText: 'Projects, products, and full case studies coming soon.',
+    wipText: 'More projects, products, and full case studies coming soon.',
     wipSig: '— POLVO LAB / 2026',
   },
   es: {
@@ -43,18 +48,21 @@ const t = {
     d2title: 'Diseño de Producto',
     d2body: 'Objetos y sistemas diseñados con intención. Del concepto a la forma física — accesorios, herramientas y líneas de producto que llevan la filosofía POLVO: funcional, durable, honesto.',
     d2tags: ['Diseño Industrial', 'Accesorios', 'Prototipado', 'Packaging', 'Sistemas'],
+    projectsKicker: 'Últimos',
+    projectsTitle: 'Proyectos & Builds',
     wip: 'En Construcción',
-    wipText: 'Proyectos, productos y casos de estudio completos próximamente.',
+    wipText: 'Más proyectos, productos y casos de estudio completos próximamente.',
     wipSig: '— POLVO LAB / 2026',
   },
 };
 
 export default function PolvoLab() {
   const { lang } = useLanguage();
+  const es = lang === 'es';
   const tx = t[lang];
 
   return (
-    <PasswordGate storageKey="polvolab" password="p0lv0">
+    <>
       <SEO title={tx.seoTitle} description={tx.seoDesc} />
 
       <div className="p-4 lg:p-8 min-h-screen">
@@ -120,9 +128,71 @@ export default function PolvoLab() {
           </motion.div>
         </div>
 
-        {/* Coming soon */}
+        {/* Projects & Builds */}
         <motion.div
           custom={4}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="mb-16"
+        >
+          <p className="text-nasared text-xs font-mono tracking-widest uppercase mb-2">
+            {tx.projectsKicker}
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            {tx.projectsTitle}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {getPolvoProjects().map((project) => (
+              <Link
+                key={project.slug}
+                to={`/polvolab/${project.slug}`}
+                id={project.slug}
+                className="scroll-mt-24 block group h-full"
+              >
+                <article className="h-full flex flex-col border border-gray-800 bg-black hover:border-nasared transition-colors duration-300">
+                  <div className="relative aspect-video overflow-hidden bg-gray-900">
+                    <LazyImage
+                      src={project.cover}
+                      alt={project.coverAlt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <span className="absolute top-3 left-3 text-[10px] font-mono tracking-widest uppercase text-white bg-nasared px-2 py-1">
+                      {project.status}
+                    </span>
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-nasared transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-gray-400 leading-relaxed mb-4 flex-1">
+                      {project.excerpt}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-mono text-gray-500 border border-gray-800 px-2 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-nasared text-xs font-medium">
+                      {es ? 'Ver proyecto' : 'View project'}
+                      <ArrowRightIcon className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Coming soon */}
+        <motion.div
+          custom={5}
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -133,6 +203,6 @@ export default function PolvoLab() {
           <p className="text-gray-500 text-sm mt-4 font-mono">{tx.wipSig}</p>
         </motion.div>
       </div>
-    </PasswordGate>
+    </>
   );
 }

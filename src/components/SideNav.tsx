@@ -159,6 +159,11 @@ const SideNav = () => {
       ],
     },
     {
+      title: 'BLOGS',
+      path: '/blogs',
+      icon: <span></span>,
+    },
+    {
       title: es ? 'SOBRE MÍ' : 'ABOUT',
       path: '/about',
       icon: <span></span>,

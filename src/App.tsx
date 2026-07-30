@@ -45,6 +45,11 @@ const Upload = lazy(() => import('./pages/projects/Upload'));
 
 // POLVO LAB
 const PolvoLab = lazy(() => import('./pages/polvolab/PolvoLab'));
+const PolvoProject = lazy(() => import('./pages/polvolab/PolvoProject'));
+
+// BLOGS
+const Blogs = lazy(() => import('./pages/blogs/Blogs'));
+const BlogPost = lazy(() => import('./pages/blogs/BlogPost'));
 
 // SERVICES
 const Services = lazy(() => import('./pages/Services'));
@@ -114,11 +119,16 @@ export default function App() {
                   element={<VerticalMusicWaves />}
                 />
 
+                {/* blogs */}
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs/:slug" element={<BlogPost />} />
+
                 {/* services */}
                 <Route path="/services" element={<Services />} />
 
                 {/* polvo lab */}
                 <Route path="/polvolab" element={<PolvoLab />} />
+                <Route path="/polvolab/:slug" element={<PolvoProject />} />
 
                 {/* 404 catch-all */}
                 <Route path="*" element={<NotFound />} />

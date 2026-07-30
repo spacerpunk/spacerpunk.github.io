@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="POLVO LAB brand identity">
+  <defs>
+    <linearGradient id="bi-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#121110"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bi-bg)"/>
+
+  <!-- construction guides -->
+  <g stroke="#d92906" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="6 8">
+    <line x1="0" y1="450" x2="1600" y2="450"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <circle cx="800" cy="380" r="150" fill="none"/>
+  </g>
+  <g stroke="#ffffff" stroke-opacity="0.12" stroke-width="1">
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="1200" y1="0" x2="1200" y2="900"/>
+  </g>
+
+  <!-- badge motif: mountain / dust arc inside circle -->
+  <circle cx="800" cy="380" r="150" fill="none" stroke="#f5f5f4" stroke-opacity="0.85" stroke-width="4"/>
+  <path d="M690 430 L760 340 L810 400 L860 320 L910 430 Z"
+        fill="none" stroke="#d92906" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="670" y1="430" x2="930" y2="430" stroke="#f5f5f4" stroke-opacity="0.6" stroke-width="3"/>
+
+  <!-- wordmark -->
+  <text x="800" y="640" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="120" letter-spacing="14" fill="#f5f5f4">POLVO</text>
+  <text x="800" y="710" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="34" letter-spacing="30" fill="#d92906">L A B</text>
+
+  <text x="80" y="130" font-family="'JetBrains Mono', monospace" font-size="18" letter-spacing="6" fill="#78716c">IDENTITY SYSTEM // 01</text>
+  <text x="80" y="850" font-family="'JetBrains Mono', monospace" font-size="18" letter-spacing="6" fill="#57534e">LOGO · TYPE · COLOR · GRID</text>
+</svg>

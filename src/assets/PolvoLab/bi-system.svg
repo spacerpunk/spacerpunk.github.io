@@ -1,0 +1,21 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brand type and color system">
+  <rect width="1200" height="800" fill="#0f0e0d"/>
+  <rect x="1" y="1" width="1198" height="798" fill="none" stroke="#d92906" stroke-opacity="0.35" stroke-width="2"/>
+  <!-- color swatches -->
+  <g>
+    <rect x="80" y="120" width="150" height="150" fill="#d92906"/>
+    <rect x="250" y="120" width="150" height="150" fill="#f5f5f4"/>
+    <rect x="420" y="120" width="150" height="150" fill="#57534e"/>
+    <rect x="590" y="120" width="150" height="150" fill="#0a0a0a" stroke="#333" stroke-width="2"/>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="16" fill="#78716c">
+    <text x="80" y="300">#d92906</text><text x="250" y="300">#f5f5f4</text>
+    <text x="420" y="300">#57534e</text><text x="590" y="300">#0a0a0a</text>
+  </g>
+  <!-- type specimen -->
+  <text x="80" y="470" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="120" fill="#f5f5f4">Aa</text>
+  <text x="300" y="440" font-family="'JetBrains Mono', monospace" font-size="30" fill="#a8a29e">JetBrains Mono</text>
+  <text x="300" y="490" font-family="'JetBrains Mono', monospace" font-size="24" fill="#78716c">ABCDEFGHIJKLM · 0123456789</text>
+  <g stroke="#d92906" stroke-opacity="0.5" stroke-width="1"><line x1="80" y1="560" x2="1120" y2="560"/></g>
+  <text x="40" y="760" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="4" fill="#57534e">SYS_02 // COLOR + TYPE — PLACEHOLDER</text>
+</svg>
