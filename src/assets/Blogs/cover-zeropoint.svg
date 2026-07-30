@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zero point energy cover">
+  <defs>
+    <linearGradient id="z-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#09090b"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="z-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.25" stop-color="#d92906" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#d92906" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="z-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#z-bg)"/>
+  <rect width="1600" height="900" fill="url(#z-grid)"/>
+
+  <!-- vacuum fluctuation dots -->
+  <g fill="#d92906" fill-opacity="0.55">
+    <circle cx="240" cy="180" r="3"/><circle cx="420" cy="120" r="2"/><circle cx="1320" cy="220" r="3"/>
+    <circle cx="1180" cy="700" r="2"/><circle cx="300" cy="740" r="3"/><circle cx="1420" cy="620" r="2"/>
+    <circle cx="150" cy="480" r="2"/><circle cx="1460" cy="420" r="3"/><circle cx="560" cy="800" r="2"/>
+    <circle cx="1040" cy="150" r="2"/><circle cx="720" cy="90" r="2"/><circle cx="900" cy="820" r="3"/>
+  </g>
+
+  <!-- concentric energy rings -->
+  <g fill="none" stroke="#d92906" stroke-width="1.5">
+    <circle cx="800" cy="450" r="120" stroke-opacity="0.85"/>
+    <circle cx="800" cy="450" r="200" stroke-opacity="0.55" stroke-dasharray="2 10"/>
+    <circle cx="800" cy="450" r="290" stroke-opacity="0.35" stroke-dasharray="2 14"/>
+    <circle cx="800" cy="450" r="380" stroke-opacity="0.18" stroke-dasharray="2 18"/>
+  </g>
+
+  <!-- sine wave through the core -->
+  <path d="M120 450 Q 220 320 320 450 T 520 450 T 720 450 T 920 450 T 1120 450 T 1320 450 T 1480 450"
+        fill="none" stroke="#f5f5f4" stroke-opacity="0.3" stroke-width="2"/>
+
+  <!-- core -->
+  <circle cx="800" cy="450" r="150" fill="url(#z-core)"/>
+  <circle cx="800" cy="450" r="10" fill="#ffffff"/>
+
+  <text x="80" y="820" font-family="'JetBrains Mono', monospace" font-size="26" letter-spacing="8" fill="#d92906">ZERO · POINT · ENERGY</text>
+  <text x="80" y="120" font-family="'JetBrains Mono', monospace" font-size="18" letter-spacing="6" fill="#71717a">E = ½ℏω // VACUUM STATE</text>
+</svg>

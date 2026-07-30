@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ancient lost technology cover">
+  <defs>
+    <linearGradient id="a-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c0a09"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="a-glow" cx="50%" cy="62%" r="55%">
+      <stop offset="0" stop-color="#d92906" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#d92906" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="a-grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0H0V50" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#a-bg)"/>
+  <rect width="1600" height="900" fill="url(#a-grid)"/>
+  <rect width="1600" height="900" fill="url(#a-glow)"/>
+
+  <!-- radiating lines -->
+  <g stroke="#d92906" stroke-opacity="0.25" stroke-width="1">
+    <line x1="800" y1="560" x2="120" y2="120"/>
+    <line x1="800" y1="560" x2="1480" y2="120"/>
+    <line x1="800" y1="560" x2="60" y2="560"/>
+    <line x1="800" y1="560" x2="1540" y2="560"/>
+    <line x1="800" y1="560" x2="360" y2="60"/>
+    <line x1="800" y1="560" x2="1240" y2="60"/>
+  </g>
+
+  <!-- pyramid -->
+  <path d="M800 210 L1070 620 L530 620 Z" fill="none" stroke="#f5f5f4" stroke-opacity="0.85" stroke-width="2.5"/>
+  <path d="M800 210 L800 620" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.5"/>
+  <path d="M800 210 L665 620 M800 210 L935 620" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- the all-seeing eye / sun disc -->
+  <circle cx="800" cy="470" r="58" fill="none" stroke="#d92906" stroke-width="3"/>
+  <circle cx="800" cy="470" r="20" fill="#d92906"/>
+  <circle cx="800" cy="470" r="92" fill="none" stroke="#d92906" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="4 8"/>
+
+  <!-- baseline -->
+  <line x1="380" y1="620" x2="1220" y2="620" stroke="#f5f5f4" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <!-- glyph ticks -->
+  <g fill="#f5f5f4" fill-opacity="0.5">
+    <rect x="540" y="650" width="8" height="24"/>
+    <rect x="560" y="650" width="4" height="24"/>
+    <rect x="576" y="650" width="8" height="24"/>
+    <rect x="1016" y="650" width="8" height="24"/>
+    <rect x="1036" y="650" width="4" height="24"/>
+    <rect x="1052" y="650" width="8" height="24"/>
+  </g>
+
+  <text x="80" y="820" font-family="'JetBrains Mono', monospace" font-size="26" letter-spacing="8" fill="#d92906">ANCIENT · LOST · TECHNOLOGY</text>
+  <text x="80" y="120" font-family="'JetBrains Mono', monospace" font-size="18" letter-spacing="6" fill="#78716c">FIELD LOG // 001</text>
+</svg>

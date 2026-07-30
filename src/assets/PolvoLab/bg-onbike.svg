@@ -1,0 +1,26 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Livery applied on bike">
+  <defs>
+    <linearGradient id="ob-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#171310"/><stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#ob-bg)"/>
+  <rect x="1" y="1" width="1198" height="798" fill="none" stroke="#d92906" stroke-opacity="0.35" stroke-width="2"/>
+  <line x1="0" y1="620" x2="1200" y2="620" stroke="#57534e" stroke-opacity="0.5" stroke-width="1.5"/>
+  <!-- wheels -->
+  <g stroke="#f5f5f4" stroke-opacity="0.8" fill="none" stroke-width="4">
+    <circle cx="330" cy="560" r="120"/><circle cx="880" cy="560" r="120"/>
+    <circle cx="330" cy="560" r="45"/><circle cx="880" cy="560" r="45"/>
+  </g>
+  <!-- body / tank with livery -->
+  <path d="M420 470 Q560 360 720 380 L820 440 L760 520 L470 540 Z"
+        fill="#141414" stroke="#f5f5f4" stroke-opacity="0.7" stroke-width="3"/>
+  <path d="M470 540 L640 380 L700 384 L540 545 Z" fill="#d92906"/>
+  <text x="600" y="480" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="70" fill="#f5f5f4">07</text>
+  <!-- seat / tail -->
+  <path d="M760 440 L900 430 L880 470 L800 480 Z" fill="#0a0a0a" stroke="#333" stroke-width="2"/>
+  <!-- fork -->
+  <line x1="820" y1="440" x2="880" y2="560" stroke="#a8a29e" stroke-width="6"/>
+  <line x1="470" y1="530" x2="330" y2="560" stroke="#a8a29e" stroke-width="6"/>
+  <text x="40" y="760" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="4" fill="#57534e">MOCKUP // WRAP ON BIKE — PLACEHOLDER</text>
+</svg>

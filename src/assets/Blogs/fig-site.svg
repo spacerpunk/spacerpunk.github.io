@@ -1,0 +1,32 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Excavation site">
+  <defs>
+    <linearGradient id="s-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1917"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#s-sky)"/>
+  <rect x="1" y="1" width="1198" height="798" fill="none" stroke="#d92906" stroke-opacity="0.35" stroke-width="2"/>
+  <!-- horizon -->
+  <line x1="0" y1="470" x2="1200" y2="470" stroke="#78716c" stroke-opacity="0.5" stroke-width="1.5"/>
+  <!-- terraced dig -->
+  <g fill="none" stroke="#a8a29e" stroke-opacity="0.6" stroke-width="2">
+    <path d="M150 800 L300 620 L900 620 L1050 800"/>
+    <path d="M300 620 L420 500 L780 500 L900 620"/>
+    <path d="M420 500 L520 420 L680 420 L780 500"/>
+  </g>
+  <!-- monolith -->
+  <g stroke="#f5f5f4" stroke-opacity="0.8" fill="none" stroke-width="2.5">
+    <rect x="560" y="300" width="80" height="120"/>
+    <line x1="600" y1="300" x2="600" y2="420"/>
+  </g>
+  <!-- grid stakes -->
+  <g stroke="#d92906" stroke-opacity="0.7" stroke-width="1.5">
+    <line x1="360" y1="560" x2="360" y2="590"/>
+    <line x1="500" y1="560" x2="500" y2="590"/>
+    <line x1="700" y1="560" x2="700" y2="590"/>
+    <line x1="840" y1="560" x2="840" y2="590"/>
+    <line x1="360" y1="575" x2="840" y2="575" stroke-dasharray="6 8"/>
+  </g>
+  <text x="40" y="760" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="4" fill="#57534e">SITE_07 // SURVEY GRID — PLACEHOLDER</text>
+</svg>

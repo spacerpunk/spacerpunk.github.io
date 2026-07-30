@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rally navigation tower design">
+  <defs>
+    <linearGradient id="rt-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14100c"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <pattern id="rt-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#rt-bg)"/>
+  <rect width="1600" height="900" fill="url(#rt-grid)"/>
+
+  <!-- handlebar -->
+  <g stroke="#a8a29e" stroke-opacity="0.8" stroke-width="14" stroke-linecap="round">
+    <line x1="480" y1="720" x2="1120" y2="720"/>
+  </g>
+  <g stroke="#57534e" stroke-width="10" stroke-linecap="round">
+    <line x1="520" y1="720" x2="470" y2="760"/>
+    <line x1="1080" y1="720" x2="1130" y2="760"/>
+  </g>
+
+  <!-- tower bracket -->
+  <g stroke="#78716c" stroke-width="10">
+    <line x1="740" y1="720" x2="740" y2="560"/>
+    <line x1="860" y1="720" x2="860" y2="560"/>
+  </g>
+
+  <!-- roadbook window -->
+  <rect x="640" y="410" width="320" height="170" rx="12" fill="none" stroke="#f5f5f4" stroke-opacity="0.9" stroke-width="4"/>
+  <!-- roadbook scroll knobs -->
+  <circle cx="620" cy="495" r="26" fill="none" stroke="#a8a29e" stroke-width="6"/>
+  <circle cx="980" cy="495" r="26" fill="none" stroke="#a8a29e" stroke-width="6"/>
+  <!-- roadbook route line -->
+  <path d="M690 540 L740 480 L780 520 L830 450 L910 500"
+        fill="none" stroke="#d92906" stroke-width="4" stroke-linejoin="round"/>
+  <g fill="#d92906"><circle cx="690" cy="540" r="7"/><circle cx="910" cy="500" r="7"/></g>
+
+  <!-- gauge / GPS -->
+  <circle cx="800" cy="300" r="70" fill="none" stroke="#f5f5f4" stroke-opacity="0.85" stroke-width="4"/>
+  <circle cx="800" cy="300" r="70" fill="none" stroke="#d92906" stroke-width="5" stroke-dasharray="300 140" transform="rotate(-90 800 300)"/>
+  <line x1="800" y1="300" x2="838" y2="262" stroke="#d92906" stroke-width="5" stroke-linecap="round"/>
+
+  <text x="80" y="820" font-family="'JetBrains Mono', monospace" font-size="26" letter-spacing="8" fill="#d92906">RALLY · TOWER · 250X</text>
+  <text x="80" y="130" font-family="'JetBrains Mono', monospace" font-size="18" letter-spacing="6" fill="#78716c">CORVEN TXR 250 X // 3D BUILD</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI custom bike graphics">
+  <defs>
+    <linearGradient id="bg-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#130f0d"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <clipPath id="bg-plate">
+      <path d="M480 300 L1180 260 Q1220 258 1210 300 L1170 600 Q1164 640 1124 640 L440 600 Q400 596 410 556 Z"/>
+    </clipPath>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg-bg)"/>
+
+  <!-- generative dotted field -->
+  <g fill="#d92906" fill-opacity="0.5">
+    <circle cx="200" cy="180" r="3"/><circle cx="1380" cy="200" r="2"/><circle cx="1460" cy="700" r="3"/>
+    <circle cx="150" cy="720" r="2"/><circle cx="1300" cy="760" r="2"/><circle cx="260" cy="480" r="2"/>
+  </g>
+
+  <!-- number plate / side panel -->
+  <path d="M480 300 L1180 260 Q1220 258 1210 300 L1170 600 Q1164 640 1124 640 L440 600 Q400 596 410 556 Z"
+        fill="#0a0a0a" stroke="#f5f5f4" stroke-opacity="0.85" stroke-width="4"/>
+
+  <!-- livery stripes (clipped to plate) -->
+  <g clip-path="url(#bg-plate)">
+    <g fill="#d92906">
+      <path d="M420 640 L620 260 L720 260 L520 640 Z"/>
+      <path d="M760 640 L960 260 L1010 260 L810 640 Z" fill-opacity="0.6"/>
+    </g>
+    <g stroke="#ffffff" stroke-opacity="0.12" stroke-width="2">
+      <line x1="400" y1="400" x2="1220" y2="360"/>
+      <line x1="400" y1="500" x2="1220" y2="460"/>
+    </g>
+  </g>
+
+  <!-- number -->
+  <text x="1050" y="520" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="200" fill="#f5f5f4">07</text>
+
+  <!-- AI glyph corner -->
+  <g transform="translate(470 340)">
+    <rect x="0" y="0" width="90" height="60" rx="8" fill="none" stroke="#d92906" stroke-width="4"/>
+    <text x="45" y="43" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="34" fill="#d92906">AI</text>
+  </g>
+
+  <text x="80" y="130" font-family="'JetBrains Mono', monospace" font-size="18" letter-spacing="6" fill="#78716c">CUSTOM GRAPHICS // ANY BIKE</text>
+  <text x="80" y="820" font-family="'JetBrains Mono', monospace" font-size="26" letter-spacing="8" fill="#d92906">AI · LIVERY · WORKFLOW</text>
+</svg>

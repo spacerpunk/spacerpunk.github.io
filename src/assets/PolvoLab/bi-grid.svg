@@ -1,0 +1,17 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo construction grid">
+  <rect width="1200" height="800" fill="#0f0e0d"/>
+  <rect x="1" y="1" width="1198" height="798" fill="none" stroke="#d92906" stroke-opacity="0.35" stroke-width="2"/>
+  <g stroke="#d92906" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="5 7">
+    <line x1="0" y1="400" x2="1200" y2="400"/><line x1="600" y1="0" x2="600" y2="800"/>
+    <circle cx="600" cy="400" r="220" fill="none"/><circle cx="600" cy="400" r="140" fill="none"/>
+  </g>
+  <g stroke="#ffffff" stroke-opacity="0.1" stroke-width="1">
+    <line x1="380" y1="0" x2="380" y2="800"/><line x1="820" y1="0" x2="820" y2="800"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/><line x1="0" y1="620" x2="1200" y2="620"/>
+  </g>
+  <!-- badge -->
+  <circle cx="600" cy="360" r="140" fill="none" stroke="#f5f5f4" stroke-opacity="0.85" stroke-width="4"/>
+  <path d="M500 410 L560 330 L600 380 L650 320 L700 410 Z" fill="none" stroke="#d92906" stroke-width="5" stroke-linejoin="round"/>
+  <text x="600" y="560" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="90" letter-spacing="10" fill="#f5f5f4">POLVO</text>
+  <text x="40" y="760" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="4" fill="#57534e">GRID_01 // LOGO CONSTRUCTION — PLACEHOLDER</text>
+</svg>

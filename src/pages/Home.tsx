@@ -1,5 +1,7 @@
 import SEO from '../components/SEO';
 import LatestProjects from '../components/LatestProjects';
+import LatestBlogs from '../components/LatestBlogs';
+import LatestPolvoLab from '../components/LatestPolvoLab';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const t = {
@@ -66,6 +68,12 @@ export default function Home() {
 
         {/* LATEST PROJECTS */}
         <LatestProjects />
+
+        {/* LATEST WRITING / BLOGS */}
+        <LatestBlogs />
+
+        {/* POLVO LAB — LATEST */}
+        <LatestPolvoLab />
 
         {/* DISCOGRAPHY */}
         <section className="py-4 md:py-6">
