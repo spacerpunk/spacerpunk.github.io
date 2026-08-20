@@ -1,5 +1,7 @@
 import SEO from '../../components/SEO';
 import LazyImage from '../../components/LazyImage';
+import { VideoEmbed } from '../../components/content/Prose';
+import ShortFilm from '../../assets/nasaxhonda/SHORT 01_FINAL.mp4';
 import Teaser from '../../assets/nasaxhonda/NASAXHONDATeaser.mp4';
 
 import FilmRef1 from '../../assets/nasaxhonda/Film References/FilmRef (1).jpg';
@@ -64,15 +66,15 @@ export default function NasaXHonda() {
         #nasa #honda #conceptfilm #space #engineering #shortfilm
       </h3>
 
-      {/* Teaser + Concept side by side */}
+      {/* Short film + Concept side by side */}
       <section className="py-6 flex flex-col md:flex-row gap-8 items-start">
         {/* Video — constrained width for vertical format */}
         <div className="w-full md:w-64 lg:w-72 shrink-0">
           <p className="text-xs font-mono text-nasared tracking-widest uppercase mb-3">
-            Teaser — Full film coming soon
+            Teaser
           </p>
           <video
-            src={Teaser}
+            src={ShortFilm}
             autoPlay
             loop
             playsInline
@@ -94,6 +96,19 @@ export default function NasaXHonda() {
             does not matter.
           </p>
         </div>
+      </section>
+
+      {/* The Film */}
+      <section className="py-6">
+        <h2 className="text-xl font-semibold mb-1">The Film</h2>
+        <p className="text-gray-500 text-sm mb-4">
+          Watch on YouTube.
+        </p>
+        <VideoEmbed
+          youtubeId="_F7XKzWlcxc"
+          title="NASAXHONDA — Film"
+          caption="Watch on YouTube"
+        />
       </section>
 
       {/* Bike Design — Hero */}
@@ -171,6 +186,20 @@ export default function NasaXHonda() {
               />
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Teaser */}
+      <section className="py-6">
+        <h2 className="text-xl font-semibold mb-4">Teaser</h2>
+        <div className="w-full md:w-64 lg:w-72">
+          <video
+            src={Teaser}
+            loop
+            playsInline
+            controls
+            className="w-full rounded-sm"
+          />
         </div>
       </section>
     </div>

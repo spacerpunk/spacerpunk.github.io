@@ -87,15 +87,14 @@ export default function ToyotaTeam23() {
         #storyboard #conceptfilm #generativeAI #automotive #comfyui
       </h3>
       <p className="text-base font-normal text-gray-200 mb-2 max-w-3xl">
-        AI-generated storyboard for a concept short film advertising Toyota — built from
-        a combination of image references and 3D models, art directed by the internal Team23
-        team to keep the car pixel-accurate to the real references.
+        AI-generated storyboards and visual assets for a concept short film advertising Toyota —
+        built from image references and 3D models, art directed by Team23 to keep the car
+        pixel-accurate to real references, then extended into AI-generated and composited video.
       </p>
       <p className="text-sm font-light text-gray-400 mb-6 max-w-3xl">
         The pipeline combined ComfyUI, Weave, and Fal.ai running models including Flux 2,
-        NanoBanana2, Seedream, and ChatGPT Image 2. Each frame was iterated against the
-        reference materials to match exact vehicle geometry, colour, and lighting — these
-        storyboard frames are the foundation for the concept film currently in production.
+        NanoBanana2, Seedream, and ChatGPT Image 2. Each frame was iterated against reference
+        materials to match exact vehicle geometry, colour, and lighting.
       </p>
 
       {/* Tech Stack */}
@@ -110,18 +109,52 @@ export default function ToyotaTeam23() {
         ))}
       </div>
 
-      {/* Coming Soon — Concept Film */}
+      {/* Film — main feature */}
       <section className="mb-10">
-        <div className="relative overflow-hidden rounded-lg border border-nasared/40 bg-nasared/5 p-8 flex flex-col items-center justify-center text-center min-h-[180px]">
-          {/* subtle animated pulse */}
-          <div className="absolute inset-0 bg-gradient-to-br from-nasared/10 via-transparent to-transparent pointer-events-none" />
-          <span className="text-xs font-medium text-nasared tracking-widest uppercase mb-3">
-            Coming Soon
-          </span>
-          <h2 className="text-xl font-bold text-white mb-2">Concept Short Film</h2>
-          <p className="text-sm text-gray-400 max-w-md">
-            The storyboard frames below will be animated into a full concept advertising
-            short film. Production is underway.
+        <p className="text-xs font-mono text-nasared tracking-widest uppercase mb-3">
+          Concept Short Film
+        </p>
+        <div className="relative w-full aspect-video overflow-hidden rounded-lg border border-gray-800 bg-black">
+          <iframe
+            src="https://www.youtube.com/embed/31N6t_bTIJI?start=11"
+            title="Toyota @ Team23 — Concept Short Film"
+            className="absolute inset-0 w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+        <p className="text-xs text-gray-600 mt-2 font-mono">
+          <a
+            href="https://www.youtube.com/watch?v=31N6t_bTIJI&t=11s"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-nasared hover:underline"
+          >
+            Watch on YouTube →
+          </a>
+        </p>
+
+        {/* Credits disclaimer */}
+        <div className="mt-6 border border-dashed border-gray-800 p-5 max-w-3xl">
+          <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-2">
+            My role
+          </p>
+          <p className="text-sm text-gray-400 font-light leading-relaxed">
+            I worked on the <span className="text-white">AI-generated images and storyboards</span>,
+            and later the <span className="text-white">AI generation and compositing of video</span> elements
+            used in this film.
+          </p>
+          <p className="text-sm text-gray-500 font-light leading-relaxed mt-3">
+            Edit, sound design, music, and final assembly were handled by{' '}
+            <a
+              href="https://www.team23.online/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-nasared hover:underline"
+            >
+              Team23
+            </a>
+            .
           </p>
         </div>
       </section>
