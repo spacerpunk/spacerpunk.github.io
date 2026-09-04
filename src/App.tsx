@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from './contexts/LanguageContext';
 import SideNav from './components/SideNav';
+import PasswordGate from './components/PasswordGate';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
@@ -127,8 +128,22 @@ export default function App() {
                 <Route path="/services" element={<Services />} />
 
                 {/* polvo lab */}
-                <Route path="/polvolab" element={<PolvoLab />} />
-                <Route path="/polvolab/:slug" element={<PolvoProject />} />
+                <Route
+                  path="/polvolab"
+                  element={
+                    <PasswordGate storageKey="polvolab-unlocked" password="p0lv0">
+                      <PolvoLab />
+                    </PasswordGate>
+                  }
+                />
+                <Route
+                  path="/polvolab/:slug"
+                  element={
+                    <PasswordGate storageKey="polvolab-unlocked" password="p0lv0">
+                      <PolvoProject />
+                    </PasswordGate>
+                  }
+                />
 
                 {/* 404 catch-all */}
                 <Route path="*" element={<NotFound />} />
