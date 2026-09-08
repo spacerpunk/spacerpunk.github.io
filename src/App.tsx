@@ -24,6 +24,7 @@ const ToyotaTeam23 = lazy(() => import('./pages/work/ToyotaTeam23'));
 const Superside = lazy(() => import('./pages/work/Superside'));
 const NoeAssociates = lazy(() => import('./pages/work/NoeAssociates'));
 const FirstAveMachine = lazy(() => import('./pages/work/FirstAveMachine'));
+const RogerThat = lazy(() => import('./pages/work/RogerThat'));
 
 // PROJECTS - Lazy loaded
 const TheNoise = lazy(() => import('./pages/projects/TheNoise'));
@@ -89,6 +90,14 @@ export default function App() {
                 <Route path="/work/superside" element={<Superside />} />
                 <Route path="/work/noeassociates" element={<NoeAssociates />} />
                 <Route path="/work/firstavemachine" element={<FirstAveMachine />} />
+                <Route
+                  path="/work/rogerthat"
+                  element={
+                    <PasswordGate storageKey="rogerthat-unlocked" password="Rog3r">
+                      <RogerThat />
+                    </PasswordGate>
+                  }
+                />
 
                 {/* projects */}
                 <Route path="/projects/thenoise" element={<TheNoise />} />
