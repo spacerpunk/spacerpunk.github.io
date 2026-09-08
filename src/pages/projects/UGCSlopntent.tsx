@@ -1,6 +1,8 @@
 import SEO from '../../components/SEO';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function UGCSlopntent() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 md:p-6">
       <SEO
@@ -14,16 +16,16 @@ export default function UGCSlopntent() {
         </h3>
 
         <div className="py-6">
-          <h2 className="text-xl font-semibold mb-4">About</h2>
+          <h2 className="text-xl font-semibold mb-4">{es ? 'Sobre esto' : 'About'}</h2>
           <p className="text-gray-400 leading-relaxed">
-            An experimental exploration of user-generated content aesthetics,
-            embracing the raw, unpolished nature of digital creation. A study in
-            controlled chaos and authentic expression.
+            {es
+              ? 'Una exploración experimental de la estética del contenido generado por usuarios, abrazando la naturaleza cruda y sin pulir de la creación digital. Un estudio sobre el caos controlado y la expresión auténtica.'
+              : 'An experimental exploration of user-generated content aesthetics, embracing the raw, unpolished nature of digital creation. A study in controlled chaos and authentic expression.'}
           </p>
         </div>
 
         <div className="py-4">
-          <p className="text-sm text-gray-500">Coming soon...</p>
+          <p className="text-sm text-gray-500">{es ? 'Próximamente...' : 'Coming soon...'}</p>
         </div>
       </div>
     </div>

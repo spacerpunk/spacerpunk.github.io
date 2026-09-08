@@ -2,6 +2,9 @@ import { DESCRIPTION } from './index';
 import LazyImage from './LazyImage';
 import profilePic from '../assets/Images/Profile.png';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const DESCRIPTION_ES = `SPACERPUNK es el nombre que uso para toda producción artística que lanzo al vacío de ondas de radio que es nuestra danza electromagnética de intercambio de información. Principalmente Música y Cine, pero toda forma de expresión artística está contemplada.`;
 
 const container = (delay: number) => ({
   hidden: { x: -100, opacity: 0 },
@@ -9,6 +12,7 @@ const container = (delay: number) => ({
 });
 
 const Hero = () => {
+  const { lang } = useLanguage();
   return (
     <div className="pb-4 lg:mb-16">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
@@ -28,7 +32,7 @@ const Hero = () => {
               animate="visible"
               className="my-2 max-w-xl py-0 font-light tracking-tighter text-sm sm:text-base text-center lg:text-left"
             >
-              {DESCRIPTION}
+              {lang === 'es' ? DESCRIPTION_ES : DESCRIPTION}
             </motion.p>
           </div>
         </div>

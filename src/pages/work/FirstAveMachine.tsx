@@ -1,6 +1,8 @@
 import PasswordGate from '../../components/PasswordGate';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function FirstAveMachine() {
+  const es = useLanguage().lang === 'es';
   return (
     <PasswordGate storageKey="firstavemachine-unlocked">
       <div className="w-full p-4 max-w-6xl">
@@ -9,7 +11,7 @@ export default function FirstAveMachine() {
           #1stavemachine #showcase #creative #production
         </h3>
         <p className="text-base font-normal text-gray-200 mb-2 max-w-3xl">
-          Coming soon — content will be added here.
+          {es ? 'Próximamente — acá se va a agregar el contenido.' : 'Coming soon — content will be added here.'}
         </p>
       </div>
     </PasswordGate>

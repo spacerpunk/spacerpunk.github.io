@@ -4,6 +4,7 @@ import TheTape03 from '../../assets/TheTape/thetape (6).png';
 import TheTape04 from '../../assets/TheTape/thetape (3).png';
 import ImageGrid from './ImageGrid';
 import BANNER from '../../assets/TheTape/BannerTape.png';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const imageList = [
   {
@@ -33,6 +34,7 @@ const imageList = [
 ];
 
 export default function TheTape() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="p-4">
       <h2 className="w-full font-light py-6">
@@ -41,18 +43,23 @@ export default function TheTape() {
         </div>
       </h2>
       <h1 className="text-2xl text-semibold font-bold">
-        The Tape (2021) - Unreal Engine Short Film
+        {es ? 'The Tape (2021) — Cortometraje en Unreal Engine' : 'The Tape (2021) - Unreal Engine Short Film'}
       </h1>
       <div>
         <h3 className="w-full font-extralight text-sm py-1 text-nasared">
           #unrealengine #vfx #blender #music #rendering #modeling
         </h3>
         <h2 className="w-full font-light py-4">
-          <p>The tape is a short concept film to learn Unreal Engine.</p>
+          <p>
+            {es
+              ? 'The Tape es un cortometraje conceptual para aprender Unreal Engine.'
+              : 'The tape is a short concept film to learn Unreal Engine.'}
+          </p>
           <br />
           <p>
-            I wanted to focus on light, rendering and getting a simple story and
-            short film from a few assets from the Unreal Library.
+            {es
+              ? 'Quería enfocarme en la luz, el rendering y sacar una historia simple y un cortometraje a partir de unos pocos assets de la librería de Unreal.'
+              : 'I wanted to focus on light, rendering and getting a simple story and short film from a few assets from the Unreal Library.'}
           </p>
           <h2 className="w-full font-normal py-4 text-nasared">
             <div className="container mx-auto">
@@ -64,10 +71,9 @@ export default function TheTape() {
           </h2>
           <br />
           <p>
-            I always make original music and sound design for my projects and
-            this was not the exception, I love the last part of the process of
-            making a film, getting to add my music and SFX always gets me into a
-            flow state.
+            {es
+              ? 'Siempre hago música original y diseño de sonido para mis proyectos y este no fue la excepción. Amo la última parte del proceso de hacer un film: llegar a sumar mi música y mis SFX siempre me mete en estado de flow.'
+              : 'I always make original music and sound design for my projects and this was not the exception, I love the last part of the process of making a film, getting to add my music and SFX always gets me into a flow state.'}
           </p>
           <br />
         </h2>
@@ -82,9 +88,9 @@ export default function TheTape() {
           </iframe>
         </h2>
         <h2 className="w-full font-light py-4">
-          The idea came from listening to some old EVP (Electronic Voice
-          Phenomenon) recordings. The idea of a old cassette recording that
-          someone can disect and recover to find strange and paranormal sounds.
+          {es
+            ? 'La idea surgió de escuchar viejas grabaciones de EVP (Fenómeno de Voz Electrónica). La idea de una vieja grabación en casete que alguien puede diseccionar y recuperar para encontrar sonidos extraños y paranormales.'
+            : 'The idea came from listening to some old EVP (Electronic Voice Phenomenon) recordings. The idea of a old cassette recording that someone can disect and recover to find strange and paranormal sounds.'}
         </h2>
         <iframe
           width="560"

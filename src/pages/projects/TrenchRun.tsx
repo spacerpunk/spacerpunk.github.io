@@ -6,6 +6,7 @@ import TrenchImage3 from '../../assets/Images/Trench3.png';
 import TrenchImage4 from '../../assets/Images/Trench4.png';
 import TrenchImage5 from '../../assets/Images/Trench5.png';
 import TrenchImage6 from '../../assets/Images/Trench6.png';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const imageList = [
   {
@@ -43,6 +44,7 @@ const imageList = [
 ];
 
 export default function TrenchRun() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="p-4">
       <h2 className="w-full font-light py-6 pb-0">
@@ -60,9 +62,9 @@ export default function TrenchRun() {
       </h3>
       <h3 className="w-full font-light pt-6">
         <p>
-          I wanted to do the shot of the Targeting Computer from the Trench Run
-          over the weekend but I got a little carried away. And since UE5 is so
-          cool and real time I got to do a bunch of shots in no time!
+          {es
+            ? '¡Quería hacer el plano de la computadora de puntería del Trench Run durante el fin de semana pero me entusiasmé un poco de más! Y como UE5 es tan copado y en tiempo real, terminé haciendo un montón de planos en un rato!'
+            : 'I wanted to do the shot of the Targeting Computer from the Trench Run over the weekend but I got a little carried away. And since UE5 is so cool and real time I got to do a bunch of shots in no time!'}
         </p>
       </h3>
       <h2 className="w-full font-normal py-4 text-nasared">
@@ -75,9 +77,9 @@ export default function TrenchRun() {
       </h2>
       <h2 className="w-full font-normal py-4">
         <p>
-          A small tribute to the amazing Trench Run. Modeled the Targeting
-          Computer and Death Star on Blender...Rendered on Blender and UE5, a
-          bit of sound desing and a track from Battlefront 1.
+          {es
+            ? 'Un pequeño tributo al increíble Trench Run. Modelé la computadora de puntería y la Estrella de la Muerte en Blender... Renderizado en Blender y UE5, un poco de diseño de sonido y un track de Battlefront 1.'
+            : 'A small tribute to the amazing Trench Run. Modeled the Targeting Computer and Death Star on Blender...Rendered on Blender and UE5, a bit of sound desing and a track from Battlefront 1.'}
         </p>
       </h2>
       {/* <h2 className="w-full font-normal py-4 text-nasared">

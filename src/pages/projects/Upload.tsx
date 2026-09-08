@@ -1,5 +1,6 @@
 import SEO from '../../components/SEO';
 import LazyImage from '../../components/LazyImage';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 // Reference frames passed into Seedance
 import Ref1 from '../../assets/Upload/Reference (1).png';
@@ -38,6 +39,7 @@ transitions into cascading code. Cinematic, slow motion, cold blue and white
 tones, volumetric light.`;
 
 export default function Upload() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 md:p-6 max-w-5xl">
       <SEO
@@ -50,21 +52,23 @@ export default function Upload() {
       </h3>
 
       <p className="text-gray-300 leading-relaxed mb-2 max-w-2xl">
-        An exploration of digital consciousness and the concept of uploading human
-        experience into virtual space — brought to life using Seedance 2.0's
-        reference-to-video pipeline.
+        {es
+          ? 'Una exploración de la consciencia digital y el concepto de subir la experiencia humana al espacio virtual — llevada a la vida usando el pipeline reference-to-video de Seedance 2.0.'
+          : "An exploration of digital consciousness and the concept of uploading human experience into virtual space — brought to life using Seedance 2.0's reference-to-video pipeline."}
       </p>
       <p className="text-sm text-gray-500 leading-relaxed mb-10 max-w-2xl">
-        Reference frames were art-directed and passed alongside a prompt into
-        Seedance 2.0 to generate consistent, high-fidelity video outputs that
-        stay true to the original visual concept.
+        {es
+          ? 'Los frames de referencia se dirigieron artísticamente y se pasaron junto a un prompt a Seedance 2.0 para generar salidas de video consistentes y de alta fidelidad, fieles al concepto visual original.'
+          : 'Reference frames were art-directed and passed alongside a prompt into Seedance 2.0 to generate consistent, high-fidelity video outputs that stay true to the original visual concept.'}
       </p>
 
       {/* ── Reference Frames ── */}
       <section className="mb-12">
-        <h2 className="text-lg font-semibold mb-1">Reference Frames</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Frames de Referencia' : 'Reference Frames'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Six frames used as visual anchors for the Seedance 2.0 generation.
+          {es
+            ? 'Seis frames usados como anclas visuales para la generación con Seedance 2.0.'
+            : 'Six frames used as visual anchors for the Seedance 2.0 generation.'}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {referenceFrames.map((src, i) => (
@@ -84,7 +88,7 @@ export default function Upload() {
 
       {/* ── Prompt ── */}
       <section className="mb-12">
-        <h2 className="text-lg font-semibold mb-1">Seedance 2.0 Prompt</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Prompt de Seedance 2.0' : 'Seedance 2.0 Prompt'}</h2>
         <div className="rounded-lg border border-nasared/30 bg-nasared/5 p-5">
           <pre className="text-sm text-gray-300 font-mono whitespace-pre-wrap leading-relaxed">
             {SEEDANCE_PROMPT}
@@ -94,9 +98,11 @@ export default function Upload() {
 
       {/* ── Video Outputs ── */}
       <section className="mb-12">
-        <h2 className="text-lg font-semibold mb-1">Seedance 2.0 Outputs</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Salidas de Seedance 2.0' : 'Seedance 2.0 Outputs'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Three generated examples from the same reference set and prompt.
+          {es
+            ? 'Tres ejemplos generados a partir del mismo set de referencia y prompt.'
+            : 'Three generated examples from the same reference set and prompt.'}
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {outputVideos.map((src, i) => (
@@ -112,7 +118,7 @@ export default function Upload() {
                 loop
                 playsInline
               />
-              <p className="text-xs text-gray-500 p-2">Example {String(i + 1).padStart(2, '0')}</p>
+              <p className="text-xs text-gray-500 p-2">{es ? 'Ejemplo' : 'Example'} {String(i + 1).padStart(2, '0')}</p>
             </div>
           ))}
         </div>
@@ -120,9 +126,9 @@ export default function Upload() {
 
       {/* ── Alt References & Pill ── */}
       <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-1">Alt References</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Referencias Alternativas' : 'Alt References'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Additional reference material and key visual.
+          {es ? 'Material de referencia adicional y key visual.' : 'Additional reference material and key visual.'}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {altRefs.map((src, i) => (

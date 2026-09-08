@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PasswordGate from '../../components/PasswordGate';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 // Moodboard references
 import mb1 from '../../assets/Superside/MoodBoard (1).png';
@@ -115,6 +116,7 @@ function PhaseLabel({ number, title }: { number: string; title: string }) {
 }
 
 export default function Superside() {
+  const es = useLanguage().lang === 'es';
   return (
     <PasswordGate storageKey="superside-unlocked">
       <div className="w-full p-4 max-w-6xl">
@@ -126,15 +128,14 @@ export default function Superside() {
           #superside #AI #generativeAI #creative #imagegen #moodboard
         </h3>
         <p className="text-base font-normal text-gray-200 mb-2 max-w-3xl">
-          A 2-day AI creative brief test from Superside — the task: take a
-          concept from zero to polished, multi-format image deliverables using
-          AI generation tools, end to end.
+          {es
+            ? 'Una prueba de brief creativo con IA de 2 días para Superside — la consigna: llevar un concepto de cero a entregables de imagen pulidos y multi-formato usando herramientas de generación con IA, de punta a punta.'
+            : 'A 2-day AI creative brief test from Superside — the task: take a concept from zero to polished, multi-format image deliverables using AI generation tools, end to end.'}
         </p>
         <p className="text-sm font-light text-gray-400 mb-6 max-w-3xl">
-          Day one was about building visual direction: pulling references,
-          defining tone, colour, and aesthetic. Day two moved into generation,
-          chaos exploration, refinement, and final delivery across three output
-          formats.
+          {es
+            ? 'El primer día fue construir la dirección visual: juntar referencias, definir tono, color y estética. El segundo día pasó a la generación, la exploración caótica, el refinamiento y la entrega final en tres formatos de salida.'
+            : 'Day one was about building visual direction: pulling references, defining tone, colour, and aesthetic. Day two moved into generation, chaos exploration, refinement, and final delivery across three output formats.'}
         </p>
 
         {/* Tech Stack */}
@@ -150,16 +151,15 @@ export default function Superside() {
         </div>
 
         {/* ─── DAY 1 ─────────────────────────────────────────── */}
-        <DayMarker day="Day 1" label="Brief → Concept → Direction" />
+        <DayMarker day={es ? 'Día 1' : 'Day 1'} label={es ? 'Brief → Concepto → Dirección' : 'Brief → Concept → Direction'} />
 
         {/* Phase 01 — Moodboard */}
         <section className="mb-14 pl-5 border-l border-gray-800">
-          <PhaseLabel number="Phase 01" title="Moodboard & Visual Research" />
+          <PhaseLabel number={es ? 'Fase 01' : 'Phase 01'} title={es ? 'Moodboard e Investigación Visual' : 'Moodboard & Visual Research'} />
           <p className="text-sm text-gray-400 mb-5 max-w-2xl">
-            Before touching any generation tool, the visual world gets defined.
-            11 reference frames assembled to lock in tone, lighting palette,
-            texture, and mood — this is the filter every prompt gets measured
-            against.
+            {es
+              ? 'Antes de tocar cualquier herramienta de generación, se define el mundo visual. 11 frames de referencia ensamblados para fijar tono, paleta de iluminación, textura y clima — este es el filtro contra el que se mide cada prompt.'
+              : 'Before touching any generation tool, the visual world gets defined. 11 reference frames assembled to lock in tone, lighting palette, texture, and mood — this is the filter every prompt gets measured against.'}
           </p>
 
           {/* Moodboard grid — intentionally tight, high-density */}
@@ -176,16 +176,15 @@ export default function Superside() {
         </section>
 
         {/* ─── DAY 1 → 2 ─────────────────────────────────────── */}
-        <DayMarker day="Day 1 → 2" label="Generation & Exploration" />
+        <DayMarker day={es ? 'Día 1 → 2' : 'Day 1 → 2'} label={es ? 'Generación y Exploración' : 'Generation & Exploration'} />
 
         {/* Phase 02 — Chaos Run */}
         <section className="mb-14 pl-5 border-l border-gray-800">
-          <PhaseLabel number="Phase 02" title="First Generation — Chaos Run" />
+          <PhaseLabel number={es ? 'Fase 02' : 'Phase 02'} title={es ? 'Primera Generación — Corrida Caótica' : 'First Generation — Chaos Run'} />
           <p className="text-sm text-gray-400 mb-5 max-w-2xl">
-            The first generation run is intentionally loose — high variance,
-            exploratory, no polish. This is where the moodboard meets the model
-            and the prompt strategy gets stress-tested. Raw signal, useful
-            failures, and unexpected wins all live here.
+            {es
+              ? 'La primera corrida de generación es intencionalmente suelta — mucha varianza, exploratoria, sin pulir. Acá es donde el moodboard se encuentra con el modelo y la estrategia de prompts se pone a prueba. Señal cruda, fallas útiles y aciertos inesperados viven todos acá.'
+              : 'The first generation run is intentionally loose — high variance, exploratory, no polish. This is where the moodboard meets the model and the prompt strategy gets stress-tested. Raw signal, useful failures, and unexpected wins all live here.'}
           </p>
 
           <div className="w-full overflow-hidden rounded-lg border border-gray-800 hover:border-nasared/40 transition-colors duration-300">
@@ -196,23 +195,23 @@ export default function Superside() {
             />
           </div>
           <p className="text-xs text-gray-600 mt-2">
-            CHAOS 01 — raw output, unedited
+            {es ? 'CHAOS 01 — salida cruda, sin editar' : 'CHAOS 01 — raw output, unedited'}
           </p>
         </section>
 
         {/* ─── DAY 2 ─────────────────────────────────────────── */}
-        <DayMarker day="Day 2" label="Refinement → Edit → Delivery" />
+        <DayMarker day={es ? 'Día 2' : 'Day 2'} label={es ? 'Refinamiento → Edición → Entrega' : 'Refinement → Edit → Delivery'} />
 
         {/* Phase 03 — Final Deliverables */}
         <section className="mb-8 pl-5 border-l border-gray-800">
           <PhaseLabel
-            number="Phase 03"
-            title="Final Deliverables — Multi-Format"
+            number={es ? 'Fase 03' : 'Phase 03'}
+            title={es ? 'Entregables Finales — Multi-Formato' : 'Final Deliverables — Multi-Format'}
           />
           <p className="text-sm text-gray-400 mb-5 max-w-2xl">
-            Selections refined, edited in Photoshop, colour-graded, and exported
-            across three format ratios — covering landscape, portrait, and
-            vertical placements for digital and social delivery.
+            {es
+              ? 'Selecciones refinadas, editadas en Photoshop, con color grading y exportadas en tres relaciones de formato — cubriendo ubicaciones apaisadas, verticales y de historia para entrega digital y en redes.'
+              : 'Selections refined, edited in Photoshop, colour-graded, and exported across three format ratios — covering landscape, portrait, and vertical placements for digital and social delivery.'}
           </p>
 
           {/* Landscape — full width feature */}
@@ -224,7 +223,7 @@ export default function Superside() {
             />
             <p className="text-xs text-gray-600 mt-1.5 flex items-center gap-2">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-nasared" />
-              Landscape — widescreen
+              {es ? 'Apaisado — widescreen' : 'Landscape — widescreen'}
             </p>
           </div>
 
@@ -238,7 +237,7 @@ export default function Superside() {
               />
               <p className="text-xs text-gray-600 mt-1.5 flex items-center gap-2">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-nasared" />
-                4:5 — Portrait
+                {es ? '4:5 — Vertical' : '4:5 — Portrait'}
               </p>
             </div>
             <div>
@@ -249,7 +248,7 @@ export default function Superside() {
               />
               <p className="text-xs text-gray-600 mt-1.5 flex items-center gap-2">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-nasared" />
-                9:16 — Vertical / Story
+                {es ? '9:16 — Vertical / Historia' : '9:16 — Vertical / Story'}
               </p>
             </div>
           </div>

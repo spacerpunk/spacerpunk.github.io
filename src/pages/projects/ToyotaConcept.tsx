@@ -1,6 +1,8 @@
 import SEO from '../../components/SEO';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function ToyotaConcept() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 md:p-6">
       <SEO
@@ -16,16 +18,16 @@ export default function ToyotaConcept() {
         </h3>
 
         <div className="py-6">
-          <h2 className="text-xl font-semibold mb-4">About</h2>
+          <h2 className="text-xl font-semibold mb-4">{es ? 'Sobre esto' : 'About'}</h2>
           <p className="text-gray-400 leading-relaxed">
-            A conceptual exploration of future mobility through the lens of
-            Toyota's design philosophy. Blending cutting-edge visuals with
-            speculative design thinking.
+            {es
+              ? 'Una exploración conceptual de la movilidad del futuro a través de la filosofía de diseño de Toyota. Mezclando visuales de vanguardia con pensamiento de diseño especulativo.'
+              : "A conceptual exploration of future mobility through the lens of Toyota's design philosophy. Blending cutting-edge visuals with speculative design thinking."}
           </p>
         </div>
 
         <div className="py-4">
-          <p className="text-sm text-gray-500">Coming soon...</p>
+          <p className="text-sm text-gray-500">{es ? 'Próximamente...' : 'Coming soon...'}</p>
         </div>
       </div>
     </div>

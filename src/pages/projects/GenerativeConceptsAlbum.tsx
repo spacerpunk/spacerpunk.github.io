@@ -1,6 +1,8 @@
 import SEO from '../../components/SEO';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function GenerativeConceptsAlbum() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 md:p-6">
       <SEO
@@ -16,17 +18,16 @@ export default function GenerativeConceptsAlbum() {
         </h3>
 
         <div className="py-6">
-          <h2 className="text-xl font-semibold mb-4">About</h2>
+          <h2 className="text-xl font-semibold mb-4">{es ? 'Sobre esto' : 'About'}</h2>
           <p className="text-gray-400 leading-relaxed">
-            A full-length album exploring generative music techniques and
-            AI-assisted composition. Each track is a collaboration between human
-            creativity and algorithmic processes, pushing the boundaries of
-            music creation.
+            {es
+              ? 'Un álbum completo que explora técnicas de música generativa y composición asistida por IA. Cada track es una colaboración entre la creatividad humana y los procesos algorítmicos, empujando los límites de la creación musical.'
+              : 'A full-length album exploring generative music techniques and AI-assisted composition. Each track is a collaboration between human creativity and algorithmic processes, pushing the boundaries of music creation.'}
           </p>
         </div>
 
         <div className="py-4">
-          <p className="text-sm text-gray-500">Coming soon...</p>
+          <p className="text-sm text-gray-500">{es ? 'Próximamente...' : 'Coming soon...'}</p>
         </div>
       </div>
     </div>

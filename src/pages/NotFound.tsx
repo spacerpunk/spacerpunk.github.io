@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function NotFound() {
+  const { lang } = useLanguage();
+  const es = lang === 'es';
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] p-8">
       <motion.div
@@ -11,10 +14,13 @@ export default function NotFound() {
         className="text-center"
       >
         <h1 className="text-9xl font-bold text-nasared mb-4">404</h1>
-        <h2 className="text-4xl font-semibold mb-4">Page Not Found</h2>
+        <h2 className="text-4xl font-semibold mb-4">
+          {es ? 'Página no encontrada' : 'Page Not Found'}
+        </h2>
         <p className="text-gray-400 mb-8 max-w-md">
-          The page you're looking for doesn't exist in this dimension. Maybe
-          it's lost in the electromagnetic void.
+          {es
+            ? 'La página que buscás no existe en esta dimensión. Quizás se perdió en el vacío electromagnético.'
+            : "The page you're looking for doesn't exist in this dimension. Maybe it's lost in the electromagnetic void."}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -22,13 +28,13 @@ export default function NotFound() {
             to="/"
             className="px-6 py-3 bg-nasared text-white font-semibold hover:bg-opacity-80 transition-colors"
           >
-            Return Home
+            {es ? 'Volver al inicio' : 'Return Home'}
           </Link>
           <button
             onClick={() => window.history.back()}
             className="px-6 py-3 border border-nasared text-nasared font-semibold hover:bg-nasared hover:text-white transition-colors"
           >
-            Go Back
+            {es ? 'Volver atrás' : 'Go Back'}
           </button>
         </div>
 
@@ -46,20 +52,20 @@ export default function NotFound() {
         className="mt-16 text-center"
       >
         <p className="text-gray-600 text-sm">
-          Lost in space? Check out these pages:
+          {es ? '¿Perdido en el espacio? Mirá estas páginas:' : 'Lost in space? Check out these pages:'}
         </p>
         <div className="flex flex-wrap gap-4 justify-center mt-4">
           <Link to="/about" className="text-nasared hover:underline">
-            About
+            {es ? 'Sobre mí' : 'About'}
           </Link>
           <Link to="/work/generative" className="text-nasared hover:underline">
-            Work
+            {es ? 'Trabajo' : 'Work'}
           </Link>
           <Link
             to="/projects/thenoise"
             className="text-nasared hover:underline"
           >
-            Projects
+            {es ? 'Proyectos' : 'Projects'}
           </Link>
         </div>
       </motion.div>

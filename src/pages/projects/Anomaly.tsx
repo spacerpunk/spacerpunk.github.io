@@ -1,8 +1,13 @@
+import { useLanguage } from '../../contexts/LanguageContext';
+
 export default function Anomaly() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="p-4">
       <h1 className="text-4xl text-semibold font-bold">Anomaly</h1>
-      <h2 className="w-full font-light py-6">A Tidal Cycles Project</h2>
+      <h2 className="w-full font-light py-6">
+        {es ? 'Un proyecto en Tidal Cycles' : 'A Tidal Cycles Project'}
+      </h2>
       <div>
         <h3 className="w-full font-extralight text-sm py-1 text-nasared">
           #tidalcycles #haskell #ableton #generative #music

@@ -5,6 +5,7 @@ import afterEffects from '../../assets/Monks/GoogleAgent/AfterEffects_q90_fps15_
 import master from '../../assets/Monks/GoogleAgent/Master_q90_fps15_540x960.gif';
 import variation01 from '../../assets/Monks/GoogleAgent/Variation01_q90_fps15_540x960.gif';
 import variation02 from '../../assets/Monks/GoogleAgent/Variation02_q90_fps15_540x960.gif';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const techStack = [
   { label: 'Cursor', color: 'text-white border-white/30 bg-white/5' },
@@ -17,6 +18,7 @@ const techStack = [
 ];
 
 export default function AgenticMonks() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 max-w-6xl">
 
@@ -26,15 +28,14 @@ export default function AgenticMonks() {
         #agentic #workflows #generativeAI #aftereffects #brands
       </h3>
       <p className="text-base font-normal text-gray-200 mb-2 max-w-3xl">
-        A fully agentic pipeline built with Cursor and Claude Sonnet that connects Google's
-        image, text, and video generation APIs to produce always-on-brand, product-accurate
-        renders — then feeds them directly into After Effects templates to generate finished
-        content dynamically.
+        {es
+          ? 'Un pipeline totalmente agéntico construido con Cursor y Claude Sonnet que conecta las APIs de generación de imagen, texto y video de Google para producir renders siempre fieles a la marca y precisos en el producto — y después los inyecta directamente en templates de After Effects para generar contenido terminado de forma dinámica.'
+          : "A fully agentic pipeline built with Cursor and Claude Sonnet that connects Google's image, text, and video generation APIs to produce always-on-brand, product-accurate renders — then feeds them directly into After Effects templates to generate finished content dynamically."}
       </p>
       <p className="text-sm font-light text-gray-400 mb-6 max-w-3xl">
-        The system handles brief intake, brand-consistent prompt engineering, asset generation,
-        quality filtering, and template population — turning what was a multi-day manual process
-        into an automated run that outputs broadcast-ready variations in minutes.
+        {es
+          ? 'El sistema maneja la toma de brief, el prompt engineering consistente con la marca, la generación de piezas, el filtrado de calidad y el poblado de templates — convirtiendo lo que era un proceso manual de varios días en una corrida automatizada que entrega variaciones listas para emitir en minutos.'
+          : 'The system handles brief intake, brand-consistent prompt engineering, asset generation, quality filtering, and template population — turning what was a multi-day manual process into an automated run that outputs broadcast-ready variations in minutes.'}
       </p>
 
       {/* Tech Stack */}
@@ -51,11 +52,11 @@ export default function AgenticMonks() {
 
       {/* Section: The Workflow */}
       <section className="mb-10">
-        <h2 className="text-lg font-semibold mb-1">The Workflow</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'El Workflow' : 'The Workflow'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Orchestrated in n8n — the agent ingests a product brief, calls Google's APIs for
-          image and copy generation, scores results for brand accuracy, and routes approved
-          assets into the After Effects render pipeline.
+          {es
+            ? 'Orquestado en n8n — el agente ingiere un brief de producto, llama a las APIs de Google para generar imagen y copy, puntúa los resultados según la fidelidad a la marca y enruta las piezas aprobadas al pipeline de render de After Effects.'
+            : "Orchestrated in n8n — the agent ingests a product brief, calls Google's APIs for image and copy generation, scores results for brand accuracy, and routes approved assets into the After Effects render pipeline."}
         </p>
 
         {/* n8n wide flow */}
@@ -76,7 +77,7 @@ export default function AgenticMonks() {
               className="w-full h-auto object-contain"
               loading="lazy"
             />
-            <p className="text-xs text-gray-500 p-2">Endcard sub-flow</p>
+            <p className="text-xs text-gray-500 p-2">{es ? 'Sub-flow de endcard' : 'Endcard sub-flow'}</p>
           </div>
           <div className="overflow-hidden rounded-lg border border-gray-800">
             <img
@@ -85,18 +86,18 @@ export default function AgenticMonks() {
               className="w-full h-auto object-contain"
               loading="lazy"
             />
-            <p className="text-xs text-gray-500 p-2">Brief intake & asset review UI</p>
+            <p className="text-xs text-gray-500 p-2">{es ? 'UI de toma de brief y revisión de piezas' : 'Brief intake & asset review UI'}</p>
           </div>
         </div>
       </section>
 
       {/* Section: After Effects Output */}
       <section className="mb-10">
-        <h2 className="text-lg font-semibold mb-1">After Effects Output</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Salida en After Effects' : 'After Effects Output'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Approved assets are automatically mapped to template layers. The agent populates
-          text, product renders, and background plates, then triggers a render queue —
-          outputting multiple brand-locked variations without manual touch.
+          {es
+            ? 'Las piezas aprobadas se mapean automáticamente a las capas del template. El agente puebla texto, renders de producto y placas de fondo, y después dispara una cola de render — entregando múltiples variaciones bloqueadas en marca sin intervención manual.'
+            : 'Approved assets are automatically mapped to template layers. The agent populates text, product renders, and background plates, then triggers a render queue — outputting multiple brand-locked variations without manual touch.'}
         </p>
         <div className="w-full overflow-hidden rounded-lg border border-gray-800">
           <img
@@ -105,16 +106,17 @@ export default function AgenticMonks() {
             className="w-full h-auto object-contain"
             loading="lazy"
           />
-          <p className="text-xs text-gray-500 p-2">Dynamic template population</p>
+          <p className="text-xs text-gray-500 p-2">{es ? 'Poblado dinámico de templates' : 'Dynamic template population'}</p>
         </div>
       </section>
 
       {/* Section: Output Variations */}
       <section className="mb-10">
-        <h2 className="text-lg font-semibold mb-1">Output Variations</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Variaciones de Salida' : 'Output Variations'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Each run produces a master cut and format-adapted variations — vertical for
-          social, horizontal for display — all brand-consistent, no manual resizing.
+          {es
+            ? 'Cada corrida produce un corte master y variaciones adaptadas por formato — vertical para redes, horizontal para display — todas consistentes con la marca, sin redimensionar a mano.'
+            : 'Each run produces a master cut and format-adapted variations — vertical for social, horizontal for display — all brand-consistent, no manual resizing.'}
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="overflow-hidden rounded-lg border border-gray-800">

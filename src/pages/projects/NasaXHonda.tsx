@@ -1,6 +1,7 @@
 import SEO from '../../components/SEO';
 import LazyImage from '../../components/LazyImage';
 import { VideoEmbed } from '../../components/content/Prose';
+import { useLanguage } from '../../contexts/LanguageContext';
 import ShortFilm from '../../assets/nasaxhonda/SHORT 01_FINAL.mp4';
 import Teaser from '../../assets/nasaxhonda/NASAXHONDATeaser.mp4';
 
@@ -52,6 +53,7 @@ const bikeDetails = [
 ];
 
 export default function NasaXHonda() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 md:p-6">
       <SEO
@@ -85,37 +87,33 @@ export default function NasaXHonda() {
 
         {/* Concept text */}
         <div className="flex-1 pt-0 md:pt-7">
-          <h2 className="text-xl font-semibold mb-3">The Concept</h2>
+          <h2 className="text-xl font-semibold mb-3">{es ? 'El Concepto' : 'The Concept'}</h2>
           <p className="text-gray-400 leading-relaxed text-sm">
-            A 15 to 30-second short dynamic film. Honda engineers — working under
-            a classified NASA joint program — have built a bike for any terrain:
-            the Honda XR-LRV, TEST UNIT 03. The same thinking that drove the Mars
-            and Lunar Rovers now runs through a two-wheeled machine: LOX oxidizer
-            fuel injection, low-gravity suspension geometry, sealed terrain tires,
-            and a full telemetry suite. The rider wears a custom suit. The terrain
-            does not matter.
+            {es
+              ? 'Un cortometraje dinámico de 15 a 30 segundos. Ingenieros de Honda —trabajando bajo un programa conjunto clasificado con NASA— construyeron una moto para cualquier terreno: la Honda XR-LRV, TEST UNIT 03. El mismo pensamiento que impulsó a los rovers de Marte y la Luna ahora corre por una máquina de dos ruedas: inyección de combustible con oxidante LOX, geometría de suspensión para baja gravedad, neumáticos sellados para todo terreno y una suite completa de telemetría. El piloto usa un traje a medida. El terreno no importa.'
+              : 'A 15 to 30-second short dynamic film. Honda engineers — working under a classified NASA joint program — have built a bike for any terrain: the Honda XR-LRV, TEST UNIT 03. The same thinking that drove the Mars and Lunar Rovers now runs through a two-wheeled machine: LOX oxidizer fuel injection, low-gravity suspension geometry, sealed terrain tires, and a full telemetry suite. The rider wears a custom suit. The terrain does not matter.'}
           </p>
         </div>
       </section>
 
       {/* The Film */}
       <section className="py-6">
-        <h2 className="text-xl font-semibold mb-1">The Film</h2>
+        <h2 className="text-xl font-semibold mb-1">{es ? 'El Film' : 'The Film'}</h2>
         <p className="text-gray-500 text-sm mb-4">
-          Watch on YouTube.
+          {es ? 'Velo en YouTube.' : 'Watch on YouTube.'}
         </p>
         <VideoEmbed
           youtubeId="_F7XKzWlcxc"
           title="NASAXHONDA — Film"
-          caption="Watch on YouTube"
+          caption={es ? 'Ver en YouTube' : 'Watch on YouTube'}
         />
       </section>
 
       {/* Bike Design — Hero */}
       <section className="py-6">
-        <h2 className="text-xl font-semibold mb-1">The Bike</h2>
+        <h2 className="text-xl font-semibold mb-1">{es ? 'La Moto' : 'The Bike'}</h2>
         <p className="text-gray-500 text-sm mb-4">
-          AI-generated concept renders. Designed in Gemini.
+          {es ? 'Renders conceptuales generados con IA. Diseñados en Gemini.' : 'AI-generated concept renders. Designed in Gemini.'}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {bikeHero.map((img, i) => (
@@ -133,7 +131,7 @@ export default function NasaXHonda() {
       {/* Bike Design — Details */}
       <section className="py-2">
         <p className="text-gray-500 text-xs mb-3 uppercase tracking-widest">
-          Details
+          {es ? 'Detalles' : 'Details'}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {bikeDetails.map((img, i) => (
@@ -150,11 +148,11 @@ export default function NasaXHonda() {
 
       {/* Film Style */}
       <section className="py-8">
-        <h2 className="text-xl font-semibold mb-1">Film Style</h2>
+        <h2 className="text-xl font-semibold mb-1">{es ? 'Estilo del Film' : 'Film Style'}</h2>
         <p className="text-gray-400 leading-relaxed text-sm mb-4 max-w-2xl">
-          The film lives in a retrofuturist 1970s–80s aesthetic — grainy,
-          sun-bleached, kinetic. Think NASA archival footage spliced with
-          motocross Super 8. The XR-LRV is real. The moon is the track.
+          {es
+            ? 'El film vive en una estética retrofuturista de los 70s–80s — granulada, quemada por el sol, kinética. Pensá en material de archivo de NASA mezclado con Super 8 de motocross. La XR-LRV es real. La luna es la pista.'
+            : 'The film lives in a retrofuturist 1970s–80s aesthetic — grainy, sun-bleached, kinetic. Think NASA archival footage spliced with motocross Super 8. The XR-LRV is real. The moon is the track.'}
         </p>
         <div className="max-w-sm">
           <div className="overflow-hidden rounded-sm">
@@ -169,12 +167,11 @@ export default function NasaXHonda() {
 
       {/* Film References */}
       <section className="py-6">
-        <h2 className="text-xl font-semibold mb-1">Film References</h2>
+        <h2 className="text-xl font-semibold mb-1">{es ? 'Referencias del Film' : 'Film References'}</h2>
         <p className="text-gray-400 leading-relaxed text-sm mb-4 max-w-2xl">
-          Speed, blur, dust, and a body fully committed to the machine. These
-          references define the motion language of the film — fast panning
-          shots, motion blur as a storytelling tool, light kicking through dust
-          clouds.
+          {es
+            ? 'Velocidad, blur, polvo y un cuerpo completamente entregado a la máquina. Estas referencias definen el lenguaje de movimiento del film — paneos rápidos, motion blur como herramienta narrativa, luz atravesando nubes de polvo.'
+            : 'Speed, blur, dust, and a body fully committed to the machine. These references define the motion language of the film — fast panning shots, motion blur as a storytelling tool, light kicking through dust clouds.'}
         </p>
         <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
           {filmRefs.map((img, i) => (

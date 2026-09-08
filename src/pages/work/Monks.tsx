@@ -1,3 +1,5 @@
+import { useLanguage } from '../../contexts/LanguageContext';
+
 // Dynamically import all images from the Monks/ImageGen folder (including subfolders)
 const imageModules = import.meta.glob('../../assets/Monks/ImageGen/**/*.{png,jpg,jpeg,gif,webp}', { eager: true });
 
@@ -12,13 +14,16 @@ const images = Object.entries(imageModules).map(([path, module]) => {
 });
 
 export default function Monks() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">
-        some of my work @ Monks
+        {es ? 'algo de mi trabajo @ Monks' : 'some of my work @ Monks'}
       </h1>
       <h2 className="text-lg font-light mb-6 text-nasared">
-        synthetic image generation for various brands
+        {es
+          ? 'generación de imágenes sintéticas para varias marcas'
+          : 'synthetic image generation for various brands'}
       </h2>
 
       {/* Dynamic Grid of Images */}

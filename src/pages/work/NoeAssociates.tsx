@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import PasswordGate from '../../components/PasswordGate';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const videoModules = import.meta.glob('../../assets/Noe/*.mp4', {
   eager: true,
@@ -76,6 +77,7 @@ function HoverVideo({ src, filename }: { src: string; filename: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const isLatest = filename.includes('Social');
+  const es = useLanguage().lang === 'es';
 
   const onEnter = () => {
     const v = videoRef.current;
@@ -131,7 +133,7 @@ function HoverVideo({ src, filename }: { src: string; filename: string }) {
       {isLatest && (
         <div className="absolute top-2 left-2">
           <span className="text-[10px] font-semibold tracking-widest uppercase px-2 py-0.5 rounded bg-nasared text-white">
-            Latest
+            {es ? 'Nuevo' : 'Latest'}
           </span>
         </div>
       )}
@@ -189,27 +191,26 @@ function LightboxImage({ src, alt }: { src: string; alt: string }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function NoeAssociates() {
+  const es = useLanguage().lang === 'es';
   return (
     <PasswordGate storageKey="noeassociates-unlocked" password="n0e&2026">
       <div className="w-full p-4 max-w-6xl">
         {/* Header */}
         <h1 className="text-2xl font-bold mb-1">
-          Noe&amp;Associates — Social Content Showcase
+          {es ? 'Noe&Associates — Muestra de Contenido Social' : 'Noe&Associates — Social Content Showcase'}
         </h1>
         <h3 className="text-nasared text-sm font-extralight mb-4">
           #noeassociates #AI #generativeAI #social #videogen #imagegen #comfyui
         </h3>
         <p className="text-base font-normal text-gray-200 mb-2 max-w-3xl">
-          A body of AI-generated social content produced for several brands
-          — spanning video generation, image synthesis, and composite work
-          across a mix of closed and open-source tools.
+          {es
+            ? 'Un cuerpo de contenido para redes generado con IA producido para varias marcas — abarcando generación de video, síntesis de imagen y trabajo de composición con una mezcla de herramientas cerradas y open-source.'
+            : 'A body of AI-generated social content produced for several brands — spanning video generation, image synthesis, and composite work across a mix of closed and open-source tools.'}
         </p>
         <p className="text-sm font-light text-gray-400 mb-6 max-w-3xl">
-          Projects range from product visualisation and lifestyle stills to
-          fully generated video assets — all built with ComfyUI-orchestrated
-          pipelines, with Flux, SD, ControlNet, and video models (Veo, Kling,
-          Seedance) handling generation and ChatGPT assisting on art direction
-          and prompt strategy.
+          {es
+            ? 'Los proyectos van desde visualización de producto y stills lifestyle hasta piezas de video totalmente generadas — todo construido con pipelines orquestados en ComfyUI, con Flux, SD, ControlNet y modelos de video (Veo, Kling, Seedance) a cargo de la generación y ChatGPT asistiendo en la dirección de arte y la estrategia de prompts.'
+            : 'Projects range from product visualisation and lifestyle stills to fully generated video assets — all built with ComfyUI-orchestrated pipelines, with Flux, SD, ControlNet, and video models (Veo, Kling, Seedance) handling generation and ChatGPT assisting on art direction and prompt strategy.'}
         </p>
 
         {/* Tech Stack */}
@@ -229,12 +230,13 @@ export default function NoeAssociates() {
           <div className="flex items-baseline gap-3 mb-1">
             <h2 className="text-lg font-semibold">Video</h2>
             <span className="text-xs text-gray-500 font-light">
-              hover to play — {videos.length} clips
+              {es ? `pasá el mouse para reproducir — ${videos.length} clips` : `hover to play — ${videos.length} clips`}
             </span>
           </div>
           <p className="text-sm text-gray-400 mb-5 max-w-2xl">
-            Generated and composited video assets — social formats, product
-            shots, and experimental runs. Latest work surfaces first.
+            {es
+              ? 'Piezas de video generadas y compositadas — formatos para redes, shots de producto y corridas experimentales. Lo más nuevo aparece primero.'
+              : 'Generated and composited video assets — social formats, product shots, and experimental runs. Latest work surfaces first.'}
           </p>
 
           <div className="columns-1 sm:columns-2 md:columns-3 gap-3">
@@ -247,14 +249,15 @@ export default function NoeAssociates() {
         {/* ── Images Section ────────────────────────────────── */}
         <section className="mb-8">
           <div className="flex items-baseline gap-3 mb-1">
-            <h2 className="text-lg font-semibold">Images</h2>
+            <h2 className="text-lg font-semibold">{es ? 'Imágenes' : 'Images'}</h2>
             <span className="text-xs text-gray-500 font-light">
-              click to expand — {staticAssets.length} assets
+              {es ? `hacé clic para ampliar — ${staticAssets.length} piezas` : `click to expand — ${staticAssets.length} assets`}
             </span>
           </div>
           <p className="text-sm text-gray-400 mb-5 max-w-2xl">
-            Stills, retouched renders, and upscaled outputs — product
-            photography, lifestyle imagery, and generative explorations.
+            {es
+              ? 'Stills, renders retocados y salidas escaladas — fotografía de producto, imágenes lifestyle y exploraciones generativas.'
+              : 'Stills, retouched renders, and upscaled outputs — product photography, lifestyle imagery, and generative explorations.'}
           </p>
 
           <div className="columns-2 sm:columns-3 md:columns-4 gap-2">

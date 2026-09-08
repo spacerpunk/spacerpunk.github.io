@@ -22,6 +22,7 @@ import TheNoiseImage016 from '../../assets/Images/thenoise16.png';
 import TheNoiseImage017 from '../../assets/Images/thenoise17.png';
 import TheNoiseImage018 from '../../assets/Images/thenoise18.png';
 import ImageGrid from './ImageGrid';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const imageList = [
   {
@@ -141,6 +142,7 @@ const imageList3 = [
 ];
 
 const TheNoise = () => {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full pt-0 pr-0 pl-0 p-4 background-gray-800">
       <div className="w-full pb-4 background-gray-800">
@@ -168,7 +170,7 @@ const TheNoise = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <h3 className="text-normal font-semibold pt-4 pb-4">Moody Playlist</h3>
+        <h3 className="text-normal font-semibold pt-4 pb-4">{es ? 'Playlist con Clima' : 'Moody Playlist'}</h3>
         <iframe
           className="md:flex"
           src="https://open.spotify.com/embed/playlist/3S0sljsAvx3rlWQlZJDkag?utm_source=generator&theme=0"
@@ -179,32 +181,63 @@ const TheNoise = () => {
           loading="lazy"
         ></iframe>
         <h2 className="w-full text-normal font-semibold pt-4">
-          The Noise - Horror Series - Small Short Videos and Clips and
-          Experiences to piece together a big Story at S4
+          {es
+            ? 'The Noise — Serie de Terror — Videos cortos, clips y experiencias para ir armando una gran historia en S4'
+            : 'The Noise - Horror Series - Small Short Videos and Clips and Experiences to piece together a big Story at S4'}
         </h2>
         <h3 className="w-full text-sm font-light pt-2 pb-4">
-          <p>
-            Researching and falling deep on a Close Encounters, Random Event
-            Generators, UFOs and Liminal spaces rabbit hole I came up with and
-            idea for a story (Actually it was a video game first).{' '}
-          </p>
-          <p>
-            A world, characters, events, interactions and lore for a world. I
-            don't want to think of it as a Film, Book or Game...it's an
-            idea.{' '}
-          </p>
-          <p>
-            A SPACE, and I'd like to explore it and see what outputs I can get
-            from it.
-          </p>
-          <p>
-            I like the idea of creating things that may exist in the universe
-            that I'm writing about.
-          </p>
-          <p>
-            And if you pay attention to each small piece you may figure out the
-            whole thing.
-          </p>
+          {es ? (
+            <>
+              <p>
+                Investigando y cayendo hondo en un pozo de encuentros cercanos,
+                generadores de eventos aleatorios, OVNIs y espacios liminales, se
+                me ocurrió una idea para una historia (en realidad primero fue un
+                videojuego).{' '}
+              </p>
+              <p>
+                Un mundo, personajes, eventos, interacciones y lore para un mundo.
+                No quiero pensarlo como un film, un libro o un juego... es una
+                idea.{' '}
+              </p>
+              <p>
+                Un ESPACIO, y me gustaría explorarlo y ver qué salidas puedo sacar
+                de él.
+              </p>
+              <p>
+                Me gusta la idea de crear cosas que podrían existir en el universo
+                sobre el que estoy escribiendo.
+              </p>
+              <p>
+                Y si prestás atención a cada pequeña pieza, quizás descifres todo
+                el conjunto.
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                Researching and falling deep on a Close Encounters, Random Event
+                Generators, UFOs and Liminal spaces rabbit hole I came up with and
+                idea for a story (Actually it was a video game first).{' '}
+              </p>
+              <p>
+                A world, characters, events, interactions and lore for a world. I
+                don't want to think of it as a Film, Book or Game...it's an
+                idea.{' '}
+              </p>
+              <p>
+                A SPACE, and I'd like to explore it and see what outputs I can get
+                from it.
+              </p>
+              <p>
+                I like the idea of creating things that may exist in the universe
+                that I'm writing about.
+              </p>
+              <p>
+                And if you pay attention to each small piece you may figure out the
+                whole thing.
+              </p>
+            </>
+          )}
         </h3>
         <div className="relative w-full h-[200px] my-8">
           <LazyVideo
@@ -220,9 +253,9 @@ const TheNoise = () => {
         </div>
         <h2 className="w-full font-light py-4">Stills</h2>
         <h3>
-          <p>AI Generated Concept Art.</p>
+          <p>{es ? 'Concept art generado con IA.' : 'AI Generated Concept Art.'}</p>
           <p className="w-full font-light text-sm pt-2">
-            Created using Flux and ComfyUI.
+            {es ? 'Creado con Flux y ComfyUI.' : 'Created using Flux and ComfyUI.'}
           </p>
 
           <h2 className="w-full font-normal py-4 text-nasared">
@@ -235,9 +268,9 @@ const TheNoise = () => {
           </h2>
           <h2>
             <p className="w-full font-light text-sm py-0">
-              I created a custom Flux Workflow using input images with blur and
-              a high denoise value, this way I can control the lighting of the
-              images and composition.
+              {es
+                ? 'Creé un workflow de Flux a medida usando imágenes de entrada con blur y un valor de denoise alto; así puedo controlar la iluminación de las imágenes y la composición.'
+                : 'I created a custom Flux Workflow using input images with blur and a high denoise value, this way I can control the lighting of the images and composition.'}
             </p>
           </h2>
 
@@ -272,7 +305,7 @@ const TheNoise = () => {
             </div>
           </h2>
         </h3>
-        <h2 className="w-full font-light py-4">The Story</h2>
+        <h2 className="w-full font-light py-4">{es ? 'La Historia' : 'The Story'}</h2>
         <h2 className="w-full font-light py-4">
           <iframe
             width="100%"

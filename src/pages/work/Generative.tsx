@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 // ─── Single broad glob, then group by subfolder ───────────────────────────
 const allModules = import.meta.glob(
@@ -42,7 +43,9 @@ interface Project {
   client: string;
   year: string;
   type: string;
+  typeEs: string;
   description: string;
+  descriptionEs: string;
   tags: string[];
   assets: { src: string; filename: string }[];
   link?: string;
@@ -55,7 +58,9 @@ const PROJECTS: Project[] = [
     client: 'BMW',
     year: '2024',
     type: 'Client · @Monks',
+    typeEs: 'Cliente · @Monks',
     description: 'AI-generated product imagery and lifestyle retouching for BMW. Combining controlled generation with brand-accurate references to produce campaign-ready assets.',
+    descriptionEs: 'Imágenes de producto generadas con IA y retoque lifestyle para BMW. Combinando generación controlada con referencias fieles a la marca para producir piezas listas para campaña.',
     tags: ['#product', '#automotive', '#flux', '#comfyUI', '#retouching'],
     assets: getAssets('BMW_Monks'),
   },
@@ -64,7 +69,9 @@ const PROJECTS: Project[] = [
     client: 'NASAXHONDA',
     year: '2026',
     type: 'Personal · Concept',
+    typeEs: 'Personal · Concepto',
     description: 'AI concept visualization for the Honda XR-LRV — a NASA-engineered lunar rover bike. Art-directed through generative pipelines from spec to hero renders.',
+    descriptionEs: 'Visualización conceptual con IA para la Honda XR-LRV, una moto rover lunar diseñada por NASA. Dirección de arte a través de pipelines generativos, del spec a los renders finales.',
     tags: ['#concept', '#automotive', '#generativeAI', '#worldbuilding'],
     assets: getAssets('Honda_Exploration'),
     link: '/projects/nasaxhonda',
@@ -74,7 +81,9 @@ const PROJECTS: Project[] = [
     client: 'Superside',
     year: '2026',
     type: 'Client · Campaign',
+    typeEs: 'Cliente · Campaña',
     description: 'Moodboard-to-delivery AI pipeline for a global campaign. Produced multi-direction style frames and final multi-format deliverables using Flux 2 Pro and ChatGPT Agentic.',
+    descriptionEs: 'Pipeline de IA de moodboard a entrega para una campaña global. Frames de estilo en múltiples direcciones y entregables finales multi-formato usando Flux 2 Pro y ChatGPT Agentic.',
     tags: ['#campaign', '#moodboards', '#flux2pro', '#chatGPT', '#agentic'],
     assets: getAssets('Superside_Creative_Exploration_2026'),
     link: '/work/superside',
@@ -84,7 +93,9 @@ const PROJECTS: Project[] = [
     client: 'Vivo',
     year: '2024',
     type: 'Client · @Monks',
+    typeEs: 'Cliente · @Monks',
     description: 'AI lifestyle photography pipeline for Vivo phones. Generated on-model product scenarios at scale, matched to brand colour and style guides.',
+    descriptionEs: 'Pipeline de fotografía lifestyle con IA para los teléfonos Vivo. Escenarios de producto generados a escala, alineados a las guías de color y estilo de la marca.',
     tags: ['#product', '#lifestyle', '#flux', '#generativeAI', '#social'],
     assets: getAssets('Vivo_Monks'),
   },
@@ -93,7 +104,9 @@ const PROJECTS: Project[] = [
     client: 'Leatt',
     year: '2025',
     type: 'Client · Social Content',
+    typeEs: 'Cliente · Contenido Social',
     description: 'AI-generated and animated social assets for Leatt sports gear. Background generation with Flux + Qwen product integration, plus animated GIF loops for social delivery.',
+    descriptionEs: 'Piezas para redes generadas y animadas con IA para el equipamiento deportivo Leatt. Generación de fondos con Flux + integración de producto con Qwen, más loops de GIF animados para entrega en redes.',
     tags: ['#sports', '#social', '#animation', '#flux', '#qwen', '#video'],
     assets: getAssets('Leatt_Socials'),
   },
@@ -102,7 +115,9 @@ const PROJECTS: Project[] = [
     client: 'Fox',
     year: '2025',
     type: 'Client · Social Content',
+    typeEs: 'Cliente · Contenido Social',
     description: "AI creative exploration for Fox Racing social media. Generative imagery matched to the brand's raw, action-sports identity.",
+    descriptionEs: 'Exploración creativa con IA para las redes de Fox Racing. Imágenes generativas alineadas a la identidad cruda y de deportes de acción de la marca.',
     tags: ['#sports', '#social', '#generativeAI', '#motocross'],
     assets: getAssets('Fox_Socials'),
   },
@@ -111,7 +126,9 @@ const PROJECTS: Project[] = [
     client: 'The Noise',
     year: '2025',
     type: 'Personal · Short Film',
+    typeEs: 'Personal · Cortometraje',
     description: 'AI storyboard and visual development for The Noise — a personal short film project. Frames generated with Flux and Veo3, used to lock look, composition and motion language before production.',
+    descriptionEs: 'Storyboard y desarrollo visual con IA para The Noise, un cortometraje personal. Frames generados con Flux y Veo3, usados para fijar el look, la composición y el lenguaje de movimiento antes de producción.',
     tags: ['#storyboard', '#film', '#flux', '#veo3', '#comfyUI'],
     assets: getAssets('TheNoise_Storyboards'),
     link: '/projects/thenoise',
@@ -121,7 +138,9 @@ const PROJECTS: Project[] = [
     client: 'Weyland',
     year: '2026',
     type: 'Personal · Exploration',
+    typeEs: 'Personal · Exploración',
     description: 'Sci-fi world building and brand exploration. Generative imagery and animated sequences building out the visual language of a fictional universe.',
+    descriptionEs: 'World building sci-fi y exploración de marca. Imágenes generativas y secuencias animadas que construyen el lenguaje visual de un universo ficticio.',
     tags: ['#scifi', '#worldbuilding', '#wan', '#exploration', '#animation'],
     assets: getAssets('Weyland_Exploration'),
   },
@@ -130,7 +149,9 @@ const PROJECTS: Project[] = [
     client: 'LoRa Training',
     year: '2024',
     type: 'R&D · Experiments',
+    typeEs: 'R&D · Experimentos',
     description: 'Custom LoRa fine-tuning experiments with Flux. Training subject-consistent and style-locked models for repeatable character and product generation.',
+    descriptionEs: 'Experimentos de fine-tuning de LoRa a medida con Flux. Entrenamiento de modelos consistentes en sujeto y bloqueados en estilo para generación repetible de personajes y productos.',
     tags: ['#lora', '#flux', '#training', '#finetuning', '#R&D'],
     assets: getAssets('LoRa_Flux_Training'),
   },
@@ -139,7 +160,9 @@ const PROJECTS: Project[] = [
     client: 'More Experiments',
     year: '2024',
     type: 'R&D · Misc',
+    typeEs: 'R&D · Varios',
     description: 'Assorted experiments in generative image, video and motion — ComfyUI workflows, animated loops, product concepts and visual tests.',
+    descriptionEs: 'Experimentos varios en imagen, video y motion generativos — workflows de ComfyUI, loops animados, conceptos de producto y pruebas visuales.',
     tags: ['#experiments', '#comfyUI', '#flux', '#misc'],
     assets: getAssets('More'),
   },
@@ -177,6 +200,7 @@ function MediaItem({ src, filename }: { src: string; filename: string }) {
 function ProjectBlock({ project, index }: { project: Project; index: number }) {
   const [expanded, setExpanded] = useState(index === 0);
   const ref = useRef<HTMLDivElement>(null);
+  const es = useLanguage().lang === 'es';
 
   return (
     <motion.div
@@ -202,11 +226,11 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
             </h2>
             <span className="text-xs font-mono text-gray-600">{project.year}</span>
             <span className="text-xs font-mono text-gray-700 border border-gray-800 px-2 py-0.5">
-              {project.type}
+              {es ? project.typeEs : project.type}
             </span>
           </div>
           <p className="text-gray-500 text-sm font-light max-w-2xl leading-relaxed">
-            {project.description}
+            {es ? project.descriptionEs : project.description}
           </p>
           <div className="flex flex-wrap gap-2 mt-3">
             {project.tags.map((t) => (
@@ -222,7 +246,7 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
               onClick={(e) => e.stopPropagation()}
               className="text-xs font-mono text-nasared hover:underline hidden sm:block"
             >
-              View project →
+              {es ? 'Ver proyecto →' : 'View project →'}
             </Link>
           )}
           <span className={`text-gray-600 group-hover:text-nasared transition-all duration-200 ${expanded ? 'rotate-45' : ''}`}>
@@ -247,7 +271,7 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
                 to={project.link}
                 className="text-xs font-mono text-nasared hover:underline"
               >
-                View full project →
+                {es ? 'Ver proyecto completo →' : 'View full project →'}
               </Link>
             </div>
           )}
@@ -259,28 +283,32 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
 
 // ─── Page ──────────────────────────────────────────────────────────────────
 export default function Generative() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="p-4 lg:p-8 min-h-screen">
       {/* Header */}
       <div className="mb-10">
         <p className="text-nasared text-xs font-mono tracking-widest uppercase mb-3">
           AI Creative Sprint ·{' '}
-          <Link to="/services" className="hover:underline">See service pack →</Link>
+          <Link to="/services" className="hover:underline">
+            {es ? 'Ver pack de servicio →' : 'See service pack →'}
+          </Link>
         </p>
         <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-white leading-none mb-4">
           AI CREATIVE
         </h1>
         <p className="text-gray-500 text-sm max-w-xl font-light">
-          Generative image, video and motion work across clients and personal projects.
-          Image generation, LoRa training, agentic pipelines and visual exploration.
+          {es
+            ? 'Trabajo de imagen, video y motion generativos en proyectos de clientes y personales. Generación de imágenes, entrenamiento de LoRa, pipelines agénticos y exploración visual.'
+            : 'Generative image, video and motion work across clients and personal projects. Image generation, LoRa training, agentic pipelines and visual exploration.'}
         </p>
       </div>
 
       {/* Legend */}
       <div className="flex flex-wrap gap-4 mb-8 pb-8 border-b border-gray-800">
         {[
-          { dot: 'bg-nasared', label: 'Client work' },
-          { dot: 'bg-gray-500', label: 'Personal / R&D' },
+          { dot: 'bg-nasared', label: es ? 'Trabajo de cliente' : 'Client work' },
+          { dot: 'bg-gray-500', label: es ? 'Personal / R&D' : 'Personal / R&D' },
         ].map((l) => (
           <span key={l.label} className="flex items-center gap-1.5 text-xs font-mono text-gray-600">
             <span className={`w-1.5 h-1.5 rounded-full ${l.dot}`} />
@@ -288,7 +316,7 @@ export default function Generative() {
           </span>
         ))}
         <span className="text-xs font-mono text-gray-700 ml-auto">
-          ↓ Click to expand / collapse
+          {es ? '↓ Clic para expandir / colapsar' : '↓ Click to expand / collapse'}
         </span>
       </div>
 
@@ -302,16 +330,20 @@ export default function Generative() {
       {/* Footer CTA */}
       <div className="border border-dashed border-gray-800 mt-16 p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <p className="text-white font-bold mb-1">Need AI Creative work?</p>
+          <p className="text-white font-bold mb-1">
+            {es ? '¿Necesitás trabajo de AI Creative?' : 'Need AI Creative work?'}
+          </p>
           <p className="text-gray-500 text-sm font-light">
-            The AI Creative Sprint pack covers fast visual exploration, campaign concepts and prototype assets.
+            {es
+              ? 'El pack AI Creative Sprint cubre exploración visual rápida, conceptos de campaña y piezas prototipo.'
+              : 'The AI Creative Sprint pack covers fast visual exploration, campaign concepts and prototype assets.'}
           </p>
         </div>
         <Link
           to="/services"
           className="text-xs font-mono font-bold tracking-widest uppercase px-5 py-3 bg-nasared text-white hover:bg-white hover:text-nasared transition-colors duration-200 shrink-0"
         >
-          View Services →
+          {es ? 'Ver Servicios →' : 'View Services →'}
         </Link>
       </div>
     </div>

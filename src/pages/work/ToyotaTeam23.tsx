@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 // Storyboard frames
 const storyboardModules = import.meta.glob(
@@ -68,6 +69,7 @@ function LightboxImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function ToyotaTeam23() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 max-w-6xl">
 
@@ -87,14 +89,14 @@ export default function ToyotaTeam23() {
         #storyboard #conceptfilm #generativeAI #automotive #comfyui
       </h3>
       <p className="text-base font-normal text-gray-200 mb-2 max-w-3xl">
-        AI-generated storyboards and visual assets for a concept short film advertising Toyota —
-        built from image references and 3D models, art directed by Team23 to keep the car
-        pixel-accurate to real references, then extended into AI-generated and composited video.
+        {es
+          ? 'Storyboards y piezas visuales generados con IA para un cortometraje conceptual publicitario de Toyota — construidos a partir de referencias de imagen y modelos 3D, con dirección de arte de Team23 para mantener el auto fiel al píxel con las referencias reales, y después extendidos a video generado con IA y compositado.'
+          : 'AI-generated storyboards and visual assets for a concept short film advertising Toyota — built from image references and 3D models, art directed by Team23 to keep the car pixel-accurate to real references, then extended into AI-generated and composited video.'}
       </p>
       <p className="text-sm font-light text-gray-400 mb-6 max-w-3xl">
-        The pipeline combined ComfyUI, Weave, and Fal.ai running models including Flux 2,
-        NanoBanana2, Seedream, and ChatGPT Image 2. Each frame was iterated against reference
-        materials to match exact vehicle geometry, colour, and lighting.
+        {es
+          ? 'El pipeline combinó ComfyUI, Weave y Fal.ai corriendo modelos como Flux 2, NanoBanana2, Seedream y ChatGPT Image 2. Cada frame se iteró contra el material de referencia para igualar exactamente la geometría, el color y la iluminación del vehículo.'
+          : 'The pipeline combined ComfyUI, Weave, and Fal.ai running models including Flux 2, NanoBanana2, Seedream, and ChatGPT Image 2. Each frame was iterated against reference materials to match exact vehicle geometry, colour, and lighting.'}
       </p>
 
       {/* Tech Stack */}
@@ -112,7 +114,7 @@ export default function ToyotaTeam23() {
       {/* Film — main feature */}
       <section className="mb-10">
         <p className="text-xs font-mono text-nasared tracking-widest uppercase mb-3">
-          Concept Short Film
+          {es ? 'Cortometraje Conceptual' : 'Concept Short Film'}
         </p>
         <div className="relative w-full aspect-video overflow-hidden rounded-lg border border-gray-800 bg-black">
           <iframe
@@ -130,22 +132,29 @@ export default function ToyotaTeam23() {
             rel="noopener noreferrer"
             className="text-nasared hover:underline"
           >
-            Watch on YouTube →
+            {es ? 'Ver en YouTube →' : 'Watch on YouTube →'}
           </a>
         </p>
 
         {/* Credits disclaimer */}
         <div className="mt-6 border border-dashed border-gray-800 p-5 max-w-3xl">
           <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-2">
-            My role
+            {es ? 'Mi rol' : 'My role'}
           </p>
-          <p className="text-sm text-gray-400 font-light leading-relaxed">
-            I worked on the <span className="text-white">AI-generated images and storyboards</span>,
-            and later the <span className="text-white">AI generation and compositing of video</span> elements
-            used in this film.
-          </p>
+          {es ? (
+            <p className="text-sm text-gray-400 font-light leading-relaxed">
+              Trabajé en las <span className="text-white">imágenes y storyboards generados con IA</span>,
+              y más tarde en la <span className="text-white">generación con IA y el compositing de los elementos de video</span> usados en este film.
+            </p>
+          ) : (
+            <p className="text-sm text-gray-400 font-light leading-relaxed">
+              I worked on the <span className="text-white">AI-generated images and storyboards</span>,
+              and later the <span className="text-white">AI generation and compositing of video</span> elements
+              used in this film.
+            </p>
+          )}
           <p className="text-sm text-gray-500 font-light leading-relaxed mt-3">
-            Edit, sound design, music, and final assembly were handled by{' '}
+            {es ? 'La edición, el diseño de sonido, la música y el armado final estuvieron a cargo de ' : 'Edit, sound design, music, and final assembly were handled by '}
             <a
               href="https://www.team23.online/"
               target="_blank"
@@ -161,9 +170,11 @@ export default function ToyotaTeam23() {
 
       {/* Section: Storyboard */}
       <section className="mb-10">
-        <h2 className="text-lg font-semibold mb-1">Storyboard Frames</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Frames del Storyboard' : 'Storyboard Frames'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          {storyboardFrames.length} frames generated — click any image to expand.
+          {es
+            ? `${storyboardFrames.length} frames generados — hacé clic en cualquier imagen para ampliar.`
+            : `${storyboardFrames.length} frames generated — click any image to expand.`}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {storyboardFrames.map((frame, i) => (
@@ -174,10 +185,11 @@ export default function ToyotaTeam23() {
 
       {/* Section: References */}
       <section className="mb-10">
-        <h2 className="text-lg font-semibold mb-1">References</h2>
+        <h2 className="text-lg font-semibold mb-1">{es ? 'Referencias' : 'References'}</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Vehicle and visual references used to art-direct the AI generation towards
-          product accuracy.
+          {es
+            ? 'Referencias del vehículo y visuales usadas para dirigir el arte de la generación con IA hacia la fidelidad de producto.'
+            : 'Vehicle and visual references used to art-direct the AI generation towards product accuracy.'}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {references.map((ref, i) => (

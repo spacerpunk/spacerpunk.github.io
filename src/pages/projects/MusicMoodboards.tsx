@@ -1,6 +1,8 @@
 import SEO from '../../components/SEO';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function MusicMoodboards() {
+  const es = useLanguage().lang === 'es';
   return (
     <div className="w-full p-4 md:p-6">
       <SEO
@@ -14,16 +16,16 @@ export default function MusicMoodboards() {
         </h3>
 
         <div className="py-6">
-          <h2 className="text-xl font-semibold mb-4">About</h2>
+          <h2 className="text-xl font-semibold mb-4">{es ? 'Sobre esto' : 'About'}</h2>
           <p className="text-gray-400 leading-relaxed">
-            A collection of curated mood boards combining visual aesthetics with
-            sonic landscapes. Each board explores a unique atmosphere, blending
-            color palettes, textures, and musical references.
+            {es
+              ? 'Una colección de mood boards curados que combinan estética visual con paisajes sonoros. Cada board explora una atmósfera única, mezclando paletas de color, texturas y referencias musicales.'
+              : 'A collection of curated mood boards combining visual aesthetics with sonic landscapes. Each board explores a unique atmosphere, blending color palettes, textures, and musical references.'}
           </p>
         </div>
 
         <div className="py-4">
-          <p className="text-sm text-gray-500">Coming soon...</p>
+          <p className="text-sm text-gray-500">{es ? 'Próximamente...' : 'Coming soon...'}</p>
         </div>
       </div>
     </div>
