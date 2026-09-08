@@ -123,6 +123,7 @@ const SideNav = () => {
       title: es ? 'TRABAJO' : 'WORK',
       icon: <span></span>,
       submenu: [
+        { title: 'RogerThat — AI Demo', path: '/work/rogerthat' },
         { title: 'Dove', path: '/work/dove' },
         { title: es ? 'AI Creative' : 'AI Creative', path: '/work/Generative' },
         { title: 'Agentic @Monks', path: '/work/agenticmonks' },

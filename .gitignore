@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# RogerThat demo master — 377 MB, hosted on YouTube instead (too large for the repo)
+src/assets/RogerThat/RogerThat DEMO.mp4
