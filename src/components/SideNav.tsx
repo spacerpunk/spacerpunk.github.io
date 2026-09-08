@@ -139,24 +139,16 @@ const SideNav = () => {
       title: es ? 'PROYECTOS' : 'PROJECTS',
       icon: <span></span>,
       submenu: [
-        { title: 'Anomaly', path: '/projects/Anomaly' },
         { title: 'The Noise', path: '/projects/TheNoise' },
         { title: 'The Tape', path: '/projects/TheTape' },
         { title: 'Trench Run', path: '/projects/TrenchRun' },
         { title: 'The Glitch', path: '/projects/TheGlitch' },
         { title: 'UPLOAD', path: '/projects/Upload' },
         { title: 'Yutani-Log', path: '/projects/YutaniLog' },
-        { title: es ? 'Moodboards Musicales' : 'Music Moodboards', path: '/projects/MusicMoodboards' },
         { title: 'NASAXHONDA', path: '/projects/NasaXHonda' },
         { title: 'UGC Slopntent', path: '/projects/UGCSlopntent' },
-        {
-          title: es ? 'Álbum Conceptos Generativos' : 'Generative Concepts Album',
-          path: '/projects/GenerativeConceptsAlbum',
-        },
-        {
-          title: es ? 'Ondas Musicales en Corte Vertical' : 'Vertical Sliced Music Waves',
-          path: '/projects/VerticalMusicWaves',
-        },
+        // Hidden from nav (routes still active): Anomaly, Music Moodboards,
+        // Generative Concepts Album, Vertical Sliced Music Waves.
       ],
     },
     {
